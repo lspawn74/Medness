@@ -25,17 +25,17 @@ public partial class GameMechanics : Node
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
 	}
 	#endregion
 
-		#region Actions
-		// Initializes a sprite movement by setting the isMoving flag and the target position
-		// on the screen.
-		// NB : The sprite node is responsible for not calling this method
-		// if it's not the currently selected character.
-		public void InitializeMovement(AnimatedSprite2D sprite, Vector2 target)
+	#region Actions
+	// Initializes a sprite movement by setting the isMoving flag and the target position
+	// on the screen.
+	// NB : The sprite node is responsible for not calling this method
+	// if it's not the currently selected character.
+	public void InitializeMovement(AnimatedSprite2D sprite, Vector2 target)
 	{
 		targetPosition = target;
 		isMoving = true;
@@ -46,50 +46,11 @@ public partial class GameMechanics : Node
 	// if it's not the currently selected character.
 	public void Move(AnimatedSprite2D sprite, double delta)
 	{
-		// Compute the position error between current position and target position
-		float xError = targetPosition.X - sprite.Position.X;
-		if (Mathf.Abs(xError) <= 10.0f)
-		{
-			sprite.Translate(new Vector2(xError, 0.0f));
-			xError = 0.0f;
-		}
-
-		// Movement stopping criterias
-		float yError = targetPosition.Y - sprite.Position.Y;
-		if (Mathf.Abs(yError) <= 10.0f)
-		{
-			sprite.Translate(new Vector2(0.0f, yError));
-			yError = 0.0f;
-		}
-
-		if (xError == 0.0f && yError == 0.0f)
-			isMoving = false;
-
-		// Movement
-		if (isMoving)
-		{
-			sprite.Play("walk");
-
-			SetSide(sprite, Mathf.Sign(xError) < 0);
-
-			double lateralSpeed = charactersProperties.Properties[SelectedCharacterType].LateralSpeed;
-			double longitudinalSpeed = charactersProperties.Properties[SelectedCharacterType].LongitudinalSpeed;
-
-			// Move to minimize the position error
-			sprite.Translate(new Vector2(
-				(float)(delta * lateralSpeed * (double)Mathf.Sign(xError) * (double)Mathf.Min(1.0f, Mathf.Abs(xError))),
-				(float)(delta * longitudinalSpeed * (double)Mathf.Sign(yError) * (double)Mathf.Min(1.0f, Mathf.Abs(yError)))
-				));
-		}
-		else
-		{
-			sprite.Play("idle");
-		}
 	}
 
 	// Sets the horizontal side of the sprite
 	// If the argument flip is true, the sprite is turned towards left.
-	private void SetSide(AnimatedSprite2D sprite, bool flip)
+	public void SetSide(AnimatedSprite2D sprite, bool flip)
 	{
 		if (flip)
 		{

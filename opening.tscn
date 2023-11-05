@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://be2kl64k7ggga"]
+[gd_scene load_steps=41 format=3 uid="uid://be2kl64k7ggga"]
 
 [ext_resource type="Texture2D" uid="uid://djovqo067umkr" path="res://Assets/knight/Knight_01__IDLE_000.png" id="1_aabl7"]
 [ext_resource type="Texture2D" uid="uid://b02yl41xsbc4h" path="res://Assets/knight/Knight_01__TALK_000.png" id="12_b2mum"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://c0ixm75dn7aro" path="res://Assets/knight/Knight_01__TALK_002.png" id="14_kltpg"]
 [ext_resource type="Texture2D" uid="uid://b04qdjqw2aehu" path="res://Assets/knight/Knight_01__TALK_003.png" id="15_fp87e"]
 [ext_resource type="Texture2D" uid="uid://cg0rlm7vywndp" path="res://Assets/princess/WarriorPrincess_Talk01.png" id="18_25t0f"]
+[ext_resource type="Script" path="res://Princess.cs" id="18_aqsp1"]
 [ext_resource type="Texture2D" uid="uid://bsm53vdp6l1ki" path="res://Assets/princess/WarriorPrincess_Talk05.png" id="19_v57vr"]
+[ext_resource type="Script" path="res://Knight.cs" id="20_5wt24"]
 [ext_resource type="Texture2D" uid="uid://c3y5jk0lmg8d5" path="res://Assets/princess/WarriorPrincess_Talk02.png" id="20_x1fs4"]
 [ext_resource type="Texture2D" uid="uid://bktxoifu46kah" path="res://Assets/princess/WarriorPrincess_Talk04.png" id="21_hadx2"]
 [ext_resource type="Texture2D" uid="uid://c3srdl6wm3vl5" path="res://Assets/knight/Knight_01__WALK_000.png" id="21_rrnrw"]
@@ -25,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dmcl0gxq31gjf" path="res://Assets/princess/WarriorPrincess_walk1.png" id="33_26sc7"]
 [ext_resource type="Texture2D" uid="uid://b27lp5pry0vx0" path="res://Assets/princess/WarriorPrincess_walk2.png" id="34_cgqav"]
 [ext_resource type="Texture2D" uid="uid://dkvwsnuwbpci0" path="res://Assets/princess/WarriorPrincess_walk3.png" id="35_eaf31"]
+[ext_resource type="Script" path="res://PrincessSprite.cs" id="35_exyid"]
 [ext_resource type="Texture2D" uid="uid://bg46ygxwj5pf2" path="res://Assets/princess/WarriorPrincess_walk4.png" id="36_hmx2n"]
 [ext_resource type="Texture2D" uid="uid://coy2rqx8alq5p" path="res://Assets/princess/WarriorPrincess_walk5.png" id="37_phy3e"]
 [ext_resource type="Texture2D" uid="uid://bgr05kgei5ycq" path="res://Assets/princess/WarriorPrincess_walk6.png" id="38_327yv"]
@@ -33,76 +36,9 @@
 [ext_resource type="Texture2D" uid="uid://bspysocq130k5" path="res://Assets/princess/WarriorPrincess_walk9.png" id="41_qjhnh"]
 [ext_resource type="Texture2D" uid="uid://dpxqi3frdjpca" path="res://Assets/princess/WarriorPrincess_walk10.png" id="42_cliuy"]
 [ext_resource type="Texture2D" uid="uid://bkr5achmvk6lb" path="res://Assets/backgrounds/forest/Cave.png" id="49_ih1e4"]
-[ext_resource type="Script" path="res://PrincessSprite.cs" id="50_huay2"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0pfrv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_aabl7")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("12_b2mum")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_ooegk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_kltpg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_fp87e")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_kltpg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_ooegk")
-}],
-"loop": true,
-"name": &"talk",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("21_rrnrw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_j7842")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_jqs2g")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_jlwx2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_vtxmn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_8w0w5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_k3wql")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_b2lsx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("29_u28ns")
-}, {
-"duration": 1.0,
-"texture": ExtResource("30_37tu2")
-}],
-"loop": false,
-"name": &"walk",
-"speed": 10.0
-}]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ewog"]
+size = Vector2(17.92, 8.9)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xxtdr"]
 animations = [{
@@ -185,9 +121,120 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_840w4"]
+radius = 11.0
+height = 72.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0pfrv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_aabl7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_b2mum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ooegk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_kltpg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_fp87e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_kltpg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ooegk")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_rrnrw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_j7842")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_jqs2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_jlwx2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_vtxmn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_8w0w5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_k3wql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_b2lsx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_u28ns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_37tu2")
+}],
+"loop": false,
+"name": &"walk",
+"speed": 10.0
+}]
+
 [node name="Root" type="Node2D"]
 
-[node name="KnightSprite" type="AnimatedSprite2D" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1792.0
+offset_bottom = 1024.0
+size_flags_horizontal = 4
+texture = ExtResource("49_ih1e4")
+stretch_mode = 3
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(896, 446)
+scale = Vector2(100, 100)
+shape = SubResource("RectangleShape2D_4ewog")
+
+[node name="Princess" type="CharacterBody2D" parent="."]
+position = Vector2(340, 900)
+motion_mode = 1
+script = ExtResource("18_aqsp1")
+
+[node name="PrincessSprite" type="AnimatedSprite2D" parent="Princess"]
+z_index = 1
+scale = Vector2(0.14, 0.14)
+sprite_frames = SubResource("SpriteFrames_xxtdr")
+animation = &"talk"
+frame = 3
+frame_progress = 0.410758
+centered = false
+offset = Vector2(-375, -700)
+script = ExtResource("35_exyid")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Princess"]
+position = Vector2(2, 25)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_840w4")
+
+[node name="Knight" type="CharacterBody2D" parent="."]
+script = ExtResource("20_5wt24")
+
+[node name="KnightSprite" type="AnimatedSprite2D" parent="Knight"]
 z_index = 1
 position = Vector2(460, 890)
 scale = Vector2(0.25, 0.25)
@@ -196,21 +243,4 @@ animation = &"idle"
 offset = Vector2(90, -200)
 script = ExtResource("31_3rxgo")
 
-[node name="PrincessSprite" type="AnimatedSprite2D" parent="."]
-z_index = 1
-position = Vector2(340, 900)
-scale = Vector2(0.14, 0.14)
-sprite_frames = SubResource("SpriteFrames_xxtdr")
-animation = &"talk"
-frame = 3
-frame_progress = 0.410758
-centered = false
-offset = Vector2(-375, -700)
-script = ExtResource("50_huay2")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 1792.0
-offset_bottom = 1024.0
-size_flags_horizontal = 4
-texture = ExtResource("49_ih1e4")
-stretch_mode = 3
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Knight"]

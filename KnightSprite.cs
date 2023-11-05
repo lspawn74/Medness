@@ -25,8 +25,7 @@ public partial class KnightSprite : AnimatedSprite2D
 		// Set character properties
 		charactersProperties = GetNode<CharactersProperties>("/root/CharactersProperties");
 		CharacterProperties knightProperties = charactersProperties.Properties[CharacterType.KNIGHT] = new CharacterProperties();
-		knightProperties.LateralSpeed = 300.0; // Lateral speed (left/right) in pixels/s
-		knightProperties.LongitudinalSpeed = 100.0; // Longitudinal speed (up/down) in pixels/s
+		knightProperties.Speed = 300.0; // Lateral speed (left/right) in pixels/s
 		knightProperties.LeftOrientationOffset = new Vector2(-90.0f, -200.0f);
 		knightProperties.RightOrientationOffset = new Vector2(90.0f, -200.0f);
 

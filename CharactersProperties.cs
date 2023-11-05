@@ -13,8 +13,6 @@ public class CharacterProperties
 
 	public Vector2 RightOrientationOffset { get; set; }
 
-	public double LateralSpeed { get; set; }
-
-	public double LongitudinalSpeed { get; set; }
+	public double Speed { get; set; }
 }
 
