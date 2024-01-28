@@ -1,17 +1,23 @@
 using Godot;
 using System.Collections.Generic;
 
-public partial class Stuff : Node
+namespace Medness
 {
-	public List<object> CarriedByPrincess { get; set; }
-
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	/// <summary>
+	/// Stuff carried by a character.
+	/// </summary>
+	public partial class Stuff : Node
 	{
-	}
+		public List<Object> Objects { get; set; } = new List<Object>();
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+		// Called when the node enters the scene tree for the first time.
+		public override void _Ready()
+		{
+		}
+
+		// Called every frame. 'delta' is the elapsed time since the previous frame.
+		public override void _Process(double delta)
+		{
+		}
 	}
 }

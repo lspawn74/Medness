@@ -2,17 +2,19 @@ using Godot;
 using Medness;
 using System.Collections.Generic;
 
-public partial class CharactersProperties : Node
+namespace Medness
 {
-	public Dictionary<CharacterType, CharacterProperties> Properties { get; set; } = new Dictionary<CharacterType, CharacterProperties>();
+	public partial class CharactersProperties : Node
+	{
+		public Dictionary<CharacterType, CharacterProperties> Properties { get; set; } = new Dictionary<CharacterType, CharacterProperties>();
+	}
+
+	public class CharacterProperties
+	{
+		public double Speed { get; set; }
+
+		public CharacterAnimationDirection AnimationDirection { get; set; }
+
+		public Stuff Stuff { get; set; }
+	}
 }
-
-public class CharacterProperties
-{
-	public Vector2 LeftOrientationOffset { get; set; }
-
-	public Vector2 RightOrientationOffset { get; set; }
-
-	public double Speed { get; set; }
-}
-
