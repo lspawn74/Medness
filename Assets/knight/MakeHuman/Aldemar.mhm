@@ -1,0 +1,39 @@
+# Written by MakeHuman 1.2.0 final
+version v1.2.0
+name Aldémar Oscar de Tourhe de Manyvheil
+camera 358.5 358.5 0.48172547924510106 0.4372913993550861 -0.18111125126005848 1.3249999999999997
+modifier head/head-rectangular 0.889000
+modifier torso/torso-scale-depth-decr|incr 0.460000
+modifier torso/torso-scale-horiz-decr|incr 0.318000
+modifier torso/torso-vshape-decr|incr 0.412000
+modifier torso/torso-muscle-dorsi-decr|incr 0.302000
+modifier torso/torso-muscle-pectoral-decr|incr 0.350000
+modifier breast/BreastSize 0.500000
+modifier breast/BreastFirmness 0.500000
+modifier macrodetails/Gender 1.000000
+modifier macrodetails/Age 0.500000
+modifier macrodetails/African 0.000000
+modifier macrodetails/Asian 0.000000
+modifier macrodetails/Caucasian 1.000000
+modifier macrodetails-universal/Muscle 1.000000
+modifier macrodetails-universal/Weight 0.770000
+modifier macrodetails-height/Height 0.500000
+modifier macrodetails-proportions/BodyProportions 0.500000
+tongue tongue01 52ad91a3-caad-4e50-8c38-67634e5e789c
+teeth Teeth_Base 0a5ec82a-0d5f-43ce-a765-8f076f95692d
+hair short02 c104cd4a-1edc-43f9-8b94-f63345a44638
+skeleton default_no_toes.mhskel
+eyebrows eyebrow008 79ea307f-a942-40dd-bf50-bbaa41f02034
+eyes HighPolyEyes 2c12f43b-1303-432c-b7ce-d78346baf2e6
+clothes PantsViking f1ea1784-35f2-41e9-ae8f-e9f2bafcbb60
+clothes MedievalBoots 90a8da1e-6c82-4a8a-9002-ee578825ad76
+clothes WW-godkiller bb400065-5df2-4487-bfd0-3e26aedb976f
+clothes TunicViking e40a5c02-44b6-4c89-9bb0-781ef87e9973
+clothesHideFaces True
+skinMaterial skins/middleage_caucasian_male/middleage_caucasian_male.mhmat
+material short02 c104cd4a-1edc-43f9-8b94-f63345a44638 short02.mhmat
+material HighPolyEyes 2c12f43b-1303-432c-b7ce-d78346baf2e6 eyes/materials/brown.mhmat
+material eyebrow008 79ea307f-a942-40dd-bf50-bbaa41f02034 eyebrow008.mhmat
+material Teeth_Base 0a5ec82a-0d5f-43ce-a765-8f076f95692d teeth/materials/teeth.mhmat
+material tongue01 52ad91a3-caad-4e50-8c38-67634e5e789c tongue01.mhmat
+subdivide False
