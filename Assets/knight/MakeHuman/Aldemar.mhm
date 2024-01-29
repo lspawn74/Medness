@@ -1,7 +1,7 @@
 # Written by MakeHuman 1.2.0 final
 version v1.2.0
 name Aldémar Oscar de Tourhe de Manyvheil
-camera 358.5 358.5 0.48172547924510106 0.4372913993550861 -0.18111125126005848 1.3249999999999997
+camera 1.0 2.0 0.48172547924510106 0.4372913993550861 -0.18111125126005848 1.3249999999999997
 modifier head/head-rectangular 0.889000
 modifier torso/torso-scale-depth-decr|incr 0.460000
 modifier torso/torso-scale-horiz-decr|incr 0.318000
@@ -27,7 +27,6 @@ eyebrows eyebrow008 79ea307f-a942-40dd-bf50-bbaa41f02034
 eyes HighPolyEyes 2c12f43b-1303-432c-b7ce-d78346baf2e6
 clothes PantsViking f1ea1784-35f2-41e9-ae8f-e9f2bafcbb60
 clothes MedievalBoots 90a8da1e-6c82-4a8a-9002-ee578825ad76
-clothes WW-godkiller bb400065-5df2-4487-bfd0-3e26aedb976f
 clothes TunicViking e40a5c02-44b6-4c89-9bb0-781ef87e9973
 clothesHideFaces True
 skinMaterial skins/middleage_caucasian_male/middleage_caucasian_male.mhmat
