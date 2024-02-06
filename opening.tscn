@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://be2kl64k7ggga"]
+[gd_scene load_steps=64 format=3 uid="uid://be2kl64k7ggga"]
 
 [ext_resource type="Texture2D" uid="uid://djovqo067umkr" path="res://Assets/knight/Knight_01__IDLE_000.png" id="1_aabl7"]
 [ext_resource type="Texture2D" uid="uid://c37sjdtvjpyqu" path="res://Assets/backgrounds/forest/Path 7.png" id="1_s08qh"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://w3uqv82ga4h5" path="res://Assets/princess/Blender/Ansgarde_face.png" id="4_tx6lv"]
 [ext_resource type="Texture2D" uid="uid://bs7ex2o46f0vx" path="res://Assets/princess/Blender/Ansgarde_left.png" id="5_1t70p"]
 [ext_resource type="Texture2D" uid="uid://dwalfsa5flt3r" path="res://Assets/princess/Blender/Ansgarde_right.png" id="6_m0o1o"]
+[ext_resource type="Texture2D" uid="uid://dg1meg7nb5irb" path="res://Assets/princess/Blender/Ansgarde_talk01.png" id="7_mo6hc"]
+[ext_resource type="Texture2D" uid="uid://c1t75q8d11w8i" path="res://Assets/princess/Blender/Ansgarde_talk03.png" id="8_kiw0v"]
+[ext_resource type="Texture2D" uid="uid://b4tl2ukba0mpd" path="res://Assets/princess/Blender/Ansgarde_talk02.png" id="9_syp0x"]
 [ext_resource type="Texture2D" uid="uid://bofxrk0k8a2e5" path="res://Assets/princess/Blender/Ansgarde_backwalk01.png" id="12_0eqjp"]
 [ext_resource type="Texture2D" uid="uid://b02yl41xsbc4h" path="res://Assets/knight/Knight_01__TALK_000.png" id="12_b2mum"]
 [ext_resource type="Texture2D" uid="uid://4en54028owmt" path="res://Assets/princess/Blender/Ansgarde_backwalk02.png" id="13_0yjdg"]
@@ -96,34 +99,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("4_tx6lv")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("7_mo6hc")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("8_kiw0v")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("9_syp0x")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("7_mo6hc")
 }, {
 "duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
+"texture": ExtResource("9_syp0x")
 }],
 "loop": true,
 "name": &"talk",
@@ -344,7 +335,9 @@ script = ExtResource("18_aqsp1")
 z_index = 1
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_xxtdr")
-animation = &"idle_face"
+animation = &"talk"
+frame = 4
+frame_progress = 0.541883
 offset = Vector2(0, -400)
 script = ExtResource("35_exyid")
 
