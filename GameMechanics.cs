@@ -16,7 +16,7 @@ namespace Medness
 		#endregion
 
 		#region Properties
-		public CharacterType SelectedCharacterType { get; set; } = CharacterType.PRINCESS;
+		public CharacterType SelectedCharacterType { get; set; } = CharacterType.KNIGHT;
 		#endregion
 
 		#region Life Cycles

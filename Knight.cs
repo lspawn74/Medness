@@ -1,42 +1,90 @@
 using Godot;
-using System;
 
 namespace Medness
 {
 	public partial class Knight : CharacterBody2D
 	{
-		public const float Speed = 300.0f;
-		public const float JumpVelocity = -400.0f;
+		public float Speed = 400.0f;
 
-		// Get the gravity from the project settings to be synced with RigidBody nodes.
-		public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+		#region Injected nodes
+		private GameMechanics _gameMechanics; // The game mechanics holds info like: which character is selected.
+		private CharactersProperties _charactersProperties; // A dictionary holding all characters properties
+		#endregion
+
+		#region Private fields
+		private Vector2 _targetPosition = Vector2.Zero;
+		#endregion
+
+		#region Life cycles
+		public override void _Ready()
+		{
+			// Get game mechanics
+			_gameMechanics = GetNode<GameMechanics>("/root/GameMechanics");
+
+			// Set initial velocity
+			Velocity = Vector2.Zero;
+
+			// Get character properties
+			_charactersProperties = GetNode<CharactersProperties>("/root/CharactersProperties");
+
+			// Set initial target position to current global position
+			// This will prevent character to move for no reason.
+			_targetPosition = GlobalPosition;
+		}
 
 		public override void _PhysicsProcess(double delta)
 		{
+			if (_gameMechanics.SelectedCharacterType != CharacterType.KNIGHT)
+				return;
+
 			Vector2 velocity = Velocity;
 
-			// Add the gravity.
-			if (!IsOnFloor())
-				velocity.Y += gravity * (float)delta;
+			// Get mouse click as a target
+			if (Input.IsMouseButtonPressed(MouseButton.Left))
+				_targetPosition = GetGlobalMousePosition();
 
-			// Handle Jump.
-			if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-				velocity.Y = JumpVelocity;
+			// Get the input direction
+			Vector2 direction = GlobalPosition.DirectionTo(_targetPosition);
 
-			// Get the input direction and handle the movement/deceleration.
-			// As good practice, you should replace UI actions with custom gameplay actions.
-			Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-			if (direction != Vector2.Zero)
+			// Depending on the error between current position and target position, set the velocity
+			Vector2 errorPosition = GlobalPosition - _targetPosition;
+			if (Mathf.Abs(errorPosition.X) > 5 || Mathf.Abs(errorPosition.Y) > 5)
 			{
-				velocity.X = direction.X * Speed;
+				velocity = direction * Speed;
+
+				// Set animation direction
+				if (Mathf.Abs(direction.X) < Mathf.Abs(direction.Y))
+				{
+					if (direction.Y < 0)
+						_charactersProperties.Properties[CharacterType.KNIGHT].AnimationDirection = CharacterAnimationDirection.BACK;
+					else
+						_charactersProperties.Properties[CharacterType.KNIGHT].AnimationDirection = CharacterAnimationDirection.FACE;
+				}
+				else
+				{
+					if (direction.X < 0)
+						_charactersProperties.Properties[CharacterType.KNIGHT].AnimationDirection = CharacterAnimationDirection.LEFT;
+					else
+						_charactersProperties.Properties[CharacterType.KNIGHT].AnimationDirection = CharacterAnimationDirection.RIGHT;
+				}
 			}
 			else
 			{
-				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+				// We arrived at destination. Stop movement.
+				velocity = Vector2.Zero;
 			}
 
+			// Set the computed velocity as new velocity for the character body
 			Velocity = velocity;
-			MoveAndSlide();
+
+			// Move and find info about collisions
+			KinematicCollision2D collision = MoveAndCollide(velocity * (float)delta);
+
+			// If we collided on an obstacle, we stop by setting the target position to 
+			// the current position
+			if (collision != null)
+				_targetPosition = GlobalPosition;
 		}
+		#endregion
 	}
 }

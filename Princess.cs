@@ -10,9 +10,6 @@ namespace Medness
 		#region Injected nodes
 		private GameMechanics _gameMechanics; // The game mechanics holds info like: which character is selected.
 		private CharactersProperties _charactersProperties; // A dictionary holding all characters properties
-
-		// Get the gravity from the project settings to be synced with RigidBody nodes.
-		public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 		#endregion
 
 		#region Private fields
@@ -22,6 +19,9 @@ namespace Medness
 		#region Life cycles
 		public override void _Ready()
 		{
+			// Get game mechanics
+			_gameMechanics = GetNode<GameMechanics>("/root/GameMechanics");
+
 			// Set initial velocity
 			Velocity = Vector2.Zero;
 
@@ -35,6 +35,9 @@ namespace Medness
 
 		public override void _PhysicsProcess(double delta)
 		{
+			if (_gameMechanics.SelectedCharacterType != CharacterType.PRINCESS)
+				return;
+
 			Vector2 velocity = Velocity;
 
 			// Get mouse click as a target
