@@ -3,3 +3,5 @@
 
 # VS build folder
 .vs/
+/Medness.Business/bin/Debug/net6.0
+/Medness.Business/obj
