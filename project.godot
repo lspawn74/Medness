@@ -17,9 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Stuff="*res://Stuff.cs"
-GameMechanics="*res://GameMechanics.cs"
-CharactersProperties="*res://CharactersProperties.cs"
+Globals="*res://Singletons/Globals.cs"
 
 [display]
 

@@ -3,3 +3,5 @@
 
 # VS build folder
 .vs/
+obj/
+bin/

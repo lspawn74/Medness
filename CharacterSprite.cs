@@ -1,15 +1,17 @@
 using Godot;
+using Medness.Enums;
+using Medness.Singletons;
 using System.Collections.Generic;
 
 namespace Medness
 {
 
-	public partial class KnightSprite : AnimatedSprite2D
+	public partial class CharacterSprite : AnimatedSprite2D
 	{
 		#region Injected nodes
-		private GameMechanics _gameMechanics; // The game mechanics holds info like: which character is selected.
-		private CharactersProperties _charactersProperties; // A dictionary holding all characters properties
-		private CharacterBody2D _knightBody;
+		private PlayableCharacter _parentNode;
+		private Globals _globals; // Global data usable across all scenes
+		private CharacterProperties _characterProperties;
 		#endregion
 
 		#region Private fields
@@ -33,16 +35,11 @@ namespace Medness
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
 		{
-			// Get game mechanics
-			_gameMechanics = GetNode<GameMechanics>("/root/GameMechanics");
+			_parentNode = (PlayableCharacter)GetParent<CharacterBody2D>();
 
-			_knightBody = GetParent<CharacterBody2D>();
-
-			// Set character properties
-			_charactersProperties = GetNode<CharactersProperties>("/root/CharactersProperties");
-			CharacterProperties knightProperties = _charactersProperties.Properties[CharacterType.KNIGHT] = new CharacterProperties();
-			knightProperties.Speed = 400.0; // Speed in pixels/s
-			knightProperties.AnimationDirection = CharacterAnimationDirection.FACE;
+			// Get character properties
+			_globals = GetNode<Globals>("/root/Globals");
+			_characterProperties = _globals.CharactersProperties[_parentNode.Character];
 
 			// Do some processing when game is on
 			SetProcess(true);
@@ -51,13 +48,13 @@ namespace Medness
 		// Called every frame. 'delta' is the elapsed time since the previous frame.
 		public override void _Process(double delta)
 		{
-			if (_knightBody.Velocity == Vector2.Zero)
+			if (_parentNode.Velocity == Vector2.Zero)
 			{
-				Play(_idleAnimations[_charactersProperties.Properties[CharacterType.KNIGHT].AnimationDirection]);
+				Play(_idleAnimations[_characterProperties.AnimationDirection]);
 			}
 			else
 			{
-				Play(_walkAnimations[_charactersProperties.Properties[CharacterType.KNIGHT].AnimationDirection]);
+				Play(_walkAnimations[_characterProperties.AnimationDirection]);
 			}
 
 			return;

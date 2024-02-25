@@ -12,4 +12,18 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ExportRelease|AnyCPU'">
     <Optimize>True</Optimize>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Medness.Business\**" />
+    <EmbeddedResource Remove="Medness.Business\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="GameMechanics.cs" />
+    <Compile Remove="Knight.cs" />
+    <Compile Remove="KnightSprite.cs" />
+    <Compile Remove="Object.cs" />
+    <Compile Remove="Princess.cs" />
+    <Compile Remove="PrincessSprite.cs" />
+    <Compile Remove="Princess_old.cs" />
+    <Compile Remove="Stuff.cs" />
+  </ItemGroup>
 </Project>

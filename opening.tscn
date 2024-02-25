@@ -1,6 +1,7 @@
-[gd_scene load_steps=86 format=3 uid="uid://be2kl64k7ggga"]
+[gd_scene load_steps=84 format=3 uid="uid://be2kl64k7ggga"]
 
 [ext_resource type="Texture2D" uid="uid://c37sjdtvjpyqu" path="res://Assets/backgrounds/forest/Path 7.png" id="1_s08qh"]
+[ext_resource type="Script" path="res://PlayableCharacter.cs" id="2_cbfmx"]
 [ext_resource type="Texture2D" uid="uid://cvlijwa77yhan" path="res://Assets/princess/Blender/Ansgarde_back.png" id="3_5ymjq"]
 [ext_resource type="Texture2D" uid="uid://w3uqv82ga4h5" path="res://Assets/princess/Blender/Ansgarde_face.png" id="4_tx6lv"]
 [ext_resource type="Texture2D" uid="uid://bs7ex2o46f0vx" path="res://Assets/princess/Blender/Ansgarde_left.png" id="5_1t70p"]
@@ -14,10 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://f6aegjm0v0g8" path="res://Assets/princess/Blender/Ansgarde_backwalk04.png" id="15_tps38"]
 [ext_resource type="Texture2D" uid="uid://bnrnjsw3nkm8x" path="res://Assets/princess/Blender/Ansgarde_backwalk05.png" id="16_dxkx6"]
 [ext_resource type="Texture2D" uid="uid://b162y4c2atkwv" path="res://Assets/princess/Blender/Ansgarde_backwalk06.png" id="17_0ct3o"]
-[ext_resource type="Script" path="res://Princess.cs" id="18_aqsp1"]
 [ext_resource type="Texture2D" uid="uid://dm34i8slt2lbn" path="res://Assets/princess/Blender/Ansgarde_backwalk07.png" id="18_t81k0"]
 [ext_resource type="Texture2D" uid="uid://b3apc7gdr4qcm" path="res://Assets/princess/Blender/Ansgarde_backwalk08.png" id="19_q0jhm"]
-[ext_resource type="Script" path="res://Knight.cs" id="20_5wt24"]
 [ext_resource type="Texture2D" uid="uid://c3eymbq2h0ukd" path="res://Assets/princess/Blender/Ansgarde_facewalk01.png" id="20_vvpy0"]
 [ext_resource type="Texture2D" uid="uid://cx2hsmxx6gi4h" path="res://Assets/princess/Blender/Ansgarde_facewalk02.png" id="21_5dtej"]
 [ext_resource type="Texture2D" uid="uid://dhwl21noqy81s" path="res://Assets/princess/Blender/Ansgarde_facewalk03.png" id="22_y0ydw"]
@@ -29,13 +28,11 @@
 [ext_resource type="Texture2D" uid="uid://v8ivixlio6dy" path="res://Assets/princess/Blender/Ansgarde_leftwalk01.png" id="28_61hkn"]
 [ext_resource type="Texture2D" uid="uid://cnycjvqylkrd3" path="res://Assets/princess/Blender/Ansgarde_leftwalk02.png" id="29_npbxu"]
 [ext_resource type="Texture2D" uid="uid://certaq03sp5vb" path="res://Assets/princess/Blender/Ansgarde_leftwalk03.png" id="30_pdjox"]
-[ext_resource type="Script" path="res://KnightSprite.cs" id="31_3rxgo"]
 [ext_resource type="Texture2D" uid="uid://c8kgnsqbno6pf" path="res://Assets/princess/Blender/Ansgarde_leftwalk04.png" id="31_ten57"]
 [ext_resource type="Texture2D" uid="uid://b7k80fqu8w2ub" path="res://Assets/princess/Blender/Ansgarde_leftwalk05.png" id="32_nowk5"]
 [ext_resource type="Texture2D" uid="uid://csucahy6b06vi" path="res://Assets/princess/Blender/Ansgarde_leftwalk06.png" id="33_emdql"]
 [ext_resource type="Texture2D" uid="uid://djqtl2f6s3jas" path="res://Assets/princess/Blender/Ansgarde_leftwalk07.png" id="34_02nfd"]
 [ext_resource type="Texture2D" uid="uid://bpcq1xwih6h0h" path="res://Assets/princess/Blender/Ansgarde_leftwalk08.png" id="35_816su"]
-[ext_resource type="Script" path="res://PrincessSprite.cs" id="35_exyid"]
 [ext_resource type="Texture2D" uid="uid://jja7282p6d4w" path="res://Assets/princess/Blender/Ansgarde_rightwalk01.png" id="36_jlh1f"]
 [ext_resource type="Texture2D" uid="uid://bwykwddtgx6rb" path="res://Assets/princess/Blender/Ansgarde_rightwalk02.png" id="37_y0gk3"]
 [ext_resource type="Texture2D" uid="uid://blsrnrg3vl0qs" path="res://Assets/princess/Blender/Ansgarde_rightwalk03.png" id="38_xe5ib"]
@@ -43,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://brqy5u3lf4io0" path="res://Assets/princess/Blender/Ansgarde_rightwalk05.png" id="40_pjjmp"]
 [ext_resource type="Texture2D" uid="uid://bah7tpe6kypme" path="res://Assets/princess/Blender/Ansgarde_rightwalk06.png" id="41_di1qb"]
 [ext_resource type="Texture2D" uid="uid://r5g1mqkfdhkl" path="res://Assets/princess/Blender/Ansgarde_rightwalk07.png" id="42_2pkkf"]
+[ext_resource type="Script" path="res://CharacterSprite.cs" id="42_m46xm"]
 [ext_resource type="Texture2D" uid="uid://b2hklv2lxihn0" path="res://Assets/princess/Blender/Ansgarde_rightwalk08.png" id="43_x1d72"]
 [ext_resource type="Texture2D" uid="uid://c35utpkric73c" path="res://Assets/knight/Blender/Aldemar_back.png" id="44_27ljp"]
 [ext_resource type="Texture2D" uid="uid://dxyna41pr47n8" path="res://Assets/knight/Blender/Aldemar_face.png" id="45_t2khy"]
@@ -259,7 +257,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_840w4"]
-radius = 33.0
+radius = 16.0
 height = 120.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0pfrv"]
@@ -414,7 +412,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_okmgk"]
-radius = 35.0
+radius = 19.0
 height = 136.0
 
 [node name="Root" type="Node2D"]
@@ -438,7 +436,7 @@ shape = SubResource("RectangleShape2D_4ewog")
 y_sort_enabled = true
 position = Vector2(1245, 854)
 motion_mode = 1
-script = ExtResource("18_aqsp1")
+script = ExtResource("2_cbfmx")
 
 [node name="PrincessSprite" type="AnimatedSprite2D" parent="Princess"]
 z_index = 1
@@ -448,7 +446,7 @@ animation = &"talk"
 frame = 3
 frame_progress = 0.54411
 offset = Vector2(0, -400)
-script = ExtResource("35_exyid")
+script = ExtResource("42_m46xm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Princess"]
 position = Vector2(0, 8)
@@ -459,7 +457,8 @@ shape = SubResource("CapsuleShape2D_840w4")
 y_sort_enabled = true
 position = Vector2(995, 864)
 motion_mode = 1
-script = ExtResource("20_5wt24")
+script = ExtResource("2_cbfmx")
+Character = 1
 
 [node name="KnightSprite" type="AnimatedSprite2D" parent="Knight"]
 z_index = 1
@@ -467,7 +466,7 @@ scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_0pfrv")
 animation = &"idle_face"
 offset = Vector2(0, -400)
-script = ExtResource("31_3rxgo")
+script = ExtResource("42_m46xm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Knight"]
 position = Vector2(0, 14)

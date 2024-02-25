@@ -1,32 +1,35 @@
-using Godot;
-using Medness;
+﻿using Godot;
+using Medness.Enums;
+using Medness.Singletons;
 
 namespace Medness
 {
-	public partial class Princess : CharacterBody2D
+	public partial class PlayableCharacter : CharacterBody2D
 	{
-		public float Speed = 400.0f;
+		#region Properties
+		/// <summary>Gets or sets Character type (exported to be set with properties inspector in Godot)</summary>
+		[Export]
+		public Character Character { get; set; }
+		#endregion
 
 		#region Injected nodes
-		private GameMechanics _gameMechanics; // The game mechanics holds info like: which character is selected.
-		private CharactersProperties _charactersProperties; // A dictionary holding all characters properties
+		private Globals _globals; // Global data usable across all scenes
 		#endregion
 
 		#region Private fields
 		private Vector2 _targetPosition = Vector2.Zero;
+		public CharacterProperties _characterProperties;
 		#endregion
 
 		#region Life cycles
 		public override void _Ready()
 		{
-			// Get game mechanics
-			_gameMechanics = GetNode<GameMechanics>("/root/GameMechanics");
-
 			// Set initial velocity
 			Velocity = Vector2.Zero;
 
 			// Get character properties
-			_charactersProperties = GetNode<CharactersProperties>("/root/CharactersProperties");
+			_globals = GetNode<Globals>("/root/Globals");
+			_characterProperties = _globals.CharactersProperties[Character];
 
 			// Set initial target position to current global position
 			// This will prevent character to move for no reason.
@@ -35,7 +38,7 @@ namespace Medness
 
 		public override void _PhysicsProcess(double delta)
 		{
-			if (_gameMechanics.SelectedCharacterType != CharacterType.PRINCESS)
+			if (_globals.CurrentCharacter != Character)
 				return;
 
 			Vector2 velocity = Velocity;
@@ -51,22 +54,22 @@ namespace Medness
 			Vector2 errorPosition = GlobalPosition - _targetPosition;
 			if (Mathf.Abs(errorPosition.X) > 5 || Mathf.Abs(errorPosition.Y) > 5)
 			{
-				velocity = direction * Speed;
+				velocity = direction * _characterProperties.Speed;
 
 				// Set animation direction
 				if (Mathf.Abs(direction.X) < Mathf.Abs(direction.Y))
 				{
 					if (direction.Y < 0)
-						_charactersProperties.Properties[CharacterType.PRINCESS].AnimationDirection = CharacterAnimationDirection.BACK;
+						_characterProperties.AnimationDirection = CharacterAnimationDirection.BACK;
 					else
-						_charactersProperties.Properties[CharacterType.PRINCESS].AnimationDirection = CharacterAnimationDirection.FACE;
+						_characterProperties.AnimationDirection = CharacterAnimationDirection.FACE;
 				}
 				else
 				{
 					if (direction.X < 0)
-						_charactersProperties.Properties[CharacterType.PRINCESS].AnimationDirection = CharacterAnimationDirection.LEFT;
+						_characterProperties.AnimationDirection = CharacterAnimationDirection.LEFT;
 					else
-						_charactersProperties.Properties[CharacterType.PRINCESS].AnimationDirection = CharacterAnimationDirection.RIGHT;
+						_characterProperties.AnimationDirection = CharacterAnimationDirection.RIGHT;
 				}
 			}
 			else
