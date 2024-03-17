@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cbo78rfxcxo1s"
+path="res://.godot/imported/_dress_fitting.obj-fbdceddc38d2b4e1ee7d55daa88a3528.mesh"
+
+[deps]
+
+files=["res://.godot/imported/_dress_fitting.obj-fbdceddc38d2b4e1ee7d55daa88a3528.mesh"]
+
+source_file="res://Assets/princess/Blender/Textures/Viking_dress/_dress_fitting.obj"
+dest_files=["res://.godot/imported/_dress_fitting.obj-fbdceddc38d2b4e1ee7d55daa88a3528.mesh", "res://.godot/imported/_dress_fitting.obj-fbdceddc38d2b4e1ee7d55daa88a3528.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
