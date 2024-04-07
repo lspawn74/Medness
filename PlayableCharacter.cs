@@ -1,6 +1,7 @@
 ﻿using Godot;
 using Medness.Enums;
 using Medness.Singletons;
+using System.ComponentModel;
 
 namespace Medness
 {
@@ -10,6 +11,9 @@ namespace Medness
 		/// <summary>Gets or sets Character type (exported to be set with properties inspector in Godot)</summary>
 		[Export]
 		public Character Character { get; set; }
+
+		/// <summary>Gets or sets an idle time counter (in seconds)</summary>
+		public double IdleTimeCounter { get; set; } = 0.0;
 		#endregion
 
 		#region Injected nodes
@@ -38,6 +42,9 @@ namespace Medness
 
 		public override void _PhysicsProcess(double delta)
 		{
+			// Increment idle time counter
+			IdleTimeCounter += delta;
+
 			if (_globals.CurrentCharacter != Character)
 				return;
 
@@ -76,18 +83,17 @@ namespace Medness
 			{
 				// We arrived at destination. Stop movement.
 				velocity = Vector2.Zero;
+
+				// Reset idle time counter if we just stopped after a move
+				if (Velocity != Vector2.Zero)
+					IdleTimeCounter = 0.0;
 			}
 
 			// Set the computed velocity as new velocity for the character body
 			Velocity = velocity;
 
 			// Move and find info about collisions
-			KinematicCollision2D collision = MoveAndCollide(velocity * (float)delta);
-
-			// If we collided on an obstacle, we stop by setting the target position to 
-			// the current position
-			if (collision != null)
-				_targetPosition = GlobalPosition;
+			MoveAndSlide();
 		}
 		#endregion
 	}

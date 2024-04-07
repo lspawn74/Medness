@@ -1,12 +1,14 @@
-[gd_scene load_steps=84 format=3 uid="uid://be2kl64k7ggga"]
+[gd_scene load_steps=89 format=3 uid="uid://be2kl64k7ggga"]
 
 [ext_resource type="Texture2D" uid="uid://c37sjdtvjpyqu" path="res://Assets/backgrounds/forest/Path 7.png" id="1_s08qh"]
 [ext_resource type="Script" path="res://PlayableCharacter.cs" id="2_cbfmx"]
 [ext_resource type="Texture2D" uid="uid://dm8qxbib8ebib" path="res://Assets/princess/Blender/Ansgarde_back.png" id="3_5ymjq"]
+[ext_resource type="Texture2D" uid="uid://dobopjnne5ugl" path="res://Assets/princess/Blender/Ansgarde_face_eyesclosed.png" id="4_l1hoe"]
 [ext_resource type="Texture2D" uid="uid://bhi6syk6vn83r" path="res://Assets/princess/Blender/Ansgarde_face.png" id="4_tx6lv"]
 [ext_resource type="Texture2D" uid="uid://dwgr4klmvkmb8" path="res://Assets/princess/Blender/Ansgarde_left.png" id="5_1t70p"]
 [ext_resource type="Texture2D" uid="uid://cj7ey02c3wpjg" path="res://Assets/princess/Blender/Ansgarde_right.png" id="6_m0o1o"]
 [ext_resource type="Texture2D" uid="uid://1ahq1omftv5m" path="res://Assets/princess/Blender/Ansgarde_talk01.png" id="7_mo6hc"]
+[ext_resource type="Texture2D" uid="uid://b28eyeyyqc86u" path="res://Assets/princess/Blender/Ansgarde_left_eyesclosed.png" id="8_4e2po"]
 [ext_resource type="Texture2D" uid="uid://cxb2hhp15t1dm" path="res://Assets/princess/Blender/Ansgarde_talk03.png" id="8_kiw0v"]
 [ext_resource type="Texture2D" uid="uid://bnf2q7hrdio7r" path="res://Assets/princess/Blender/Ansgarde_talk02.png" id="9_syp0x"]
 [ext_resource type="Texture2D" uid="uid://b4pfil65peq7j" path="res://Assets/princess/Blender/Ansgarde_backwalk01.png" id="12_0eqjp"]
@@ -42,48 +44,65 @@
 [ext_resource type="Texture2D" uid="uid://q3m1qthws3x6" path="res://Assets/princess/Blender/Ansgarde_rightwalk07.png" id="42_2pkkf"]
 [ext_resource type="Script" path="res://CharacterSprite.cs" id="42_m46xm"]
 [ext_resource type="Texture2D" uid="uid://dydm881x7p4bu" path="res://Assets/princess/Blender/Ansgarde_rightwalk08.png" id="43_x1d72"]
-[ext_resource type="Texture2D" uid="uid://c35utpkric73c" path="res://Assets/knight/Blender/Aldemar_back.png" id="44_27ljp"]
-[ext_resource type="Texture2D" uid="uid://dxyna41pr47n8" path="res://Assets/knight/Blender/Aldemar_face.png" id="45_t2khy"]
-[ext_resource type="Texture2D" uid="uid://cn1mt0yhvml8k" path="res://Assets/knight/Blender/Aldemar_left.png" id="46_v75o8"]
-[ext_resource type="Texture2D" uid="uid://bl54wov5pucg7" path="res://Assets/knight/Blender/Aldemar_right.png" id="47_7j1su"]
-[ext_resource type="Texture2D" uid="uid://j1ux3qw1fsl8" path="res://Assets/knight/Blender/Aldemar_backwalk01.png" id="48_1o0ma"]
-[ext_resource type="Texture2D" uid="uid://hyfpdwein2th" path="res://Assets/knight/Blender/Aldemar_backwalk02.png" id="49_sxvnm"]
-[ext_resource type="Texture2D" uid="uid://bbitbr14vgf3v" path="res://Assets/knight/Blender/Aldemar_backwalk03.png" id="50_nryrl"]
-[ext_resource type="Texture2D" uid="uid://c2pawakp6pcvo" path="res://Assets/knight/Blender/Aldemar_backwalk04.png" id="51_3m37b"]
-[ext_resource type="Texture2D" uid="uid://b7a2vq836qccw" path="res://Assets/knight/Blender/Aldemar_backwalk05.png" id="52_ysp3u"]
-[ext_resource type="Texture2D" uid="uid://bara5eul6ybr2" path="res://Assets/knight/Blender/Aldemar_backwalk06.png" id="53_02gxn"]
-[ext_resource type="Texture2D" uid="uid://dcu6p0d328uyf" path="res://Assets/knight/Blender/Aldemar_backwalk07.png" id="54_brgu8"]
-[ext_resource type="Texture2D" uid="uid://doipyw2hqmmfo" path="res://Assets/knight/Blender/Aldemar_backwalk08.png" id="55_spo1h"]
-[ext_resource type="Texture2D" uid="uid://bxgcjumfoobpd" path="res://Assets/knight/Blender/Aldemar_facewalk01.png" id="56_o30o7"]
-[ext_resource type="Texture2D" uid="uid://b4fir47ngytyf" path="res://Assets/knight/Blender/Aldemar_facewalk02.png" id="57_i345a"]
-[ext_resource type="Texture2D" uid="uid://dteccgyhga1ud" path="res://Assets/knight/Blender/Aldemar_facewalk03.png" id="58_ytgwn"]
-[ext_resource type="Texture2D" uid="uid://r1v7en3x5sq6" path="res://Assets/knight/Blender/Aldemar_facewalk04.png" id="59_s16pn"]
-[ext_resource type="Texture2D" uid="uid://bu25qig1g4haj" path="res://Assets/knight/Blender/Aldemar_facewalk05.png" id="60_vsdx7"]
-[ext_resource type="Texture2D" uid="uid://dodvxumyflvbk" path="res://Assets/knight/Blender/Aldemar_facewalk06.png" id="61_k1sb1"]
-[ext_resource type="Texture2D" uid="uid://bcmfw0y28qrbo" path="res://Assets/knight/Blender/Aldemar_facewalk07.png" id="62_fu6nx"]
-[ext_resource type="Texture2D" uid="uid://cgdt0jqmiwg5m" path="res://Assets/knight/Blender/Aldemar_facewalk08.png" id="63_6onve"]
-[ext_resource type="Texture2D" uid="uid://x8gqoghc2j7t" path="res://Assets/knight/Blender/Aldemar_leftwalk01.png" id="64_le5lb"]
-[ext_resource type="Texture2D" uid="uid://bp2s67gb8vh" path="res://Assets/knight/Blender/Aldemar_leftwalk02.png" id="65_meons"]
-[ext_resource type="Texture2D" uid="uid://2w0hccwwxgvl" path="res://Assets/knight/Blender/Aldemar_leftwalk03.png" id="66_k3ojo"]
-[ext_resource type="Texture2D" uid="uid://cr42c8qq82l57" path="res://Assets/knight/Blender/Aldemar_leftwalk04.png" id="67_07cro"]
-[ext_resource type="Texture2D" uid="uid://pe6oeovbxtj6" path="res://Assets/knight/Blender/Aldemar_leftwalk05.png" id="68_qtnre"]
-[ext_resource type="Texture2D" uid="uid://eiaf82k18y8s" path="res://Assets/knight/Blender/Aldemar_leftwalk06.png" id="69_xlirg"]
-[ext_resource type="Texture2D" uid="uid://ds8bei022k248" path="res://Assets/knight/Blender/Aldemar_leftwalk07.png" id="70_ma03j"]
-[ext_resource type="Texture2D" uid="uid://bu4yqwhntv3gk" path="res://Assets/knight/Blender/Aldemar_leftwalk08.png" id="71_xug7h"]
-[ext_resource type="Texture2D" uid="uid://dbq24q6bncoav" path="res://Assets/knight/Blender/Aldemar_rightwalk01.png" id="72_hnjm8"]
-[ext_resource type="Texture2D" uid="uid://db76eky517waj" path="res://Assets/knight/Blender/Aldemar_rightwalk02.png" id="73_0g8ib"]
-[ext_resource type="Texture2D" uid="uid://bnq7vm3p5g1uu" path="res://Assets/knight/Blender/Aldemar_rightwalk03.png" id="74_3n8x8"]
-[ext_resource type="Texture2D" uid="uid://bbyxpc38pbpxs" path="res://Assets/knight/Blender/Aldemar_rightwalk04.png" id="75_cdlpc"]
-[ext_resource type="Texture2D" uid="uid://cy7xfe881r243" path="res://Assets/knight/Blender/Aldemar_rightwalk05.png" id="76_qm1f7"]
-[ext_resource type="Texture2D" uid="uid://dbll8ukjtxsn3" path="res://Assets/knight/Blender/Aldemar_rightwalk06.png" id="77_vv43g"]
-[ext_resource type="Texture2D" uid="uid://c3jtfe87ebv66" path="res://Assets/knight/Blender/Aldemar_rightwalk07.png" id="78_bwmpw"]
-[ext_resource type="Texture2D" uid="uid://b6plkcpirvo4h" path="res://Assets/knight/Blender/Aldemar_rightwalk08.png" id="79_mighq"]
+[ext_resource type="Texture2D" uid="uid://2v7eq0t4hr2o" path="res://Assets/knight/Blender/Aldemar_back.png" id="44_27ljp"]
+[ext_resource type="Texture2D" uid="uid://b23ap0yrp0trj" path="res://Assets/knight/Blender/Aldemar_face.png" id="45_t2khy"]
+[ext_resource type="Texture2D" uid="uid://f1v0bywjsino" path="res://Assets/knight/Blender/Aldemar_faceblink.png" id="46_biw5h"]
+[ext_resource type="Texture2D" uid="uid://bhgvqc222j3yg" path="res://Assets/knight/Blender/Aldemar_left.png" id="46_v75o8"]
+[ext_resource type="Texture2D" uid="uid://4n61bmp66o83" path="res://Assets/knight/Blender/Aldemar_right.png" id="47_7j1su"]
+[ext_resource type="Texture2D" uid="uid://qgbckde8ibpm" path="res://Assets/knight/Blender/Aldemar_backwalk01.png" id="48_1o0ma"]
+[ext_resource type="Texture2D" uid="uid://dskpfvukr670k" path="res://Assets/knight/Blender/Aldemar_backwalk02.png" id="49_sxvnm"]
+[ext_resource type="Texture2D" uid="uid://ble6ykuqfgt7j" path="res://Assets/knight/Blender/Aldemar_backwalk03.png" id="50_nryrl"]
+[ext_resource type="Texture2D" uid="uid://dnqwi2o1c3btx" path="res://Assets/knight/Blender/Aldemar_leftblink.png" id="50_p03fe"]
+[ext_resource type="Texture2D" uid="uid://b2v6e2kag61nb" path="res://Assets/knight/Blender/Aldemar_backwalk04.png" id="51_3m37b"]
+[ext_resource type="Texture2D" uid="uid://b6jlhtj7g4e15" path="res://Assets/knight/Blender/Aldemar_rightblink.png" id="51_dkypi"]
+[ext_resource type="Texture2D" uid="uid://u8aopny6n8r0" path="res://Assets/knight/Blender/Aldemar_backwalk05.png" id="52_ysp3u"]
+[ext_resource type="Texture2D" uid="uid://3644fvrfa1ot" path="res://Assets/knight/Blender/Aldemar_backwalk06.png" id="53_02gxn"]
+[ext_resource type="Texture2D" uid="uid://bi8xs2r5nxwtx" path="res://Assets/knight/Blender/Aldemar_backwalk07.png" id="54_brgu8"]
+[ext_resource type="Texture2D" uid="uid://fsa8a37auovr" path="res://Assets/knight/Blender/Aldemar_backwalk08.png" id="55_spo1h"]
+[ext_resource type="Texture2D" uid="uid://ih2q6l2cy0jt" path="res://Assets/knight/Blender/Aldemar_facewalk01.png" id="56_o30o7"]
+[ext_resource type="Texture2D" uid="uid://nq51dl4ifm8i" path="res://Assets/knight/Blender/Aldemar_facewalk02.png" id="57_i345a"]
+[ext_resource type="Texture2D" uid="uid://bq6e8kvpkpxxs" path="res://Assets/knight/Blender/Aldemar_facewalk03.png" id="58_ytgwn"]
+[ext_resource type="Texture2D" uid="uid://8ijq3y7wu52p" path="res://Assets/knight/Blender/Aldemar_facewalk04.png" id="59_s16pn"]
+[ext_resource type="Texture2D" uid="uid://bhms7tifet5xa" path="res://Assets/knight/Blender/Aldemar_facewalk05.png" id="60_vsdx7"]
+[ext_resource type="Texture2D" uid="uid://kwinf7h56xfe" path="res://Assets/knight/Blender/Aldemar_facewalk06.png" id="61_k1sb1"]
+[ext_resource type="Texture2D" uid="uid://c302jr28lcfc2" path="res://Assets/knight/Blender/Aldemar_facewalk07.png" id="62_fu6nx"]
+[ext_resource type="Texture2D" uid="uid://bn8qhbdqfrjg4" path="res://Assets/knight/Blender/Aldemar_facewalk08.png" id="63_6onve"]
+[ext_resource type="Texture2D" uid="uid://bnoilo37ax6a6" path="res://Assets/knight/Blender/Aldemar_leftwalk01.png" id="64_le5lb"]
+[ext_resource type="Texture2D" uid="uid://5v27lj88vl0p" path="res://Assets/knight/Blender/Aldemar_leftwalk02.png" id="65_meons"]
+[ext_resource type="Texture2D" uid="uid://chd0hxy568c5k" path="res://Assets/knight/Blender/Aldemar_leftwalk03.png" id="66_k3ojo"]
+[ext_resource type="Texture2D" uid="uid://65uu55nmpxc7" path="res://Assets/knight/Blender/Aldemar_leftwalk04.png" id="67_07cro"]
+[ext_resource type="Texture2D" uid="uid://bd5iedoqy5lep" path="res://Assets/knight/Blender/Aldemar_leftwalk05.png" id="68_qtnre"]
+[ext_resource type="Texture2D" uid="uid://teghpdndprej" path="res://Assets/knight/Blender/Aldemar_leftwalk06.png" id="69_xlirg"]
+[ext_resource type="Texture2D" uid="uid://iwhstfkeih1k" path="res://Assets/knight/Blender/Aldemar_leftwalk07.png" id="70_ma03j"]
+[ext_resource type="Texture2D" uid="uid://bh06pp2xlnmd8" path="res://Assets/knight/Blender/Aldemar_leftwalk08.png" id="71_xug7h"]
+[ext_resource type="Texture2D" uid="uid://c5mnfpfesv2mb" path="res://Assets/knight/Blender/Aldemar_rightwalk01.png" id="72_hnjm8"]
+[ext_resource type="Texture2D" uid="uid://bdbt8clb1ttba" path="res://Assets/knight/Blender/Aldemar_rightwalk02.png" id="73_0g8ib"]
+[ext_resource type="Texture2D" uid="uid://bnhry0mulcd47" path="res://Assets/knight/Blender/Aldemar_rightwalk03.png" id="74_3n8x8"]
+[ext_resource type="Texture2D" uid="uid://gokdywpfetqe" path="res://Assets/knight/Blender/Aldemar_rightwalk04.png" id="75_cdlpc"]
+[ext_resource type="Texture2D" uid="uid://cy1scmegp05mp" path="res://Assets/knight/Blender/Aldemar_rightwalk05.png" id="76_qm1f7"]
+[ext_resource type="Texture2D" uid="uid://gaj574t8u4n" path="res://Assets/knight/Blender/Aldemar_rightwalk06.png" id="77_vv43g"]
+[ext_resource type="Texture2D" uid="uid://dm261xebhd6lt" path="res://Assets/knight/Blender/Aldemar_rightwalk07.png" id="78_bwmpw"]
+[ext_resource type="Texture2D" uid="uid://buqn8ev6oqe85" path="res://Assets/knight/Blender/Aldemar_rightwalk08.png" id="79_mighq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ewog"]
 size = Vector2(17.92, 7.19)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xxtdr"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_tx6lv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_l1hoe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tx6lv")
+}],
+"loop": false,
+"name": &"face_blink",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_5ymjq")
@@ -114,6 +133,28 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_right",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_1t70p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4e2po")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1t70p")
+}],
+"loop": false,
+"name": &"left_blink",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_m0o1o")
+}],
+"loop": true,
+"name": &"right_blink",
 "speed": 1.0
 }, {
 "frames": [{
@@ -264,6 +305,20 @@ height = 120.0
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("45_t2khy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_biw5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_t2khy")
+}],
+"loop": false,
+"name": &"face_blink",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("44_27ljp")
 }],
 "loop": true,
@@ -293,6 +348,34 @@ animations = [{
 "loop": true,
 "name": &"idle_right",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("46_v75o8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_p03fe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_v75o8")
+}],
+"loop": false,
+"name": &"left_blink",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("47_7j1su")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_dkypi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_7j1su")
+}],
+"loop": false,
+"name": &"right_blink",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -442,7 +525,7 @@ script = ExtResource("2_cbfmx")
 z_index = 1
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_xxtdr")
-animation = &"idle_face"
+animation = &"face_blink"
 offset = Vector2(0, -400)
 script = ExtResource("42_m46xm")
 

@@ -7,5 +7,7 @@ namespace Medness
 		public float Speed { get; set; }
 
 		public CharacterAnimationDirection AnimationDirection { get; set; }
+
+		public int SmallMoveStartTime { get; set; }
 	}
 }

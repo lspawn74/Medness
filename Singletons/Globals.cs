@@ -22,7 +22,7 @@ namespace Medness.Singletons
 			CharactersProperties[Character.ALDEMARE].Speed = 400.0f;
 			CharactersProperties[Character.ALDEMARE].AnimationDirection = CharacterAnimationDirection.FACE;
 
-			CurrentCharacter = Character.ANSGARDE;
+			CurrentCharacter = Character.ALDEMARE;
 		}
 
 	}
