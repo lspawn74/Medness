@@ -23,9 +23,22 @@ namespace Medness
 		#region Private fields
 		private Vector2 _targetPosition = Vector2.Zero;
 		public CharacterProperties _characterProperties;
+		private bool _mouseClickedInTopPanel;
 		#endregion
 
 		#region Life cycles
+
+		public override void _Input(InputEvent @event)
+		{
+			if (@event is InputEventMouseButton eventMouseButton)
+			{
+				if (eventMouseButton.Position.Y < 128.0)
+					_mouseClickedInTopPanel = true;
+				else
+					_mouseClickedInTopPanel = false;
+			}
+		}
+
 		public override void _Ready()
 		{
 			// Set initial velocity
@@ -51,8 +64,12 @@ namespace Medness
 			Vector2 velocity = Velocity;
 
 			// Get mouse click as a target
+			if (_mouseClickedInTopPanel)
+				return;
 			if (Input.IsMouseButtonPressed(MouseButton.Left))
+			{
 				_targetPosition = GetGlobalMousePosition();
+			}
 
 			// Get the input direction
 			Vector2 direction = GlobalPosition.DirectionTo(_targetPosition);

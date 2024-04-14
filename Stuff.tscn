@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd4ihp18jhcsa"]
+
+[ext_resource type="Script" path="res://UI/Stuff/BackButton.cs" id="1_8y3kn"]
+
+[node name="Stuff" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+offset_right = 1792.0
+offset_bottom = 1024.0
+
+[node name="Button" type="Button" parent="Panel"]
+top_level = true
+layout_mode = 0
+offset_right = 213.0
+offset_bottom = 125.0
+text = "BACK"
+flat = true
+script = ExtResource("1_8y3kn")
