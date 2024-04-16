@@ -1,7 +1,6 @@
 using Godot;
-using System;
 
-public partial class BackButton : Button
+public partial class BackButton : TextureButton
 {
 	#region Injected nodes
 	SceneManager _sceneManager;
