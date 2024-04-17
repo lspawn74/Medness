@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cd4ihp18jhcsa"]
+[gd_scene load_steps=9 format=3 uid="uid://cd4ihp18jhcsa"]
 
 [ext_resource type="Script" path="res://UI/Stuff/BackButton.cs" id="1_8y3kn"]
 [ext_resource type="Texture2D" uid="uid://gckf1kca8a1b" path="res://Assets/backgrounds/inventory_background.jpg" id="1_hfg4l"]
 [ext_resource type="Texture2D" uid="uid://dd3g1ec5jj40b" path="res://Assets/UI/panel_back.png" id="1_kurin"]
 [ext_resource type="Texture2D" uid="uid://bpar3mjkdoffl" path="res://Assets/princess/Blender/Ansgarde_pose_inventory.png" id="4_3p35s"]
+[ext_resource type="Texture2D" uid="uid://x8f6y71sumck" path="res://Assets/UI/item_frame.png" id="4_ofbnc"]
 [ext_resource type="Texture2D" uid="uid://j2o1rnmbp703" path="res://Assets/UI/purse2.jpg" id="5_qjd4u"]
+[ext_resource type="Texture2D" uid="uid://b0xaeksoud35t" path="res://Assets/UI/gold_frame.png" id="7_1eqiq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nwue4"]
 font_size = 56
@@ -35,52 +37,147 @@ offset_top = 132.0
 offset_right = 1408.0
 offset_bottom = 252.0
 
-[node name="ColorRect_1_1" type="ColorRect" parent="Row1"]
+[node name="ItemBack_1_1" type="ColorRect" parent="Row1"]
+layout_mode = 0
 offset_right = 120.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_1_2" type="ColorRect" parent="Row1"]
+[node name="Item1_1" type="NinePatchRect" parent="Row1"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_1_2" type="ColorRect" parent="Row1"]
+layout_mode = 0
 offset_left = 128.0
 offset_right = 248.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_1_3" type="ColorRect" parent="Row1"]
+[node name="Item1_2" type="NinePatchRect" parent="Row1"]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 248.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_1_3" type="ColorRect" parent="Row1"]
+layout_mode = 0
 offset_left = 256.0
 offset_right = 376.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_1_4" type="ColorRect" parent="Row1"]
+[node name="Item1_3" type="NinePatchRect" parent="Row1"]
+layout_mode = 0
+offset_left = 256.0
+offset_right = 376.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_1_4" type="ColorRect" parent="Row1"]
+layout_mode = 0
 offset_left = 384.0
 offset_right = 504.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_1_5" type="ColorRect" parent="Row1"]
+[node name="Item1_4" type="NinePatchRect" parent="Row1"]
+layout_mode = 0
+offset_left = 384.0
+offset_right = 504.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_1_5" type="ColorRect" parent="Row1"]
+layout_mode = 0
 offset_left = 512.0
 offset_right = 632.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_1_6" type="ColorRect" parent="Row1"]
+[node name="Item1_5" type="NinePatchRect" parent="Row1"]
+layout_mode = 0
+offset_left = 512.0
+offset_right = 632.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_1_6" type="ColorRect" parent="Row1"]
+layout_mode = 0
 offset_left = 640.0
 offset_right = 760.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_1_7" type="ColorRect" parent="Row1"]
+[node name="Item1_6" type="NinePatchRect" parent="Row1"]
+layout_mode = 0
+offset_left = 640.0
+offset_right = 760.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_1_7" type="ColorRect" parent="Row1"]
+layout_mode = 0
 offset_left = 768.0
 offset_right = 888.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_1_8" type="ColorRect" parent="Row1"]
+[node name="Item1_7" type="NinePatchRect" parent="Row1"]
+layout_mode = 0
+offset_left = 768.0
+offset_right = 888.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_1_8" type="ColorRect" parent="Row1"]
+layout_mode = 0
 offset_left = 896.0
 offset_right = 1016.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
+
+[node name="Item1_8" type="NinePatchRect" parent="Row1"]
+layout_mode = 0
+offset_left = 896.0
+offset_right = 1016.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="Row2" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -89,52 +186,147 @@ offset_top = 260.0
 offset_right = 1408.0
 offset_bottom = 380.0
 
-[node name="ColorRect_2_1" type="ColorRect" parent="Row2"]
+[node name="ItemBack_2_1" type="ColorRect" parent="Row2"]
+layout_mode = 0
 offset_right = 120.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_2_2" type="ColorRect" parent="Row2"]
+[node name="Item2_1" type="NinePatchRect" parent="Row2"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_2_2" type="ColorRect" parent="Row2"]
+layout_mode = 0
 offset_left = 128.0
 offset_right = 248.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_2_3" type="ColorRect" parent="Row2"]
+[node name="Item2_2" type="NinePatchRect" parent="Row2"]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 248.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_2_3" type="ColorRect" parent="Row2"]
+layout_mode = 0
 offset_left = 256.0
 offset_right = 376.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_2_4" type="ColorRect" parent="Row2"]
+[node name="Item2_3" type="NinePatchRect" parent="Row2"]
+layout_mode = 0
+offset_left = 256.0
+offset_right = 376.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_2_4" type="ColorRect" parent="Row2"]
+layout_mode = 0
 offset_left = 384.0
 offset_right = 504.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_2_5" type="ColorRect" parent="Row2"]
+[node name="Item2_4" type="NinePatchRect" parent="Row2"]
+layout_mode = 0
+offset_left = 384.0
+offset_right = 504.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_2_5" type="ColorRect" parent="Row2"]
+layout_mode = 0
 offset_left = 512.0
 offset_right = 632.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_2_6" type="ColorRect" parent="Row2"]
+[node name="Item2_5" type="NinePatchRect" parent="Row2"]
+layout_mode = 0
+offset_left = 512.0
+offset_right = 632.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_2_6" type="ColorRect" parent="Row2"]
+layout_mode = 0
 offset_left = 640.0
 offset_right = 760.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_2_7" type="ColorRect" parent="Row2"]
+[node name="Item2_6" type="NinePatchRect" parent="Row2"]
+layout_mode = 0
+offset_left = 640.0
+offset_right = 760.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_2_7" type="ColorRect" parent="Row2"]
+layout_mode = 0
 offset_left = 768.0
 offset_right = 888.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_2_8" type="ColorRect" parent="Row2"]
+[node name="Item2_7" type="NinePatchRect" parent="Row2"]
+layout_mode = 0
+offset_left = 768.0
+offset_right = 888.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_2_8" type="ColorRect" parent="Row2"]
+layout_mode = 0
 offset_left = 896.0
 offset_right = 1016.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
+
+[node name="Item2_8" type="NinePatchRect" parent="Row2"]
+layout_mode = 0
+offset_left = 896.0
+offset_right = 1016.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="Row3" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -143,52 +335,147 @@ offset_top = 388.0
 offset_right = 1408.0
 offset_bottom = 508.0
 
-[node name="ColorRect_3_1" type="ColorRect" parent="Row3"]
+[node name="ItemBack_3_1" type="ColorRect" parent="Row3"]
+layout_mode = 0
 offset_right = 120.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_3_2" type="ColorRect" parent="Row3"]
+[node name="Item3_1" type="NinePatchRect" parent="Row3"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_3_2" type="ColorRect" parent="Row3"]
+layout_mode = 0
 offset_left = 128.0
 offset_right = 248.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_3_3" type="ColorRect" parent="Row3"]
+[node name="Item3_2" type="NinePatchRect" parent="Row3"]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 248.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_3_3" type="ColorRect" parent="Row3"]
+layout_mode = 0
 offset_left = 256.0
 offset_right = 376.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_3_4" type="ColorRect" parent="Row3"]
+[node name="Item3_3" type="NinePatchRect" parent="Row3"]
+layout_mode = 0
+offset_left = 256.0
+offset_right = 376.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_3_4" type="ColorRect" parent="Row3"]
+layout_mode = 0
 offset_left = 384.0
 offset_right = 504.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_3_5" type="ColorRect" parent="Row3"]
+[node name="Item3_4" type="NinePatchRect" parent="Row3"]
+layout_mode = 0
+offset_left = 384.0
+offset_right = 504.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_3_5" type="ColorRect" parent="Row3"]
+layout_mode = 0
 offset_left = 512.0
 offset_right = 632.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_3_6" type="ColorRect" parent="Row3"]
+[node name="Item3_5" type="NinePatchRect" parent="Row3"]
+layout_mode = 0
+offset_left = 512.0
+offset_right = 632.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_3_6" type="ColorRect" parent="Row3"]
+layout_mode = 0
 offset_left = 640.0
 offset_right = 760.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_3_7" type="ColorRect" parent="Row3"]
+[node name="Item3_6" type="NinePatchRect" parent="Row3"]
+layout_mode = 0
+offset_left = 640.0
+offset_right = 760.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_3_7" type="ColorRect" parent="Row3"]
+layout_mode = 0
 offset_left = 768.0
 offset_right = 888.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_3_8" type="ColorRect" parent="Row3"]
+[node name="Item3_7" type="NinePatchRect" parent="Row3"]
+layout_mode = 0
+offset_left = 768.0
+offset_right = 888.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_3_8" type="ColorRect" parent="Row3"]
+layout_mode = 0
 offset_left = 896.0
 offset_right = 1016.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
+
+[node name="Item3_8" type="NinePatchRect" parent="Row3"]
+layout_mode = 0
+offset_left = 896.0
+offset_right = 1016.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="Row4" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -197,52 +484,147 @@ offset_top = 516.0
 offset_right = 1408.0
 offset_bottom = 636.0
 
-[node name="ColorRect_4_1" type="ColorRect" parent="Row4"]
+[node name="ItemBack_4_1" type="ColorRect" parent="Row4"]
+layout_mode = 0
 offset_right = 120.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_4_2" type="ColorRect" parent="Row4"]
+[node name="Item4_1" type="NinePatchRect" parent="Row4"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_4_2" type="ColorRect" parent="Row4"]
+layout_mode = 0
 offset_left = 128.0
 offset_right = 248.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_4_3" type="ColorRect" parent="Row4"]
+[node name="Item4_2" type="NinePatchRect" parent="Row4"]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 248.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_4_3" type="ColorRect" parent="Row4"]
+layout_mode = 0
 offset_left = 256.0
 offset_right = 376.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_4_4" type="ColorRect" parent="Row4"]
+[node name="Item4_3" type="NinePatchRect" parent="Row4"]
+layout_mode = 0
+offset_left = 256.0
+offset_right = 376.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_4_4" type="ColorRect" parent="Row4"]
+layout_mode = 0
 offset_left = 384.0
 offset_right = 504.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_4_5" type="ColorRect" parent="Row4"]
+[node name="Item4_4" type="NinePatchRect" parent="Row4"]
+layout_mode = 0
+offset_left = 384.0
+offset_right = 504.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_4_5" type="ColorRect" parent="Row4"]
+layout_mode = 0
 offset_left = 512.0
 offset_right = 632.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_4_6" type="ColorRect" parent="Row4"]
+[node name="Item4_5" type="NinePatchRect" parent="Row4"]
+layout_mode = 0
+offset_left = 512.0
+offset_right = 632.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_4_6" type="ColorRect" parent="Row4"]
+layout_mode = 0
 offset_left = 640.0
 offset_right = 760.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_4_7" type="ColorRect" parent="Row4"]
+[node name="Item4_6" type="NinePatchRect" parent="Row4"]
+layout_mode = 0
+offset_left = 640.0
+offset_right = 760.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_4_7" type="ColorRect" parent="Row4"]
+layout_mode = 0
 offset_left = 768.0
 offset_right = 888.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_4_8" type="ColorRect" parent="Row4"]
+[node name="Item4_7" type="NinePatchRect" parent="Row4"]
+layout_mode = 0
+offset_left = 768.0
+offset_right = 888.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_4_8" type="ColorRect" parent="Row4"]
+layout_mode = 0
 offset_left = 896.0
 offset_right = 1016.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
+
+[node name="Item4_8" type="NinePatchRect" parent="Row4"]
+layout_mode = 0
+offset_left = 896.0
+offset_right = 1016.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="Row5" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -251,52 +633,147 @@ offset_top = 644.0
 offset_right = 1408.0
 offset_bottom = 764.0
 
-[node name="ColorRect_5_1" type="ColorRect" parent="Row5"]
+[node name="ItemBack_5_1" type="ColorRect" parent="Row5"]
+layout_mode = 0
 offset_right = 120.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_5_2" type="ColorRect" parent="Row5"]
+[node name="Item5_1" type="NinePatchRect" parent="Row5"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_5_2" type="ColorRect" parent="Row5"]
+layout_mode = 0
 offset_left = 128.0
 offset_right = 248.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_5_3" type="ColorRect" parent="Row5"]
+[node name="Item5_2" type="NinePatchRect" parent="Row5"]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 248.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_5_3" type="ColorRect" parent="Row5"]
+layout_mode = 0
 offset_left = 256.0
 offset_right = 376.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_5_4" type="ColorRect" parent="Row5"]
+[node name="Item5_3" type="NinePatchRect" parent="Row5"]
+layout_mode = 0
+offset_left = 256.0
+offset_right = 376.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_5_4" type="ColorRect" parent="Row5"]
+layout_mode = 0
 offset_left = 384.0
 offset_right = 504.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_5_5" type="ColorRect" parent="Row5"]
+[node name="Item5_4" type="NinePatchRect" parent="Row5"]
+layout_mode = 0
+offset_left = 384.0
+offset_right = 504.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_5_5" type="ColorRect" parent="Row5"]
+layout_mode = 0
 offset_left = 512.0
 offset_right = 632.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_5_6" type="ColorRect" parent="Row5"]
+[node name="Item5_5" type="NinePatchRect" parent="Row5"]
+layout_mode = 0
+offset_left = 512.0
+offset_right = 632.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_5_6" type="ColorRect" parent="Row5"]
+layout_mode = 0
 offset_left = 640.0
 offset_right = 760.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_5_7" type="ColorRect" parent="Row5"]
+[node name="Item5_6" type="NinePatchRect" parent="Row5"]
+layout_mode = 0
+offset_left = 640.0
+offset_right = 760.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_5_7" type="ColorRect" parent="Row5"]
+layout_mode = 0
 offset_left = 768.0
 offset_right = 888.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_5_8" type="ColorRect" parent="Row5"]
+[node name="Item5_7" type="NinePatchRect" parent="Row5"]
+layout_mode = 0
+offset_left = 768.0
+offset_right = 888.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_5_8" type="ColorRect" parent="Row5"]
+layout_mode = 0
 offset_left = 896.0
 offset_right = 1016.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
+
+[node name="Item5_8" type="NinePatchRect" parent="Row5"]
+layout_mode = 0
+offset_left = 896.0
+offset_right = 1016.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="Row6" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -305,52 +782,147 @@ offset_top = 772.0
 offset_right = 1408.0
 offset_bottom = 892.0
 
-[node name="ColorRect_6_1" type="ColorRect" parent="Row6"]
+[node name="ItemBack_6_1" type="ColorRect" parent="Row6"]
+layout_mode = 0
 offset_right = 120.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_6_2" type="ColorRect" parent="Row6"]
+[node name="Item6_1" type="NinePatchRect" parent="Row6"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_6_2" type="ColorRect" parent="Row6"]
+layout_mode = 0
 offset_left = 128.0
 offset_right = 248.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_6_3" type="ColorRect" parent="Row6"]
+[node name="Item6_2" type="NinePatchRect" parent="Row6"]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 248.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_6_3" type="ColorRect" parent="Row6"]
+layout_mode = 0
 offset_left = 256.0
 offset_right = 376.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_6_4" type="ColorRect" parent="Row6"]
+[node name="Item6_3" type="NinePatchRect" parent="Row6"]
+layout_mode = 0
+offset_left = 256.0
+offset_right = 376.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_6_4" type="ColorRect" parent="Row6"]
+layout_mode = 0
 offset_left = 384.0
 offset_right = 504.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_6_5" type="ColorRect" parent="Row6"]
+[node name="Item6_4" type="NinePatchRect" parent="Row6"]
+layout_mode = 0
+offset_left = 384.0
+offset_right = 504.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_6_5" type="ColorRect" parent="Row6"]
+layout_mode = 0
 offset_left = 512.0
 offset_right = 632.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_6_6" type="ColorRect" parent="Row6"]
+[node name="Item6_5" type="NinePatchRect" parent="Row6"]
+layout_mode = 0
+offset_left = 512.0
+offset_right = 632.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_6_6" type="ColorRect" parent="Row6"]
+layout_mode = 0
 offset_left = 640.0
 offset_right = 760.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_6_7" type="ColorRect" parent="Row6"]
+[node name="Item6_6" type="NinePatchRect" parent="Row6"]
+layout_mode = 0
+offset_left = 640.0
+offset_right = 760.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_6_7" type="ColorRect" parent="Row6"]
+layout_mode = 0
 offset_left = 768.0
 offset_right = 888.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_6_8" type="ColorRect" parent="Row6"]
+[node name="Item6_7" type="NinePatchRect" parent="Row6"]
+layout_mode = 0
+offset_left = 768.0
+offset_right = 888.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_6_8" type="ColorRect" parent="Row6"]
+layout_mode = 0
 offset_left = 896.0
 offset_right = 1016.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
+
+[node name="Item6_8" type="NinePatchRect" parent="Row6"]
+layout_mode = 0
+offset_left = 896.0
+offset_right = 1016.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="Row7" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -359,52 +931,147 @@ offset_top = 900.0
 offset_right = 1408.0
 offset_bottom = 1020.0
 
-[node name="ColorRect_7_1" type="ColorRect" parent="Row7"]
+[node name="ItemBack_7_1" type="ColorRect" parent="Row7"]
+layout_mode = 0
 offset_right = 120.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_7_2" type="ColorRect" parent="Row7"]
+[node name="Item7_1" type="NinePatchRect" parent="Row7"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_7_2" type="ColorRect" parent="Row7"]
+layout_mode = 0
 offset_left = 128.0
 offset_right = 248.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_7_3" type="ColorRect" parent="Row7"]
+[node name="Item7_2" type="NinePatchRect" parent="Row7"]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 248.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_7_3" type="ColorRect" parent="Row7"]
+layout_mode = 0
 offset_left = 256.0
 offset_right = 376.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_7_4" type="ColorRect" parent="Row7"]
+[node name="Item7_3" type="NinePatchRect" parent="Row7"]
+layout_mode = 0
+offset_left = 256.0
+offset_right = 376.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_7_4" type="ColorRect" parent="Row7"]
+layout_mode = 0
 offset_left = 384.0
 offset_right = 504.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_7_5" type="ColorRect" parent="Row7"]
+[node name="Item7_4" type="NinePatchRect" parent="Row7"]
+layout_mode = 0
+offset_left = 384.0
+offset_right = 504.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_7_5" type="ColorRect" parent="Row7"]
+layout_mode = 0
 offset_left = 512.0
 offset_right = 632.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_7_6" type="ColorRect" parent="Row7"]
+[node name="Item7_5" type="NinePatchRect" parent="Row7"]
+layout_mode = 0
+offset_left = 512.0
+offset_right = 632.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_7_6" type="ColorRect" parent="Row7"]
+layout_mode = 0
 offset_left = 640.0
 offset_right = 760.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_7_7" type="ColorRect" parent="Row7"]
+[node name="Item7_6" type="NinePatchRect" parent="Row7"]
+layout_mode = 0
+offset_left = 640.0
+offset_right = 760.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_7_7" type="ColorRect" parent="Row7"]
+layout_mode = 0
 offset_left = 768.0
 offset_right = 888.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
 
-[node name="ColorRect_6_8" type="ColorRect" parent="Row7"]
+[node name="Item7_7" type="NinePatchRect" parent="Row7"]
+layout_mode = 0
+offset_left = 768.0
+offset_right = 888.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ItemBack_6_8" type="ColorRect" parent="Row7"]
+layout_mode = 0
 offset_left = 896.0
 offset_right = 1016.0
 offset_bottom = 120.0
 color = Color(0.45098, 0.486275, 0.654902, 0.478431)
+
+[node name="Item7_8" type="NinePatchRect" parent="Row7"]
+layout_mode = 0
+offset_left = 896.0
+offset_right = 1016.0
+offset_bottom = 120.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="Character" type="Panel" parent="."]
 self_modulate = Color(0.752941, 0.313726, 0.403922, 0.501961)
@@ -414,9 +1081,20 @@ offset_right = 380.0
 offset_bottom = 1020.0
 
 [node name="CharacterPose" type="TextureRect" parent="Character"]
+layout_mode = 0
 offset_right = 376.0
 offset_bottom = 760.0
 texture = ExtResource("4_3p35s")
+
+[node name="CharacterFrame" type="NinePatchRect" parent="Character"]
+layout_mode = 0
+offset_right = 376.0
+offset_bottom = 760.0
+texture = ExtResource("4_ofbnc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="Gold" type="Panel" parent="."]
 offset_left = 4.0
@@ -441,3 +1119,22 @@ text = "300"
 label_settings = SubResource("LabelSettings_nwue4")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="GoldPurseFrame" type="NinePatchRect" parent="Gold"]
+offset_left = 256.0
+offset_right = 376.0
+offset_bottom = 120.0
+texture = ExtResource("7_1eqiq")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="GoldValueFrame" type="NinePatchRect" parent="Gold"]
+offset_right = 256.0
+offset_bottom = 120.0
+texture = ExtResource("7_1eqiq")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
