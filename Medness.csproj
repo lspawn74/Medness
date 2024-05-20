@@ -14,7 +14,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Medness.Business\**" />
+    <Compile Remove="Medness.FunctionalTesting\**" />
+    <Compile Remove="Medness.UnitTesting\**" />
     <EmbeddedResource Remove="Medness.Business\**" />
+    <EmbeddedResource Remove="Medness.FunctionalTesting\**" />
+    <EmbeddedResource Remove="Medness.UnitTesting\**" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="GameMechanics.cs" />
