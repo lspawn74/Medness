@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>Medness.Business</id>
+    <version>1.0.1</version>
+    <authors>ludo</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Medness back engine</description>
+  </metadata>
+  <files>
+    <file src="..\Medness.Business\bin\Release\net6.0\Medness.Business.dll" target="lib" />
+  </files>
+</package>

@@ -1,4 +1,6 @@
-﻿namespace Medness.Business.Entities
+﻿using Medness.Business.Entities;
+
+namespace Medness.Application.Entities
 {
 	public class Game
 	{
@@ -13,6 +15,11 @@
         public void SwitchPlayer(Player otherPlayer)
         {
             player = otherPlayer;
+        }
+
+        public void addCharacter(Character character)
+        {
+
         }
 
         public bool IsPlayer(Player otherPlayer)

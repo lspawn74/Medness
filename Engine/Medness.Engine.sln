@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34928.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medness.Business", "Medness.Business\Medness.Business.csproj", "{CD357EFF-B519-4157-8667-B500C2069C9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10-Domain", "10-Domain", "{5F0096D7-5BE8-4116-BB01-CC45E58BE306}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20-Application", "20-Application", "{9CEDBECF-EB17-486F-9D55-D04D2CD1C5A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "99-Testing", "99-Testing", "{FD782222-3926-44BA-892A-01DA6853CE60}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medness.Application", "Medness.Application\Medness.Application.csproj", "{6CF08C64-22D3-46E0-91EA-5163B176ED3E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medness.FunctionalTesting", "Medness.FunctionalTesting\Medness.FunctionalTesting.csproj", "{7301A32C-4D79-4172-A939-8028434E91A3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medness.UnitTesting", "Medness.UnitTesting\Medness.UnitTesting.csproj", "{FE6CB682-6D3C-4FED-A1F4-0AFF0096501C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD357EFF-B519-4157-8667-B500C2069C9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD357EFF-B519-4157-8667-B500C2069C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD357EFF-B519-4157-8667-B500C2069C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD357EFF-B519-4157-8667-B500C2069C9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CF08C64-22D3-46E0-91EA-5163B176ED3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CF08C64-22D3-46E0-91EA-5163B176ED3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CF08C64-22D3-46E0-91EA-5163B176ED3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CF08C64-22D3-46E0-91EA-5163B176ED3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7301A32C-4D79-4172-A939-8028434E91A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7301A32C-4D79-4172-A939-8028434E91A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7301A32C-4D79-4172-A939-8028434E91A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7301A32C-4D79-4172-A939-8028434E91A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE6CB682-6D3C-4FED-A1F4-0AFF0096501C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE6CB682-6D3C-4FED-A1F4-0AFF0096501C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE6CB682-6D3C-4FED-A1F4-0AFF0096501C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE6CB682-6D3C-4FED-A1F4-0AFF0096501C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CD357EFF-B519-4157-8667-B500C2069C9E} = {5F0096D7-5BE8-4116-BB01-CC45E58BE306}
+		{6CF08C64-22D3-46E0-91EA-5163B176ED3E} = {9CEDBECF-EB17-486F-9D55-D04D2CD1C5A1}
+		{7301A32C-4D79-4172-A939-8028434E91A3} = {FD782222-3926-44BA-892A-01DA6853CE60}
+		{FE6CB682-6D3C-4FED-A1F4-0AFF0096501C} = {FD782222-3926-44BA-892A-01DA6853CE60}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D3D03DB9-7442-4A70-A349-0E08BAEF07DA}
+	EndGlobalSection
+EndGlobal

@@ -11,10 +11,14 @@ namespace Medness.Business.Entities
             id = playerId;
         }
 
-		public override bool Equals(object? obj)
+		public override bool Equals(object obj)
 		{
+			if (obj == null)
+				return false;
+
 			if (obj is  Player playerObj)
 				return playerObj.id == id;
+			
 			return false;
 		}
 
