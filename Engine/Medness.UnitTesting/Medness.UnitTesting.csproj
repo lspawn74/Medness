@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Medness.Application\Medness.Application.csproj" />
     <ProjectReference Include="..\Medness.Business\Medness.Business.csproj" />
   </ItemGroup>
 

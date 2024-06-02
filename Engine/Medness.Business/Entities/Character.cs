@@ -1,14 +1,21 @@
 ﻿using Medness.Business.Enums;
+using Medness.Business.ValueObjects;
 
 namespace Medness.Business.Entities
 {
 	public class Character
 	{
-		public readonly CharacterIdentity id;
+		public readonly Guid id;
+		public readonly string name;
+		public readonly IsPlayable isPlayable;
 
-        public Character(CharacterIdentity characterIdentity)
+        public Character(Guid identity, string characterName, bool playable)
         {
-            id = characterIdentity;
+			ArgumentNullException.ThrowIfNull(characterName, nameof(characterName));
+
+			id = identity;
+			name = characterName;
+			isPlayable = new IsPlayable(playable);
         }
 
 		public override bool Equals(object obj)
