@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2024-06-01T16:11:19.368Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.4.13 Chrome/124.0.6367.207 Electron/30.0.6 Safari/537.36" etag="DmC0Cr2e-Zv5LnavYLmI" version="24.4.13" type="device" pages="4">
+<mxfile host="Electron" modified="2024-06-16T21:48:06.681Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.5.3 Chrome/124.0.6367.207 Electron/30.0.6 Safari/537.36" etag="Cq-5slEwWqh_kZVYUBkw" version="24.5.3" type="device" pages="4">
   <diagram name="Stickers" id="xM5DYGiuRpSARZKX_39L">
     <mxGraphModel dx="2245" dy="820" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -29,7 +29,7 @@
           <mxGeometry x="90" y="48" width="50" height="30" as="geometry" />
         </mxCell>
         <mxCell id="TlnyL6aYkQ4jOY0lI_5h-12" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="110" y="680" width="350" height="110" as="geometry" />
+          <mxGeometry x="100" y="550" width="350" height="110" as="geometry" />
         </mxCell>
         <mxCell id="TlnyL6aYkQ4jOY0lI_5h-9" value="Character&lt;div&gt;Selected&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffff88;strokeColor=#36393d;fontColor=#000000;" parent="TlnyL6aYkQ4jOY0lI_5h-12" vertex="1">
           <mxGeometry x="240" width="110" height="110" as="geometry" />
@@ -53,7 +53,7 @@
           <mxGeometry width="110" height="110" as="geometry" />
         </mxCell>
         <mxCell id="TlnyL6aYkQ4jOY0lI_5h-29" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="110" y="810" width="350" height="110" as="geometry" />
+          <mxGeometry x="100" y="750" width="350" height="110" as="geometry" />
         </mxCell>
         <mxCell id="TlnyL6aYkQ4jOY0lI_5h-14" value="Character&lt;div&gt;&lt;div&gt;Moved&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffff88;strokeColor=#36393d;fontColor=#000000;" parent="TlnyL6aYkQ4jOY0lI_5h-29" vertex="1">
           <mxGeometry x="240" width="110" height="110" as="geometry" />
@@ -197,7 +197,7 @@
           <mxGeometry x="120" width="110" height="110" as="geometry" />
         </mxCell>
         <mxCell id="6xUrvK1wtA-suA-K_xOE-5" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="110" y="550" width="350" height="110" as="geometry" />
+          <mxGeometry x="-275" y="950" width="350" height="110" as="geometry" />
         </mxCell>
         <mxCell id="6xUrvK1wtA-suA-K_xOE-6" value="CharacterRemoved" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffff88;strokeColor=#36393d;fontColor=#000000;" parent="6xUrvK1wtA-suA-K_xOE-5" vertex="1">
           <mxGeometry x="240" width="110" height="110" as="geometry" />
@@ -249,6 +249,12 @@
         </mxCell>
         <mxCell id="rlMZrt3LhaXndTvH7TKC-1" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;GIVEN a game and a playable characer&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;WHEN the character is added to the game&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;THEN this character is added to the list of playable game chracters&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="-290" y="690" width="380" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PxvA1PS9xyWyh0wfdwlw-1" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;GIVEN a game and a playable characer&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;WHEN the character is removed from the game&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;THEN this character is removed from the list of playable game chracters&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-290" y="890" width="410" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PxvA1PS9xyWyh0wfdwlw-2" value="GIVEN a game with two or more characters (one active)&lt;div&gt;WHEN I switch to the inactive Character&lt;/div&gt;&lt;div&gt;THEN the game&#39;s active character becomes this character..&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="100" y="490" width="340" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -7,33 +7,61 @@ namespace Medness.Application.Entities
 	{
 		private Player player;
         private ICharacterRepository _characterRepository;
+        private Guid _activeCharacter;
 
-        public Game(Player gamePlayer, ICharacterRepository characterRepository)
+		#region Constructors
+		public Game(Player gamePlayer, ICharacterRepository characterRepository)
         {
             ArgumentNullException.ThrowIfNull(gamePlayer);
             ArgumentNullException.ThrowIfNull(characterRepository);
             player = gamePlayer;
             _characterRepository = characterRepository;
-        }
+            _activeCharacter = Guid.Empty;
 
-        public void SwitchPlayer(Player otherPlayer)
+		}
+		#endregion
+
+		#region Player methods
+		public void Switch(Player otherPlayer)
         {
             player = otherPlayer;
         }
+        public bool IsPlayer(Player otherPlayer)
+        {
+            return player == otherPlayer;
+        }
+		#endregion
 
-        public void AddCharacter(Character character)
+		#region Characters methods
+		public void AddCharacter(Character character)
         {
 			_characterRepository.Add(character);
 		}
+
+        public void RemoveCharacter(Character character)
+        {
+            _characterRepository.Remove(character);
+        }
 
         public bool HasCharacter(Guid characterId)
         {
             return _characterRepository.Get(characterId) != null;
         }
 
-        public bool IsPlayer(Player otherPlayer)
+        public void Switch(Character character)
         {
-            return player == otherPlayer;
+            if (_characterRepository.Get(character.id) != null)
+            {
+                _activeCharacter = character.id;
+                return;
+            }
+            _activeCharacter = Guid.Empty;
+		}
+
+        public bool IsActive(Character character)
+        {
+            return _activeCharacter == character.id;
         }
+        #endregion
     }
 }

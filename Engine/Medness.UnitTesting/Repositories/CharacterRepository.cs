@@ -13,10 +13,16 @@ namespace Medness.UnitTesting.Repositories
 			_characters[character.id] = character;
 		}
 
+		public void Remove(Character character)
+		{
+			ArgumentNullException.ThrowIfNull(character, nameof(character));
+			_characters.Remove(character.id);
+		}
+
 		public Character Get(Guid id)
 		{
-			if (_characters.ContainsKey(id))
-				return _characters[id];
+			if (_characters.TryGetValue(id, out Character character))
+				return character;
 			return null;
 		}
 

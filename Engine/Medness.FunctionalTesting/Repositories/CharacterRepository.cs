@@ -13,9 +13,17 @@ namespace Medness.FunctionalTesting.Repositories
 			_characters[character.id] = character;
 		}
 
+		public void Remove(Character character)
+		{
+			ArgumentNullException.ThrowIfNull(character, nameof(character));
+			_characters.Remove(character.id);
+		}
+
 		public Character Get(Guid id)
 		{
-			return _characters[id];
+			if (_characters.TryGetValue(id, out Character character))
+				return character;
+			return null;
 		}
 
 		public IEnumerable<Character> Get(string name)

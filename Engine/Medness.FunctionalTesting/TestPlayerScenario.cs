@@ -32,7 +32,7 @@ namespace Medness.FunctionalTesting
 			Player player = new Player(playerIdentity);
 
 			// WHEN I switch to this player
-			_game.SwitchPlayer(player);
+			_game.Switch(player);
 
 			// THEN the game's active player becomes this player
 			Assert.IsTrue(_game.IsPlayer(player)); 
