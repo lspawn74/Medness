@@ -1,41 +1,33 @@
-using Medness.Application.Entities;
-using Medness.Application.Interfaces;
 using Medness.Business.Entities;
 using Medness.Business.Enums;
-using Medness.FunctionalTesting.Repositories;
+using Medness.Testing.Common.TestData;
 
 namespace Medness.FunctionalTesting
 {
 	[TestClass]
 	public class TestPlayerScenario
 	{
-		#region Test data
-		private const PlayerIdentity _playerIdentity = PlayerIdentity.Human;
-		private Player _computerPlayer;
-		private ICharacterRepository _characterRepository;
-		private Game _game;
-		#endregion
+		PlayerData playerData;
+		GameData gameData;
 
 		[TestInitialize]
 		public void Init()
 		{
-			_computerPlayer = new Player(PlayerIdentity.Computer);
-			_characterRepository = new CharacterRepository();
-			_game = new Game(_computerPlayer, _characterRepository);
+			playerData = new PlayerData();
+			gameData = new GameData();
 		}
 
 		[TestMethod]
-		[DataRow(_playerIdentity)]
-		public void TestSwitch(PlayerIdentity playerIdentity)
+		public void TestSwitch()
 		{
 			// GIVEN a game and a player
-			Player player = new Player(playerIdentity);
+			Player humanPlayer = playerData.testPlayers[PlayerIdentity.Human];
 
 			// WHEN I switch to this player
-			_game.Switch(player);
+			gameData.testGame.Switch(humanPlayer);
 
 			// THEN the game's active player becomes this player
-			Assert.IsTrue(_game.IsPlayer(player)); 
+			Assert.IsTrue(gameData.testGame.IsPlayer(humanPlayer)); 
 		}
 	}
 }

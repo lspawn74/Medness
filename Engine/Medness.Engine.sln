@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medness.FunctionalTesting",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medness.UnitTesting", "Medness.UnitTesting\Medness.UnitTesting.csproj", "{FE6CB682-6D3C-4FED-A1F4-0AFF0096501C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medness.Testing.Common", "Medness.Testing.Common\Medness.Testing.Common.csproj", "{105146CF-BC15-4DF0-84F4-F5C9494C5132}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{FE6CB682-6D3C-4FED-A1F4-0AFF0096501C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE6CB682-6D3C-4FED-A1F4-0AFF0096501C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE6CB682-6D3C-4FED-A1F4-0AFF0096501C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{105146CF-BC15-4DF0-84F4-F5C9494C5132}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{105146CF-BC15-4DF0-84F4-F5C9494C5132}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{105146CF-BC15-4DF0-84F4-F5C9494C5132}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{105146CF-BC15-4DF0-84F4-F5C9494C5132}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{6CF08C64-22D3-46E0-91EA-5163B176ED3E} = {9CEDBECF-EB17-486F-9D55-D04D2CD1C5A1}
 		{7301A32C-4D79-4172-A939-8028434E91A3} = {FD782222-3926-44BA-892A-01DA6853CE60}
 		{FE6CB682-6D3C-4FED-A1F4-0AFF0096501C} = {FD782222-3926-44BA-892A-01DA6853CE60}
+		{105146CF-BC15-4DF0-84F4-F5C9494C5132} = {FD782222-3926-44BA-892A-01DA6853CE60}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D3D03DB9-7442-4A70-A349-0E08BAEF07DA}

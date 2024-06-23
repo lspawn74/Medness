@@ -1,7 +1,10 @@
 ﻿using Medness.Application.Interfaces;
 using Medness.Business.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Medness.UnitTesting.Repositories
+namespace Medness.Testing.Common.Repositories
 {
 	public class CharacterRepository : ICharacterRepository
 	{

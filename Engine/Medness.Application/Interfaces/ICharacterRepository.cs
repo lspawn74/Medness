@@ -9,6 +9,7 @@ namespace Medness.Application.Interfaces
 		public void Remove(Character character);
 
 		public Character Get(Guid id);
+
 		public IEnumerable<Character> Get(string name);
 	}
 }
