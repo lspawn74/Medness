@@ -45,5 +45,13 @@ namespace Medness.UnitTesting
 			Assert.IsTrue(characterData.testCharacters[CharacterData.AnsgardeName].isPlayable.Equals(true));
 			Assert.IsFalse(characterData.testCharacters[CharacterData.BarTenderName].isPlayable.Equals(true));
 		}
+
+		[TestMethod]
+		public void TestCharacterScene()
+		{
+			Guid sceneGuid = Guid.NewGuid();
+			characterData.testCharacters[CharacterData.AnsgardeName].EntersScene(sceneGuid);
+			Assert.IsTrue(characterData.testCharacters[CharacterData.AnsgardeName].IsInScene(sceneGuid));
+		}
 	}
 }

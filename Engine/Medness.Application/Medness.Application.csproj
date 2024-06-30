@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Medness.Business\Medness.Business.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="EventArgs\" />
+  </ItemGroup>
+
 </Project>

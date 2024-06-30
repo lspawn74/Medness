@@ -9,12 +9,14 @@ namespace Medness.FunctionalTesting
 	{
 		GameData gameData;
 		CharacterData characterData;
+		SceneData sceneData;
 
 		[TestInitialize]
 		public void Initialize()
 		{
 			gameData = new GameData();
 			characterData = new CharacterData();
+			sceneData = new SceneData();
 		}
 
 		[TestMethod]
@@ -61,6 +63,24 @@ namespace Medness.FunctionalTesting
 
 			// THEN the game's active character becomes this character..
 			Assert.IsTrue(gameData.testGame.IsActive(character2));
+		}
+
+		[TestMethod]
+		public void TestCharacterEntersScene()
+		{
+			// GIVEN a character and a destination game's scene
+			Character character = characterData.testCharacters[CharacterData.AnsgardeName];
+			Scene destinationScene = sceneData.testScenes[SceneData.SceneForest];
+			Assert.ThrowsException<ArgumentException>(() => gameData.testGame.EntersScene(character, destinationScene));
+			gameData.testGame.AddCharacter(character);
+			Assert.ThrowsException<ArgumentException>(() => gameData.testGame.EntersScene(character, destinationScene));
+			gameData.testGame.AddScene(destinationScene);
+
+			// WHEN the character enters the destination
+			gameData.testGame.EntersScene(character, destinationScene);
+
+			// THEN the character's current scene becomes the destination scene.
+			Assert.IsTrue(character.IsInScene(destinationScene.id));
 		}
 	}
 }
