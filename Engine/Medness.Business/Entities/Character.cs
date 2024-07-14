@@ -1,5 +1,4 @@
-﻿using Medness.Business.Enums;
-using Medness.Business.ValueObjects;
+﻿using Medness.Business.ValueObjects;
 
 namespace Medness.Business.Entities
 {

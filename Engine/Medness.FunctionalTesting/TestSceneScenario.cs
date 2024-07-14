@@ -1,7 +1,6 @@
 ﻿using Medness.Business.Entities;
 using Medness.Testing.Common.TestData;
 using System;
-using System.Collections.Generic;
 
 namespace Medness.FunctionalTesting
 {

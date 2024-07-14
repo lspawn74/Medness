@@ -1,7 +1,6 @@
 ﻿using Medness.Application.Events.Args;
 using Medness.Application.Interfaces;
 using Medness.Business.Entities;
-using System;
 
 namespace Medness.Application.Entities
 {
@@ -61,15 +60,12 @@ namespace Medness.Application.Entities
             return _characterRepository.Get(characterId) != null;
         }
 
-        public void Switch(Character character)
-        {
-            if (_characterRepository.Get(character.id) != null)
-            {
-                _activeCharacter = character.id;
-				CharacterSelected?.Invoke(this, new CharacterEventArgs(character));
+		public void Switch(Character character)
+		{
+			if (_characterRepository.Get(character.id) == null)
 				return;
-            }
-            _activeCharacter = Guid.Empty;
+			_activeCharacter = character.id;
+			CharacterSelected?.Invoke(this, new CharacterEventArgs(character));
 		}
 
 		public bool IsActive(Character character)
@@ -117,13 +113,10 @@ namespace Medness.Application.Entities
 
 		public void Switch(Scene scene)
 		{
-			if (_sceneRepository.Get(scene.id) != null)
-			{
-				_activeScene = scene.id;
-				SceneDisplayed?.Invoke(this, new SceneEventArgs(scene));
+			if (_sceneRepository.Get(scene.id) == null)
 				return;
-			}
-			_activeScene = Guid.Empty;
+			_activeScene = scene.id;
+			SceneDisplayed?.Invoke(this, new SceneEventArgs(scene));
 		}
 
 		public bool IsActive(Scene scene)
