@@ -1,9 +1,12 @@
-﻿namespace Medness.Business.Entities
+﻿using Medness.Business.Repositories;
+
+namespace Medness.Business.Entities
 {
 	public class Item
 	{
 		public readonly Guid id;
 		public readonly string name;
+		private IItemRepository location;
 
 		public Item(Guid identity, string itemName)
 		{
@@ -11,6 +14,16 @@
 
 			id = identity;
 			name = itemName;
+		}
+
+		public void MoveTo(IItemRepository destinationrepository)
+		{
+			if (location != null)
+			{
+				location.Remove(this);
+			}
+			destinationrepository.Add(this);
+			location = destinationrepository;
 		}
 
 		public override bool Equals(object obj)

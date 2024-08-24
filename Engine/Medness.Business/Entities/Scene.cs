@@ -1,4 +1,5 @@
-﻿using Medness.Business.ValueObjects;
+﻿using Medness.Business.Repositories;
+using Medness.Business.ValueObjects;
 
 namespace Medness.Business.Entities
 {
@@ -6,6 +7,7 @@ namespace Medness.Business.Entities
 	{
 		public readonly Guid id;
 		public readonly string name;
+		public readonly IItemRepository items;
 
 		public Scene(Guid identity, string sceneName)
 		{

@@ -1,4 +1,5 @@
-﻿using Medness.Business.ValueObjects;
+﻿using Medness.Business.Repositories;
+using Medness.Business.ValueObjects;
 
 namespace Medness.Business.Entities
 {
@@ -7,6 +8,7 @@ namespace Medness.Business.Entities
 		public readonly Guid id;
 		public readonly string name;
 		public readonly IsPlayable isPlayable;
+		public readonly IItemRepository stuff;
 
 		private Guid _sceneId; // Scene where the character is.
 
@@ -17,6 +19,7 @@ namespace Medness.Business.Entities
 			id = identity;
 			name = characterName;
 			isPlayable = new IsPlayable(playable);
+			stuff = new ItemRepository()
 			_sceneId = Guid.Empty;
 		}
 

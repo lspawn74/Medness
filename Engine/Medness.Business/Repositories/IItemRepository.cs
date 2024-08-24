@@ -2,8 +2,12 @@
 
 namespace Medness.Business.Repositories
 {
-	internal interface IItemRepository
+	public interface IItemRepository
 	{
+		/// <summary>
+		///		Adds an item into the repository.
+		/// </summary>
+		/// <param name="item">The item to add.</param>
 		public void Add(Item item);
 
 		public void Remove(Item item);
