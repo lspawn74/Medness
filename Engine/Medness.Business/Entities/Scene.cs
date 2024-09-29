@@ -1,5 +1,4 @@
 ﻿using Medness.Business.Repositories;
-using Medness.Business.ValueObjects;
 
 namespace Medness.Business.Entities
 {
@@ -9,12 +8,14 @@ namespace Medness.Business.Entities
 		public readonly string name;
 		public readonly IItemRepository items;
 
-		public Scene(Guid identity, string sceneName)
+		public Scene(Guid identity, string sceneName, IItemRepository itemRepo)
 		{
 			ArgumentNullException.ThrowIfNull(sceneName, nameof(sceneName));
+			ArgumentNullException.ThrowIfNull(itemRepo, nameof(itemRepo));
 
 			id = identity;
 			name = sceneName;
+			items = itemRepo;
 		}
 
 		public override bool Equals(object obj)

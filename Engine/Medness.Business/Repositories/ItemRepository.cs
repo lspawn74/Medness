@@ -1,9 +1,4 @@
 ﻿using Medness.Business.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Medness.Business.Repositories
 {
@@ -23,22 +18,26 @@ namespace Medness.Business.Repositories
 		/// <param name="item">The item to add.</param>
 		public void Add(Item item)
 		{
+			ArgumentNullException.ThrowIfNull(item, nameof(item));
 			_items[item.id] = item;
 		}
 
 		public Item Get(Guid id)
 		{
-			return _items[id];
+			if (_items.TryGetValue(id, out Item item))
+				return item;
+			return null;
 		}
 
 		public IEnumerable<Item> Get(string name)
 		{
-			throw new NotImplementedException();
+			return _items.Where(x => x.Value.name == name)?.Select(x => x.Value);
 		}
 
 		public void Remove(Item item)
 		{
-			throw new NotImplementedException();
+			ArgumentNullException.ThrowIfNull(item, nameof(item));
+			_items.Remove(item.id);
 		}
 		#endregion
 	}

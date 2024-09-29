@@ -1,6 +1,7 @@
 ﻿using Medness.Business.Entities;
-using System.Collections.Generic;
+using Medness.Business.Repositories;
 using System;
+using System.Collections.Generic;
 
 namespace Medness.Testing.Common.TestData
 {
@@ -18,8 +19,8 @@ namespace Medness.Testing.Common.TestData
 		{
 			testScenes = new Dictionary<string, Scene>
 			{
-				{ SceneVillage,  new Scene(Guid.NewGuid(), SceneVillage) },
-				{ SceneForest,  new Scene( Guid.NewGuid(), SceneForest) }
+				{ SceneVillage,  new Scene(Guid.NewGuid(), SceneVillage, new ItemRepository()) },
+				{ SceneForest,  new Scene( Guid.NewGuid(), SceneForest, new ItemRepository()) }
 			};
 		}
 		#endregion
@@ -27,8 +28,8 @@ namespace Medness.Testing.Common.TestData
 		#region Arguments test data
 		public static IEnumerable<object[]> GetScenesArgs()
 		{
-			yield return new object[] { Guid.NewGuid(), SceneVillage };
-			yield return new object[] { Guid.NewGuid(), SceneForest };
+			yield return new object[] { Guid.NewGuid(), SceneVillage, new ItemRepository() };
+			yield return new object[] { Guid.NewGuid(), SceneForest, new ItemRepository() };
 		}
 		#endregion
 

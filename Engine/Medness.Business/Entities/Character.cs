@@ -19,7 +19,7 @@ namespace Medness.Business.Entities
 			id = identity;
 			name = characterName;
 			isPlayable = new IsPlayable(playable);
-			stuff = new ItemRepository()
+			stuff = new ItemRepository();
 			_sceneId = Guid.Empty;
 		}
 
@@ -31,7 +31,18 @@ namespace Medness.Business.Entities
 		public bool IsInScene(Guid sceneId)
 		{
 			return _sceneId == sceneId;
-		}	
+		}
+
+		public void AssignItem(Item item)
+		{
+			if (stuff.Get(item.id) == null)
+				stuff.Add(item);
+		}
+
+		public bool HasItem(Guid itemId)
+		{
+			return (stuff.Get(itemId)  != null);
+		}
 			
 		public override bool Equals(object obj)
 		{

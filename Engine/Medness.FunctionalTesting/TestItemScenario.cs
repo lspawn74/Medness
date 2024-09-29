@@ -22,7 +22,7 @@ namespace Medness.FunctionalTesting
 		}
 
 		[TestMethod]
-		public void TestMoveItem(Scene destinationScene, Character character)
+		public void TestMoveItem()
 		{
 			// Create an item
 			Guid itemId = Guid.NewGuid();
@@ -30,6 +30,7 @@ namespace Medness.FunctionalTesting
 			Item item = new Item(itemId, itemName);
 
 			// Get scene item repository
+			Scene destinationScene = sceneData.testScenes[SceneData.SceneForest];
 			IItemRepository sceneItemRepository = destinationScene.items;
 
 			// Check that item isn't in the scene repository
@@ -44,6 +45,7 @@ namespace Medness.FunctionalTesting
 			Assert.AreEqual(sceneItemRepository.Get(itemName).FirstOrDefault(), item);
 
 			// Move item from scene to character stuff
+			Character character = characterData.testCharacters[CharacterData.AnsgardeName];
 			IItemRepository characterStuff = character.stuff;
 
 			// Check that item is not in the character's stuff
@@ -62,16 +64,17 @@ namespace Medness.FunctionalTesting
 		}
 
 		[TestMethod]
-		public void TestAssignItem(Guid itemId, string itemName, Guid characterId)
+		[DynamicData(nameof(ItemData.GetItemsArgs), typeof(ItemData), DynamicDataSourceType.Method)]
+		public void TestAssignItem(Guid itemId, string itemName)
 		{
 			// GIVEN an item and a character
 			Item item = new Item(itemId, itemName);
 			Character ansgarde = characterData.testCharacters["Ansgarde"];
 
-			// WHEN the player adds this character
+			// WHEN the player assings the item to the character
 			ansgarde.AssignItem(item);
 
-			// THEN this character is added to the game
+			// THEN this character has this item in its inventory
 			Assert.IsTrue(ansgarde.HasItem(itemId));
 		}
 	}
