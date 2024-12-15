@@ -1,5 +1,4 @@
 ﻿using Medness.Business.Entities;
-using Medness.Business.Repositories;
 using Medness.Testing.Common.TestData;
 using System;
 
@@ -20,17 +19,15 @@ namespace Medness.UnitTesting
 		public void TestSceneNull()
 		{
 			Assert.ThrowsException<ArgumentNullException>(
-				() => new Scene(Guid.NewGuid(), null, new ItemRepository()));
-			Assert.ThrowsException<ArgumentNullException>(
-				() => new Scene(Guid.NewGuid(), "testScene", null));
+				() => new Scene("TEST_ID", null));
 		}
 
 		[TestMethod]
 		public void TestSceneEquality()
 		{
-			Guid commonId = Guid.NewGuid();
-			Scene scene1 = new Scene(commonId, "sc1", new ItemRepository());
-			Scene scene2 = new Scene(commonId, "sc2", new ItemRepository());
+			string commonId = "TEST_ID";
+			Scene scene1 = new Scene(commonId, "sc1");
+			Scene scene2 = new Scene(commonId, "sc2");
 			Assert.AreEqual(scene1, scene2);
 		}
 

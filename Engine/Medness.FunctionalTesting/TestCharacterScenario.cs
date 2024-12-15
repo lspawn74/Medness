@@ -21,7 +21,7 @@ namespace Medness.FunctionalTesting
 
 		[TestMethod]
 		[DynamicData(nameof(CharacterData.GetCharactersArgs), typeof(CharacterData), DynamicDataSourceType.Method)]
-		public void TestAddPlayableCharacter(Guid id, string name, bool playable)
+		public void TestAddPlayableCharacter(string id, string name, bool playable)
 		{
 			// GIVEN a game and a playable character
 			Character character = new Character(id, name, playable);
@@ -31,21 +31,6 @@ namespace Medness.FunctionalTesting
 
 			// THEN this character is added to the game
 			Assert.IsTrue(gameData.testGame.HasCharacter(character.id));
-		}
-
-		[TestMethod]
-		[DynamicData(nameof(CharacterData.GetCharactersArgs), typeof(CharacterData), DynamicDataSourceType.Method)]
-		public void TestRemovePlayableCharacter(Guid id, string name, bool playable)
-		{
-			// GIVEN a game and a playable character in the game
-			Character character = new Character(id, name, playable);
-			gameData.testGame.AddCharacter(character);
-
-			// WHEN the player removes this character
-			gameData.testGame.RemoveCharacter(character);
-
-			// THEN this character is removed from the game
-			Assert.IsFalse(gameData.testGame.HasCharacter(character.id));
 		}
 
 		[TestMethod]

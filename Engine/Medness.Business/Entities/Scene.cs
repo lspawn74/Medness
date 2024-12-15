@@ -1,22 +1,50 @@
-﻿using Medness.Business.Repositories;
+﻿using Medness.Business.Event.Args;
+using Medness.Business.Interfaces;
 
 namespace Medness.Business.Entities
 {
-	public class Scene
+    public class Scene : IStuffHolder
 	{
-		public readonly Guid id;
+		public readonly string id;
 		public readonly string name;
-		public readonly IItemRepository items;
 
-		public Scene(Guid identity, string sceneName, IItemRepository itemRepo)
+		public Scene(string identity, string sceneName)
 		{
 			ArgumentNullException.ThrowIfNull(sceneName, nameof(sceneName));
-			ArgumentNullException.ThrowIfNull(itemRepo, nameof(itemRepo));
 
 			id = identity;
 			name = sceneName;
-			items = itemRepo;
 		}
+
+
+		#region IStuffHolder
+		public void AcquireStuff(Item item)
+		{
+			ArgumentNullException.ThrowIfNull(item, nameof(item));
+			item.MoveTo(this);
+		}
+
+		public bool Holds(Item item)
+		{
+			ArgumentNullException.ThrowIfNull(item, nameof(item));
+			return item.GetHolder() == this;
+		}
+		#endregion
+
+		#region Actions
+		public void Activates()
+		{
+			OnActivated();
+		}
+		#endregion
+
+		#region Events
+		public event EventHandler<SceneEventArgs> Activated;
+		private void OnActivated()
+		{
+			Activated?.Invoke(this, new SceneEventArgs(this));
+		}
+		#endregion
 
 		public override bool Equals(object obj)
 		{

@@ -1,14 +1,13 @@
-﻿using Medness.Application.Interfaces;
-using Medness.Business.Entities;
+﻿using Medness.Business.Entities;
+using Medness.Business.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Medness.Testing.Common.Repositories
 {
 	public class SceneRepository : ISceneRepository
 	{
-		private Dictionary<Guid, Scene> _scenes = new Dictionary<Guid, Scene>();
+		private Dictionary<string, Scene> _scenes = new Dictionary<string, Scene>();
 
 		public void Add(Scene scene)
 		{
@@ -22,16 +21,11 @@ namespace Medness.Testing.Common.Repositories
 			_scenes.Remove(scene.id);
 		}
 
-		public Scene Get(Guid id)
+		public Scene Get(string id)
 		{
 			if (_scenes.TryGetValue(id, out Scene scene))
 				return scene;
 			return null;
-		}
-
-		public IEnumerable<Scene> Get(string name)
-		{
-			return _scenes.Where(x => x.Value.name == name)?.Select(x => x.Value);
 		}
 	}
 }

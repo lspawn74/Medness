@@ -1,7 +1,5 @@
 ﻿using Medness.Business.Entities;
-using Medness.Business.Repositories;
 using Medness.Testing.Common.TestData;
-using System;
 
 namespace Medness.FunctionalTesting
 {
@@ -18,30 +16,24 @@ namespace Medness.FunctionalTesting
 
 		[TestMethod]
 		[DynamicData(nameof(SceneData.GetScenesArgs), typeof(SceneData), DynamicDataSourceType.Method)]
-		public void TestAddRemoveScene(Guid id, string name, IItemRepository itemRepo)
+		public void TestAddRemoveScene(string id, string name)
 		{
 			// GIVEN a game and a scene
-			Scene newScene = new Scene(id, name, itemRepo);
+			Scene newScene = new Scene(id, name);
 
 			// WHEN the scene is added to the game
 			gameData.testGame.AddScene(newScene);
 
 			// THEN this scene is added to the list of playable game's scenes
 			Assert.IsTrue(gameData.testGame.HasScene(id));
-
-			// WHEN the scene is removed from the game
-			gameData.testGame.RemoveScene(newScene);
-
-			// THEN this scene is removed from the list of playable game scenes
-			Assert.IsFalse(gameData.testGame.HasScene(id));
 		}
 
 		[TestMethod]
 		[DynamicData(nameof(SceneData.GetScenesArgs), typeof(SceneData), DynamicDataSourceType.Method)]
-		public void TestSwitchScene(Guid id, string name, IItemRepository itemRepo)
+		public void TestSwitchScene(string id, string name)
 		{
 			// GIVEN a game and a scene
-			Scene newScene = new Scene(id, name, itemRepo);
+			Scene newScene = new Scene(id, name);
 
 			// WHEN the scene is displayed and it's not a game's scene
 			gameData.testGame.Switch(newScene);

@@ -1,8 +1,8 @@
 ﻿using Medness.Business.Entities;
 
-namespace Medness.Application.Events.Args
+namespace Medness.Business.Event.Args
 {
-    public class CharacterEventArgs : EventArgs
+	public class CharacterEventArgs : EventArgs
     {
         public readonly Character Character;
 

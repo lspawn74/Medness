@@ -1,8 +1,5 @@
 ﻿using Medness.Business.Entities;
 using Medness.Testing.Common.TestData;
-using Medness.Business.Repositories;
-using System;
-using System.Linq;
 
 namespace Medness.FunctionalTesting
 {
@@ -25,57 +22,51 @@ namespace Medness.FunctionalTesting
 		public void TestMoveItem()
 		{
 			// Create an item
-			Guid itemId = Guid.NewGuid();
+			string itemId = "TEST_ID";
 			string itemName = "Test Item";
 			Item item = new Item(itemId, itemName);
 
 			// Get scene item repository
-			Scene destinationScene = sceneData.testScenes[SceneData.SceneForest];
-			IItemRepository sceneItemRepository = destinationScene.items;
+			Scene scene = sceneData.testScenes[SceneData.SceneForest];
 
 			// Check that item isn't in the scene repository
-			Assert.IsNull(sceneItemRepository.Get(itemId));
-			Assert.AreEqual(sceneItemRepository.Get(itemName).Count(), 0);
+			Assert.AreEqual(scene.Holds(item), false);
 
 			// Put item in the scene
-			item.MoveTo(sceneItemRepository);
+			item.MoveTo(scene);
 
 			// Check that item is in the scene
-			Assert.AreEqual(sceneItemRepository.Get(itemId), item);
-			Assert.AreEqual(sceneItemRepository.Get(itemName).FirstOrDefault(), item);
+			Assert.AreEqual(scene.Holds(item), true);
 
 			// Move item from scene to character stuff
 			Character character = characterData.testCharacters[CharacterData.AnsgardeName];
-			IItemRepository characterStuff = character.stuff;
 
 			// Check that item is not in the character's stuff
-			Assert.IsNull(characterStuff.Get(itemId));
-			Assert.AreEqual(characterStuff.Get(itemName).Count(), 0);
+			Assert.AreEqual(character.Holds(item), false);
 
-			item.MoveTo(characterStuff);
+			// Move item to character's stuff
+			item.MoveTo(character);
 
 			// Check that item is no more in the scene repository
-			Assert.IsNull(sceneItemRepository.Get(itemId));
-			Assert.AreEqual(sceneItemRepository.Get(itemName).Count(), 0);
+			Assert.AreEqual(scene.Holds(item), false);
 
 			// Check that item is in the character stuff
-			Assert.AreEqual(characterStuff.Get(itemId), item);
-			Assert.AreEqual(characterStuff.Get(itemName).FirstOrDefault(), item);
+			Assert.AreEqual(character.Holds(item), true);
 		}
 
 		[TestMethod]
 		[DynamicData(nameof(ItemData.GetItemsArgs), typeof(ItemData), DynamicDataSourceType.Method)]
-		public void TestAssignItem(Guid itemId, string itemName)
+		public void TestAssignItem(string itemId, string itemName)
 		{
 			// GIVEN an item and a character
 			Item item = new Item(itemId, itemName);
 			Character ansgarde = characterData.testCharacters["Ansgarde"];
 
 			// WHEN the player assings the item to the character
-			ansgarde.AssignItem(item);
+			ansgarde.AcquireStuff(item);
 
 			// THEN this character has this item in its inventory
-			Assert.IsTrue(ansgarde.HasItem(itemId));
+			Assert.IsTrue(ansgarde.Holds(item));
 		}
 	}
 }

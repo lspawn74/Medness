@@ -1,28 +1,39 @@
-﻿using Medness.Application.Events.Args;
-using Medness.Application.Interfaces;
-using Medness.Business.Entities;
+﻿using Medness.Business.Entities;
+using Medness.Business.Interfaces;
 
 namespace Medness.Application.Entities
 {
 	public class Game
     {
         private Player player;
-        private ICharacterRepository _characterRepository;
-        private ISceneRepository _sceneRepository;
-        private Guid _activeCharacter;
-        private Guid _activeScene;
+        public readonly ICharacterRepository characterRepository;
+        public readonly ISceneRepository sceneRepository;
+		public readonly IItemRepository itemRepository;
+		public readonly IDialogueItemRepository dialogueItemRepository;
+        private string _activeCharacter;
+        private string _activeScene;
 
         #region Constructors
-        public Game(Player gamePlayer, ICharacterRepository characterRepository, ISceneRepository sceneRepository)
+        public Game(
+			Player gamePlayer,
+			ICharacterRepository characterRepository,
+			ISceneRepository sceneRepository,
+			IItemRepository itemRepository,
+			IDialogueItemRepository dialogueItemRepository)
         {
             ArgumentNullException.ThrowIfNull(gamePlayer);
             ArgumentNullException.ThrowIfNull(characterRepository);
             ArgumentNullException.ThrowIfNull(sceneRepository);
-            player = gamePlayer;
-            _characterRepository = characterRepository;
-            _activeCharacter = Guid.Empty;
-            _sceneRepository = sceneRepository;
-            _activeScene = Guid.Empty;
+			ArgumentNullException.ThrowIfNull(itemRepository);
+			ArgumentNullException.ThrowIfNull(dialogueItemRepository);
+
+			player = gamePlayer;
+            this.characterRepository = characterRepository;
+            _activeCharacter = string.Empty;
+            this.sceneRepository = sceneRepository;
+			this.itemRepository = itemRepository;
+			this.dialogueItemRepository = dialogueItemRepository;
+            _activeScene = string.Empty;
         }
         #endregion
 
@@ -45,27 +56,19 @@ namespace Medness.Application.Entities
         #region Characters methods
         public void AddCharacter(Character character)
         {
-			_characterRepository.Add(character);
-            CharacterAdded?.Invoke(this, new CharacterEventArgs(character));
+			characterRepository.Add(character);
 		}
 
-        public void RemoveCharacter(Character character)
+		public bool HasCharacter(string characterId)
         {
-            _characterRepository.Remove(character);
-			CharacterRemoved?.Invoke(this, new CharacterEventArgs(character));
-		}
-
-		public bool HasCharacter(Guid characterId)
-        {
-            return _characterRepository.Get(characterId) != null;
+            return characterRepository.Get(characterId) != null;
         }
 
 		public void Switch(Character character)
 		{
-			if (_characterRepository.Get(character.id) == null)
+			if (characterRepository.Get(character.id) == null)
 				return;
 			_activeCharacter = character.id;
-			CharacterSelected?.Invoke(this, new CharacterEventArgs(character));
 		}
 
 		public bool IsActive(Character character)
@@ -82,53 +85,44 @@ namespace Medness.Application.Entities
 				throw new ArgumentException("No scene with Id " + scene.id + " in game.");
 
             character.EntersScene(scene.id);
-			CharacterEnteredScene?.Invoke(this, new CharacterEventArgs(character));
 		}
 		#endregion
 
-		#region Characters events
-		public event EventHandler<CharacterEventArgs>? CharacterAdded;
-		public event EventHandler<CharacterEventArgs>? CharacterRemoved;
-		public event EventHandler<CharacterEventArgs>? CharacterSelected;
-		public event EventHandler<CharacterEventArgs>? CharacterEnteredScene;
-		#endregion
-
-		#region scene methods
+		#region Scene methods
 		public void AddScene(Scene scene)
 		{
-			_sceneRepository.Add(scene);
-            SceneAdded?.Invoke(this, new SceneEventArgs(scene));
+			sceneRepository.Add(scene);
 		}
 
-		public void RemoveScene(Scene scene)
+		public bool HasScene(string sceneId)
 		{
-			_sceneRepository.Remove(scene);
-			SceneRemoved?.Invoke(this, new SceneEventArgs(scene));
-		}
-
-		public bool HasScene(Guid sceneId)
-		{
-			return _sceneRepository.Get(sceneId) != null;
+			return sceneRepository.Get(sceneId) != null;
 		}
 
 		public void Switch(Scene scene)
 		{
-			if (_sceneRepository.Get(scene.id) == null)
+			if (sceneRepository.Get(scene.id) == null)
 				return;
 			_activeScene = scene.id;
-			SceneDisplayed?.Invoke(this, new SceneEventArgs(scene));
+			scene.Activates();
 		}
 
 		public bool IsActive(Scene scene)
 		{
 			return _activeScene == scene.id;
 		}
-		#endregion
 
-		#region Scene events
-		public event EventHandler<SceneEventArgs>? SceneAdded;
-		public event EventHandler<SceneEventArgs>? SceneRemoved;
-		public event EventHandler<SceneEventArgs>? SceneDisplayed;
+		#endregion
+		#region Items methods
+		public void AddItem(Item item)
+		{
+			itemRepository.Add(item);
+		}
+
+		public bool HasItem(string itemId)
+		{
+			return itemRepository.Get(itemId) != null;
+		}
 		#endregion
 	}
 }

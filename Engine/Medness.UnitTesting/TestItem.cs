@@ -18,13 +18,13 @@ namespace Medness.UnitTesting
 		[TestMethod]
 		public void TestItemNull()
 		{
-			Assert.ThrowsException<ArgumentNullException>(() => new Item(Guid.NewGuid(), null));
+			Assert.ThrowsException<ArgumentNullException>(() => new Item("ID", null));
 		}
 
 		[TestMethod]
 		public void TestItemEquality()
 		{
-			Guid commonId = Guid.NewGuid();
+			string commonId = "COMMON_ID";
 			Item Item1 = new Item(commonId, "item1");
 			Item Item2 = new Item(commonId, "item2");
 			Assert.AreEqual(Item1, Item2);

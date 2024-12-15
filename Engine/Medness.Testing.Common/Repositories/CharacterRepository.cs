@@ -1,14 +1,13 @@
-﻿using Medness.Application.Interfaces;
-using Medness.Business.Entities;
+﻿using Medness.Business.Entities;
+using Medness.Business.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Medness.Testing.Common.Repositories
 {
 	public class CharacterRepository : ICharacterRepository
 	{
-		private Dictionary<Guid, Character> _characters = new Dictionary<Guid, Character>();
+		private Dictionary<string, Character> _characters = new Dictionary<string, Character>();
 
 		public void Add(Character character)
 		{
@@ -22,16 +21,11 @@ namespace Medness.Testing.Common.Repositories
 			_characters.Remove(character.id);
 		}
 
-		public Character Get(Guid id)
+		public Character Get(string id)
 		{
 			if (_characters.TryGetValue(id, out Character character))
 				return character;
 			return null;
-		}
-
-		public IEnumerable<Character> Get(string name)
-		{
-			return _characters.Where(x => x.Value.name == name)?.Select(x => x.Value);
 		}
 	}
 }

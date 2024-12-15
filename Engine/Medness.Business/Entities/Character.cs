@@ -1,49 +1,61 @@
-﻿using Medness.Business.Repositories;
+﻿using Medness.Business.Event.Args;
+using Medness.Business.Interfaces;
 using Medness.Business.ValueObjects;
 
 namespace Medness.Business.Entities
 {
-	public class Character
+    public class Character : IStuffHolder
 	{
-		public readonly Guid id;
+		public readonly string id;
 		public readonly string name;
 		public readonly IsPlayable isPlayable;
-		public readonly IItemRepository stuff;
 
-		private Guid _sceneId; // Scene where the character is.
+		private string _sceneId; // Scene where the character is.
 
-        public Character(Guid identity, string characterName, bool playable)
+        public Character(string identity, string characterName, bool playable)
         {
 			ArgumentNullException.ThrowIfNull(characterName, nameof(characterName));
 
 			id = identity;
 			name = characterName;
 			isPlayable = new IsPlayable(playable);
-			stuff = new ItemRepository();
-			_sceneId = Guid.Empty;
+			_sceneId = string.Empty;
 		}
 
-		public void EntersScene(Guid destinationSceneId)
+		public void EntersScene(string destinationSceneId)
 		{
 			_sceneId = destinationSceneId;
+			OnEnteredScene();
 		}
 
-		public bool IsInScene(Guid sceneId)
+		public bool IsInScene(string sceneId)
 		{
 			return _sceneId == sceneId;
 		}
 
-		public void AssignItem(Item item)
+		#region IStuffHolder
+		public void AcquireStuff(Item item)
 		{
-			if (stuff.Get(item.id) == null)
-				stuff.Add(item);
+			ArgumentNullException.ThrowIfNull(item, nameof(item));
+			item.MoveTo(this);
 		}
 
-		public bool HasItem(Guid itemId)
+		public bool Holds(Item item)
 		{
-			return (stuff.Get(itemId)  != null);
+			ArgumentNullException.ThrowIfNull(item, nameof(item));
+			return item.GetHolder() == this;
 		}
-			
+		#endregion
+
+		#region Events
+		public event EventHandler<CharacterEventArgs> EnteredScene;
+		private void OnEnteredScene()
+		{
+			EnteredScene?.Invoke(this, new CharacterEventArgs(this));
+		}
+		#endregion
+
+		#region Equality
 		public override bool Equals(object obj)
 		{
 			if (obj == null)
@@ -59,5 +71,6 @@ namespace Medness.Business.Entities
 		{
 			return id.GetHashCode();
 		}
+		#endregion
 	}
 }

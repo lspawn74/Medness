@@ -1,5 +1,4 @@
 ﻿using Medness.Business.Entities;
-using System;
 using System.Collections.Generic;
 
 namespace Medness.Testing.Common.TestData
@@ -19,9 +18,9 @@ namespace Medness.Testing.Common.TestData
 		{
 			testItems = new Dictionary<string, Item>
 			{
-				{ RopeName,  new Item(Guid.NewGuid(), RopeName ) },
-				{ KeyName,  new Item( Guid.NewGuid(), KeyName ) },
-				{ AlcoholGlassName , new Item(Guid.NewGuid(), AlcoholGlassName) },
+				{ RopeName,  new Item("ROPE", RopeName ) },
+				{ KeyName,  new Item( "KEY", KeyName ) },
+				{ AlcoholGlassName , new Item("ALCOHOL", AlcoholGlassName) },
 			};
 		}
 		#endregion
@@ -29,9 +28,9 @@ namespace Medness.Testing.Common.TestData
 		#region Arguments test data
 		public static IEnumerable<object[]> GetItemsArgs()
 		{
-			yield return new object[] { Guid.NewGuid(), RopeName };
-			yield return new object[] { Guid.NewGuid(), KeyName };
-			yield return new object[] { Guid.NewGuid(), AlcoholGlassName };
+			yield return new object[] { "ROPE", RopeName };
+			yield return new object[] { "KEY", KeyName };
+			yield return new object[] { "ALCOHOL", AlcoholGlassName };
 		}
 		#endregion
 	}

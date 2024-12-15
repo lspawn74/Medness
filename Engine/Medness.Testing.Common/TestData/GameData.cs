@@ -16,16 +16,20 @@ namespace Medness.Testing.Common.TestData
 			testGame = new Game(
 				new Player(PlayerIdentity.Computer),
 				new CharacterRepository(),
-				new SceneRepository());
+				new SceneRepository(),
+				new ItemRepository(),
+				new DialogueItemRepository());
 		}
 		#endregion
 
 		#region Arguments test data
 		public static IEnumerable<object[]> GetGameArgs()
 		{
-			yield return new object[] { null, new CharacterRepository(), new SceneRepository() };
-			yield return new object[] { new Player(PlayerIdentity.Computer), null, new SceneRepository() };
-			yield return new object[] { new Player(PlayerIdentity.Computer), new CharacterRepository(), null };
+			yield return new object[] { null, new CharacterRepository(), new SceneRepository(), new ItemRepository(), new DialogueItemRepository() };
+			yield return new object[] { new Player(PlayerIdentity.Computer), null, new SceneRepository(), new ItemRepository(), new DialogueItemRepository() };
+			yield return new object[] { new Player(PlayerIdentity.Computer), new CharacterRepository(), null, new ItemRepository(), new DialogueItemRepository() };
+			yield return new object[] { new Player(PlayerIdentity.Computer), new CharacterRepository(), new SceneRepository(), null, new DialogueItemRepository() };
+			yield return new object[] { new Player(PlayerIdentity.Computer), new CharacterRepository(), new SceneRepository(), new ItemRepository(), null };
 		}
 		#endregion
 

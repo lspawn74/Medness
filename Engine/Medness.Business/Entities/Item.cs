@@ -1,31 +1,44 @@
-﻿using Medness.Business.Repositories;
+﻿using Medness.Business.Event.Args;
+using Medness.Business.Interfaces;
 
 namespace Medness.Business.Entities
 {
 	public class Item
 	{
-		public readonly Guid id;
+		public readonly string id;
 		public readonly string name;
-		private IItemRepository location;
+		private IStuffHolder holder;
 
-		public Item(Guid identity, string itemName)
+		public Item(string identity, string itemName)
 		{
 			ArgumentNullException.ThrowIfNull(itemName, nameof(itemName));
-
 			id = identity;
 			name = itemName;
 		}
 
-		public void MoveTo(IItemRepository destinationrepository)
+		#region Actions
+		public void MoveTo(IStuffHolder newHolder)
 		{
-			if (location != null)
-			{
-				location.Remove(this);
-			}
-			destinationrepository.Add(this);
-			location = destinationrepository;
+			ArgumentNullException.ThrowIfNull(newHolder, nameof(newHolder));
+			holder = newHolder;
+			OnMoved();
 		}
 
+		public IStuffHolder GetHolder()
+		{
+			return holder;
+		}
+		#endregion
+
+		#region Events
+		public event EventHandler<ItemEventArgs> Moved;
+		private void OnMoved()
+		{
+			Moved?.Invoke(this, new ItemEventArgs(this));
+		}
+		#endregion
+
+		#region Equality
 		public override bool Equals(object obj)
 		{
 			if (obj == null)
@@ -41,5 +54,6 @@ namespace Medness.Business.Entities
 		{
 			return id.GetHashCode();
 		}
+		#endregion
 	}
 }

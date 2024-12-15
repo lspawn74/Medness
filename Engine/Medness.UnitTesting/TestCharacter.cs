@@ -19,13 +19,13 @@ namespace Medness.UnitTesting
 		public void TestCharacterNull()
 		{
 			Assert.ThrowsException<ArgumentNullException>(
-				() => new Character(Guid.NewGuid(), null, true));
+				() => new Character("TEST_ID", null, true));
 		}
 
 		[TestMethod]
 		public void TestCharacterEquality()
 		{
-			Guid commonId = Guid.NewGuid();
+			string commonId = "TEST_ID";
 			Character character1 = new Character(commonId, "char1", true);
 			Character character2 = new Character(commonId, "char2", false);
 			Assert.AreEqual(character1, character2);
@@ -49,9 +49,9 @@ namespace Medness.UnitTesting
 		[TestMethod]
 		public void TestCharacterScene()
 		{
-			Guid sceneGuid = Guid.NewGuid();
-			characterData.testCharacters[CharacterData.AnsgardeName].EntersScene(sceneGuid);
-			Assert.IsTrue(characterData.testCharacters[CharacterData.AnsgardeName].IsInScene(sceneGuid));
+			string scenestring = "TEST_ID";
+			characterData.testCharacters[CharacterData.AnsgardeName].EntersScene(scenestring);
+			Assert.IsTrue(characterData.testCharacters[CharacterData.AnsgardeName].IsInScene(scenestring));
 		}
 	}
 }
