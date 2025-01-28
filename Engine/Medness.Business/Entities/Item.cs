@@ -20,8 +20,14 @@ namespace Medness.Business.Entities
 		public void MoveTo(IStuffHolder newHolder)
 		{
 			ArgumentNullException.ThrowIfNull(newHolder, nameof(newHolder));
+			IStuffHolder previousHolder = holder;
 			holder = newHolder;
-			OnMoved();
+			OnMoved(previousHolder, newHolder);
+		}
+
+		public void Use()
+		{
+			OnUsed();
 		}
 
 		public IStuffHolder GetHolder()
@@ -31,10 +37,16 @@ namespace Medness.Business.Entities
 		#endregion
 
 		#region Events
-		public event EventHandler<ItemEventArgs> Moved;
-		private void OnMoved()
+		public event EventHandler<ItemMoveEventArgs> Moved;
+		private void OnMoved(IStuffHolder previousHolder, IStuffHolder newHolder)
 		{
-			Moved?.Invoke(this, new ItemEventArgs(this));
+			Moved?.Invoke(this, new ItemMoveEventArgs(this, previousHolder, newHolder));
+		}
+
+		public event EventHandler<ItemEventArgs> Used;
+		private void OnUsed()
+		{
+			Used?.Invoke(this, new ItemEventArgs(this));
 		}
 		#endregion
 

@@ -5,7 +5,7 @@ namespace Medness.Business.Entities
 {
     public class Scene : IStuffHolder
 	{
-		public readonly string id;
+		public string id { get; }
 		public readonly string name;
 
 		public Scene(string identity, string sceneName)

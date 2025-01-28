@@ -6,7 +6,7 @@ namespace Medness.Business.Entities
 {
     public class Character : IStuffHolder
 	{
-		public readonly string id;
+		public string id { get; }
 		public readonly string name;
 		public readonly IsPlayable isPlayable;
 

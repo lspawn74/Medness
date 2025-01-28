@@ -7,16 +7,21 @@ namespace Medness.Business.Entities
 {
 	public class DialogueItem
     {
-        /// <summary>Text of the dialogue.</summary>
+        /// <summary>Id of the dialogue.</summary>
         public readonly string id;
 
-        private IItemRepository _itemRepository;
+        /// <summary>Character saying the dialogue item.</summary>
+        public readonly Character character;
+
+        private IEnumerable<DialogueTrigger> _triggers;
+		private IItemRepository _itemRepository;
         private ICharacterRepository _characterRepository;
         private ISceneRepository _sceneRepository;
         private IDialogueItemRepository _dialogueItemRepository;
 
         public DialogueItem(
             string dialogueId,
+            Character sayingCharacter,
             IEnumerable<DialogueTrigger> triggers,
             IItemRepository itemRepository,
             ICharacterRepository characterRepository,
@@ -24,6 +29,7 @@ namespace Medness.Business.Entities
             IDialogueItemRepository dialogueItemRepository)
         {
             ArgumentNullException.ThrowIfNull(id, nameof(id));
+            ArgumentNullException.ThrowIfNull(sayingCharacter, nameof(sayingCharacter));
             ArgumentNullException.ThrowIfNull(triggers, nameof(triggers));
             ArgumentNullException.ThrowIfNull(itemRepository, nameof(itemRepository));
             ArgumentNullException.ThrowIfNull(characterRepository, nameof(characterRepository));
@@ -31,6 +37,8 @@ namespace Medness.Business.Entities
             ArgumentNullException.ThrowIfNull(dialogueItemRepository, nameof(dialogueItemRepository));
 
             id = dialogueId;
+            character = sayingCharacter;
+            _triggers = triggers;
             _itemRepository = itemRepository;
             _characterRepository = characterRepository;
             _sceneRepository = sceneRepository;
@@ -96,6 +104,17 @@ namespace Medness.Business.Entities
 						item.Moved += Item_Moved;
                     }
 					break;
+				case DialogueItemTriggerType.ItemUsed:
+					item = _itemRepository.Get(trigger.objectId);
+					if (item == null)
+					{
+						throw new ArgumentException($"Item {trigger.objectId} not declared in items repository.");
+					}
+					else
+					{
+						item.Used += Item_Used;
+					}
+					break;
 				case DialogueItemTriggerType.ChosenDialogue:
 					dialogueItem = _dialogueItemRepository.Get(trigger.objectId);
 					if (dialogueItem == null)
@@ -129,7 +148,16 @@ namespace Medness.Business.Entities
 			OnPlayStarted();
 		}
 
-		private void Item_Moved(object sender, ItemEventArgs e)
+		private void Item_Moved(object sender, ItemMoveEventArgs e)
+		{
+            // Play dialogue only if the item has been moved from the a given stuff holder to another given stuff holder.
+            DialogueTrigger dialogueTrigger = _triggers
+                .FirstOrDefault(t => t.objectId == e.Item.id && t.argument1Id == e.Source.id && t.argument2Id == e.Destination.id);
+			if (dialogueTrigger != null )
+                OnPlayStarted();
+		}
+
+		private void Item_Used(object sender, ItemEventArgs e)
 		{
 			OnPlayStarted();
 		}
