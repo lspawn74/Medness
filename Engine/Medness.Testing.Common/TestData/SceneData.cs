@@ -1,4 +1,5 @@
 ﻿using Medness.Business.Entities;
+using Medness.Testing.Common.Repositories;
 using System.Collections.Generic;
 
 namespace Medness.Testing.Common.TestData
@@ -8,20 +9,21 @@ namespace Medness.Testing.Common.TestData
 		#region Constants
 		public const string SceneVillageId = "SC_VILLAGE";
 		public const string SceneForestId = "SC_FOREST";
+		public const string SceneBarId = "SC_BAR";
 		public const string SceneVillage = "Village";
-		public const string SceneForest = "Forest";
+		public const string SceneForest = "Forêt";
+		public const string SceneBar = "Auberge";
 		#endregion
 
 		#region Objects test data
-		public Dictionary<string, Scene> testScenes;
+		public SceneRepository testScenes;
 
 		public SceneData()
 		{
-			testScenes = new Dictionary<string, Scene>
-			{
-				{ SceneVillage,  new Scene(SceneVillageId, SceneVillage) },
-				{ SceneForest,  new Scene( SceneForestId, SceneForest) }
-			};
+			testScenes = new SceneRepository();
+			testScenes.Add(new Scene(SceneVillageId, SceneVillage));
+			testScenes.Add(new Scene(SceneForestId, SceneForest));
+			testScenes.Add(new Scene(SceneBarId, SceneBar));
 		}
 		#endregion
 
@@ -30,6 +32,7 @@ namespace Medness.Testing.Common.TestData
 		{
 			yield return new object[] { SceneVillageId, SceneVillage };
 			yield return new object[] { SceneForestId, SceneForest };
+			yield return new object[] { SceneBarId, SceneBar };
 		}
 		#endregion
 

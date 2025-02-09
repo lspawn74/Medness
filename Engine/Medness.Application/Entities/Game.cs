@@ -50,7 +50,7 @@ namespace Medness.Application.Entities
         #endregion
 
         #region Player events
-        public event EventHandler? PlayerSwitched;
+        public event EventHandler PlayerSwitched;
         #endregion
 
         #region Characters methods

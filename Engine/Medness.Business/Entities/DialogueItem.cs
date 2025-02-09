@@ -28,7 +28,7 @@ namespace Medness.Business.Entities
             ISceneRepository sceneRepository,
             IDialogueItemRepository dialogueItemRepository)
         {
-            ArgumentNullException.ThrowIfNull(id, nameof(id));
+            ArgumentNullException.ThrowIfNull(dialogueId, nameof(dialogueId));
             ArgumentNullException.ThrowIfNull(sayingCharacter, nameof(sayingCharacter));
             ArgumentNullException.ThrowIfNull(triggers, nameof(triggers));
             ArgumentNullException.ThrowIfNull(itemRepository, nameof(itemRepository));
@@ -132,15 +132,29 @@ namespace Medness.Business.Entities
 			}
 		}
 
-		#region Events handling
-		private void Scene_Activated(object sender, SceneEventArgs e)
-		{
-			OnPlayStarted();
-		}
+        #region Events handling
+        private void Scene_Activated(object sender, SceneEventArgs e)
+        {
+            // Find triggers involving a scene activation
+            DialogueTrigger sceneActivationTrigger = _triggers.FirstOrDefault(t => t.objectId == e.Scene.id && t.type == DialogueItemTriggerType.SceneActivated);
+            if (sceneActivationTrigger != null)
+                OnPlayStarted();
+        }
 
 		private void Character_EnteredScene(object sender, CharacterEventArgs e)
 		{
-			OnPlayStarted();
+            // Find triggers involving the character and the event of entering a scene
+			IEnumerable<DialogueTrigger> filteredTriggers = _triggers.Where(t => t.objectId == e.Character.id && t.type == DialogueItemTriggerType.CharacterEnters);
+            
+            // Play the dialogue if the character actually entered the scene given in argument of the trigger
+            foreach (DialogueTrigger trigger in filteredTriggers)
+            {
+                if (e.Character.IsInScene(trigger.argument1Id))
+                {
+                    OnPlayStarted();
+                    return;
+                }
+            }
 		}
 
 		private void DialogueItem_PlayFinished(object sender, DialogueItemEventArgs e)
@@ -150,7 +164,7 @@ namespace Medness.Business.Entities
 
 		private void Item_Moved(object sender, ItemMoveEventArgs e)
 		{
-            // Play dialogue only if the item has been moved from the a given stuff holder to another given stuff holder.
+            // Play dialogue only if the item has been moved from a given stuff holder to another given stuff holder.
             DialogueTrigger dialogueTrigger = _triggers
                 .FirstOrDefault(t => t.objectId == e.Item.id && t.argument1Id == e.Source.id && t.argument2Id == e.Destination.id);
 			if (dialogueTrigger != null )

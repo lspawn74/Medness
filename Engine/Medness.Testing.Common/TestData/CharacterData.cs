@@ -1,4 +1,5 @@
 ﻿using Medness.Business.Entities;
+using Medness.Testing.Common.Repositories;
 using System.Collections.Generic;
 
 namespace Medness.Testing.Common.TestData
@@ -19,18 +20,16 @@ namespace Medness.Testing.Common.TestData
 		#endregion
 
 		#region Objects test data
-		public Dictionary<string, Character> testCharacters;
+		public CharacterRepository testCharacters;
 
 		public CharacterData()
 		{
-			testCharacters = new Dictionary<string, Character>
-			{
-				{ AnsgardeName,  new Character(AnsgardeId, AnsgardeName, true ) },
-				{ AldemareName,  new Character( AldemareId, AldemareName, true ) },
-				{ RobinName , new Character(RobinId, RobinName, true) },
-				{ MorgauseName,  new Character(MorgauseId, MorgauseName, true) },
-				{ BarTenderName,  new Character(BarTenderId, BarTenderName, false) }
-			};
+			testCharacters = new CharacterRepository();
+			testCharacters.Add(new Character(AnsgardeId, AnsgardeName, true));
+			testCharacters.Add(new Character(AldemareId, AldemareName, true));
+			testCharacters.Add(new Character(RobinId, RobinName, true));
+			testCharacters.Add(new Character(MorgauseId, MorgauseName, true));
+			testCharacters.Add(new Character(BarTenderId, BarTenderName, false));
 		}
 		#endregion
 

@@ -27,7 +27,7 @@ namespace Medness.FunctionalTesting
 			Item item = new Item(itemId, itemName);
 
 			// Get scene item repository
-			Scene scene = sceneData.testScenes[SceneData.SceneForest];
+			Scene scene = sceneData.testScenes.Get(SceneData.SceneForestId);
 
 			// Check that item isn't in the scene repository
 			Assert.AreEqual(scene.Holds(item), false);
@@ -39,7 +39,7 @@ namespace Medness.FunctionalTesting
 			Assert.AreEqual(scene.Holds(item), true);
 
 			// Move item from scene to character stuff
-			Character character = characterData.testCharacters[CharacterData.AnsgardeName];
+			Character character = characterData.testCharacters.Get(CharacterData.AnsgardeId);
 
 			// Check that item is not in the character's stuff
 			Assert.AreEqual(character.Holds(item), false);
@@ -60,7 +60,7 @@ namespace Medness.FunctionalTesting
 		{
 			// GIVEN an item and a character
 			Item item = new Item(itemId, itemName);
-			Character ansgarde = characterData.testCharacters["Ansgarde"];
+			Character ansgarde = characterData.testCharacters.Get(CharacterData.AnsgardeId);
 
 			// WHEN the player assings the item to the character
 			ansgarde.AcquireStuff(item);

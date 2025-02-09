@@ -35,23 +35,24 @@ namespace Medness.UnitTesting
 		public void TestCharacterInequality()
 		{
 			Assert.AreNotEqual(
-				characterData.testCharacters[CharacterData.AnsgardeName],
-				characterData.testCharacters[CharacterData.AldemareName]);
+				characterData.testCharacters.Get(CharacterData.AnsgardeId),
+				characterData.testCharacters.Get(CharacterData.AldemareId));
 		}
 
 		[TestMethod]
 		public void TestCharacterPlayablility()
 		{
-			Assert.IsTrue(characterData.testCharacters[CharacterData.AnsgardeName].isPlayable.Equals(true));
-			Assert.IsFalse(characterData.testCharacters[CharacterData.BarTenderName].isPlayable.Equals(true));
+			Assert.IsTrue(characterData.testCharacters.Get(CharacterData.AnsgardeId).isPlayable.Equals(true));
+			Assert.IsFalse(characterData.testCharacters.Get(CharacterData.BarTenderId).isPlayable.Equals(true));
 		}
 
 		[TestMethod]
 		public void TestCharacterScene()
 		{
 			string scenestring = "TEST_ID";
-			characterData.testCharacters[CharacterData.AnsgardeName].EntersScene(scenestring);
-			Assert.IsTrue(characterData.testCharacters[CharacterData.AnsgardeName].IsInScene(scenestring));
+			Character ansgardeCharacter = characterData.testCharacters.Get(CharacterData.AnsgardeId);
+			ansgardeCharacter.EntersScene(scenestring);
+			Assert.IsTrue(ansgardeCharacter.IsInScene(scenestring));
 		}
 	}
 }

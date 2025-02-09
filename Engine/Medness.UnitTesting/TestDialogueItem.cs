@@ -24,7 +24,7 @@ namespace Medness.UnitTesting
 		{
 			Assert.ThrowsException<ArgumentNullException>(() => new DialogueItem(
 				null,
-				characterData.testCharacters[CharacterData.AnsgardeName],
+				characterData.testCharacters.Get(CharacterData.AnsgardeId),
 				new List<DialogueTrigger>(),
 				gameData.testGame.itemRepository,
 				gameData.testGame.characterRepository,
@@ -42,7 +42,7 @@ namespace Medness.UnitTesting
 				));
 			Assert.ThrowsException<ArgumentNullException>(() => new DialogueItem(
 				"Test",
-				characterData.testCharacters[CharacterData.AnsgardeName],
+				characterData.testCharacters.Get(CharacterData.AnsgardeId),
 				null,
 				gameData.testGame.itemRepository,
 				gameData.testGame.characterRepository,
@@ -51,7 +51,7 @@ namespace Medness.UnitTesting
 				));
 			Assert.ThrowsException<ArgumentNullException>(() => new DialogueItem(
 				"Test",
-				characterData.testCharacters[CharacterData.AnsgardeName],
+				characterData.testCharacters.Get(CharacterData.AnsgardeId),
 				new List<DialogueTrigger>(),
 				null,
 				gameData.testGame.characterRepository,
@@ -60,7 +60,7 @@ namespace Medness.UnitTesting
 				));
 			Assert.ThrowsException<ArgumentNullException>(() => new DialogueItem(
 				"Test",
-				characterData.testCharacters[CharacterData.AnsgardeName],
+				characterData.testCharacters.Get(CharacterData.AnsgardeId),
 				new List<DialogueTrigger>(),
 				gameData.testGame.itemRepository,
 				null,
@@ -69,7 +69,7 @@ namespace Medness.UnitTesting
 				));
 			Assert.ThrowsException<ArgumentNullException>(() => new DialogueItem(
 				"Test",
-				characterData.testCharacters[CharacterData.AnsgardeName],
+				characterData.testCharacters.Get(CharacterData.AnsgardeId),
 				new List<DialogueTrigger>(),
 				gameData.testGame.itemRepository,
 				gameData.testGame.characterRepository,
@@ -78,7 +78,7 @@ namespace Medness.UnitTesting
 				));
 			Assert.ThrowsException<ArgumentNullException>(() => new DialogueItem(
 				"Test",
-				characterData.testCharacters[CharacterData.AnsgardeName],
+				characterData.testCharacters.Get(CharacterData.AnsgardeId),
 				new List<DialogueTrigger>(),
 				gameData.testGame.itemRepository,
 				gameData.testGame.characterRepository,

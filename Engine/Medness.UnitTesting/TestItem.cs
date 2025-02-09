@@ -34,8 +34,8 @@ namespace Medness.UnitTesting
 		public void TestItemInequality()
 		{
 			Assert.AreNotEqual(
-				itemData.testItems[ItemData.RopeName],
-				itemData.testItems[ItemData.KeyName]);
+				itemData.testItems.Get(ItemData.RopeId),
+				itemData.testItems.Get(ItemData.KeyId));
 		}
 	}
 }

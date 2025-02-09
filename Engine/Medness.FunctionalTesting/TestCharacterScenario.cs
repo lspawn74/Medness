@@ -37,8 +37,8 @@ namespace Medness.FunctionalTesting
 		public void TestSwitchPlayableCharacter()
 		{
 			// GIVEN a game with two or more characters (one active)
-			Character character1 = characterData.testCharacters[CharacterData.AnsgardeName];
-			Character character2 = characterData.testCharacters[CharacterData.AldemareName];
+			Character character1 = characterData.testCharacters.Get(CharacterData.AnsgardeId);
+			Character character2 = characterData.testCharacters.Get(CharacterData.AldemareId);
 			gameData.testGame.AddCharacter(character1);
 			gameData.testGame.Switch(character1);
 			gameData.testGame.AddCharacter(character2);
@@ -54,8 +54,8 @@ namespace Medness.FunctionalTesting
 		public void TestCharacterEntersScene()
 		{
 			// GIVEN a character and a destination game's scene
-			Character character = characterData.testCharacters[CharacterData.AnsgardeName];
-			Scene destinationScene = sceneData.testScenes[SceneData.SceneForest];
+			Character character = characterData.testCharacters.Get(CharacterData.AnsgardeId);
+			Scene destinationScene = sceneData.testScenes.Get(SceneData.SceneForestId);
 			Assert.ThrowsException<ArgumentException>(() => gameData.testGame.EntersScene(character, destinationScene));
 			gameData.testGame.AddCharacter(character);
 			Assert.ThrowsException<ArgumentException>(() => gameData.testGame.EntersScene(character, destinationScene));

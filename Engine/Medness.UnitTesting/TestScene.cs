@@ -35,8 +35,8 @@ namespace Medness.UnitTesting
 		public void TestSceneInequality()
 		{
 			Assert.AreNotEqual(
-				sceneData.testScenes[SceneData.SceneVillage],
-				sceneData.testScenes[SceneData.SceneForest]);
+				sceneData.testScenes.Get(SceneData.SceneVillageId),
+				sceneData.testScenes.Get(SceneData.SceneForestId));
 		}
 	}
 }
