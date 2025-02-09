@@ -1,5 +1,4 @@
 ﻿using Medness.Business.Event.Args;
-using Medness.Business.Interfaces;
 using Medness.Business.ValueObjects;
 
 namespace Medness.Business.Entities
@@ -13,10 +12,6 @@ namespace Medness.Business.Entities
         public readonly Character character;
 
         private IEnumerable<DialogueTrigger> _triggers;
-		private IItemRepository _itemRepository;
-        private IRepository<Character> _characterRepository;
-        private IRepository<Scene> _sceneRepository;
-        private IRepository<DialogueItem> _dialogueItemRepository;
 
         public DialogueItem(
             string dialogueId,
@@ -30,15 +25,17 @@ namespace Medness.Business.Entities
             id = dialogueId;
             character = sayingCharacter;
             _triggers = triggers;
-
-            // Set event handlers based on dialogue triggers
-            foreach (DialogueTrigger trigger in triggers)
-            {
-				trigger.PlayRequested += Trigger_PlayRequested;
-                trigger.Dispatch();
-            }
         }
 
+        public void Initialize()
+        {
+			// Initialize dialogue triggers
+			foreach (DialogueTrigger trigger in _triggers)
+			{
+				trigger.PlayRequested += Trigger_PlayRequested;
+				trigger.Dispatch();
+			}
+		}
 
 		#region Events handling
 		private void Trigger_PlayRequested(object sender, EventArgs e)

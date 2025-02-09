@@ -8,7 +8,7 @@ namespace Medness.Application.Entities
         private Player player;
         public readonly IRepository<Character> characterRepository;
         public readonly IRepository<Scene> sceneRepository;
-		public readonly IItemRepository itemRepository;
+		public readonly IRepository<Item> itemRepository;
 		public readonly IRepository<DialogueItem> dialogueItemRepository;
         private string _activeCharacter;
         private string _activeScene;
@@ -18,7 +18,7 @@ namespace Medness.Application.Entities
 			Player gamePlayer,
 			IRepository<Character> characterRepository,
 			IRepository<Scene> sceneRepository,
-			IItemRepository itemRepository,
+			IRepository<Item> itemRepository,
 			IRepository<DialogueItem> dialogueItemRepository)
         {
             ArgumentNullException.ThrowIfNull(gamePlayer);

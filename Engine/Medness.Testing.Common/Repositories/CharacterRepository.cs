@@ -1,6 +1,7 @@
 ﻿using Medness.Business.Entities;
 using Medness.Business.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Medness.Testing.Common.Repositories
@@ -20,6 +21,16 @@ namespace Medness.Testing.Common.Repositories
 			if (_characters.TryGetValue(id, out Character character))
 				return character;
 			return null;
+		}
+
+		public IEnumerator<Character> GetEnumerator()
+		{
+			return _characters.Values.GetEnumerator();
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
 		}
 	}
 }

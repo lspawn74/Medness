@@ -1,6 +1,7 @@
 ﻿using Medness.Business.Entities;
 using Medness.Business.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,13 +10,13 @@ namespace Medness.Testing.Common.Repositories
 	/// <summary>
 	///		Items repository used to contain objects of a scene or objects in a character's stuff.
 	/// </summary>
-	public class ItemRepository : IItemRepository
+	public class ItemRepository : IRepository<Item>
 	{
 		#region Private fields
 		private Dictionary<string, Item> _items = new Dictionary<string, Item>();
 		#endregion
 
-		#region IITemRepository implementation
+		#region IRepository implementation
 		/// <summary>
 		///		Adds an item into the repository.
 		/// </summary>
@@ -37,14 +38,17 @@ namespace Medness.Testing.Common.Repositories
 			return null;
 		}
 
-		/// <summary>
-		///		Gets all items of an items holder (a scene or a character).
-		/// </summary>
-		/// <param name="holder">The holder of the items to get.</param>
-		public IEnumerable<Item> GetAll(IStuffHolder holder)
+		public IEnumerator<Item> GetEnumerator()
 		{
-			return _items.Where(kv => kv.Value.GetHolder() == holder)?.Select(kv => kv.Value);
+			return _items.Values.GetEnumerator();
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
 		}
 		#endregion
+
+
 	}
 }

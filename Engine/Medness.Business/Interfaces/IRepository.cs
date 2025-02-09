@@ -7,7 +7,7 @@
 	{
 	}
 
-	public interface IRepository<T> : IRepository
+	public interface IRepository<T> : IRepository, IEnumerable<T>
 	{
 		/// <summary>
 		///		Adds an entity into the repository.

@@ -44,6 +44,9 @@ namespace Medness.Business.ValueObjects
 		}
 		#endregion
 
+		/// <summary>
+		/// Attaches trigger's event handler to an entity depending on the trigger's type.
+		/// </summary>
 		public void Dispatch()
 		{
 			Scene scene;
@@ -87,7 +90,7 @@ namespace Medness.Business.ValueObjects
 					}
 					break;
 				case DialogueItemTriggerType.ItemMoved:
-					item = ((IItemRepository)_repository).Get(objectId);
+					item = ((IRepository<Item>)_repository).Get(objectId);
 					if (item == null)
 					{
 						throw new ArgumentException($"Item {objectId} not declared in items repository.");
@@ -98,7 +101,7 @@ namespace Medness.Business.ValueObjects
 					}
 					break;
 				case DialogueItemTriggerType.ItemUsed:
-					item = ((IItemRepository)_repository).Get(objectId);
+					item = ((IRepository<Item>)_repository).Get(objectId);
 					if (item == null)
 					{
 						throw new ArgumentException($"Item {objectId} not declared in items repository.");
@@ -153,6 +156,10 @@ namespace Medness.Business.ValueObjects
 
 		private void Item_Moved(object sender, ItemMoveEventArgs e)
 		{
+			// Source item holder may be null the first time an item is moved (it's the item popping in the world of the game)
+			if (e.Source == null)
+				return;
+
 			// Play dialogue only if the item has been moved from a given stuff holder to another given stuff holder.
 			if (e.Source.id == argument1Id && e.Destination.id == argument2Id)
 				OnPlayRequested();

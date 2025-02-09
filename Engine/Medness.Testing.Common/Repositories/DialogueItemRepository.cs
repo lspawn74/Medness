@@ -1,6 +1,7 @@
 ﻿using Medness.Business.Entities;
 using Medness.Business.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Medness.Testing.Common.Repositories
@@ -36,5 +37,15 @@ namespace Medness.Testing.Common.Repositories
 			return null;
 		}
 		#endregion
+
+		public IEnumerator<DialogueItem> GetEnumerator()
+		{
+			return _items.Values.GetEnumerator();
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
+		}
 	}
 }

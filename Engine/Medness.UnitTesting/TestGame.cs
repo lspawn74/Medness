@@ -15,7 +15,7 @@ namespace Medness.UnitTesting
 			Player player,
 			IRepository<Character> characterRepository,
 			IRepository<Scene> sceneRepository,
-			IItemRepository itemRepository,
+			IRepository<Item> itemRepository,
 			IRepository<DialogueItem> dialogueItemRepository)
 		{
 			Assert.ThrowsException<ArgumentNullException>(() => new Game(player, characterRepository, sceneRepository, itemRepository, dialogueItemRepository));
