@@ -1,5 +1,4 @@
-﻿using Medness.Business.Enums;
-using Medness.Business.Event.Args;
+﻿using Medness.Business.Event.Args;
 using Medness.Business.Interfaces;
 using Medness.Business.ValueObjects;
 
@@ -15,168 +14,34 @@ namespace Medness.Business.Entities
 
         private IEnumerable<DialogueTrigger> _triggers;
 		private IItemRepository _itemRepository;
-        private ICharacterRepository _characterRepository;
-        private ISceneRepository _sceneRepository;
-        private IDialogueItemRepository _dialogueItemRepository;
+        private IRepository<Character> _characterRepository;
+        private IRepository<Scene> _sceneRepository;
+        private IRepository<DialogueItem> _dialogueItemRepository;
 
         public DialogueItem(
             string dialogueId,
             Character sayingCharacter,
-            IEnumerable<DialogueTrigger> triggers,
-            IItemRepository itemRepository,
-            ICharacterRepository characterRepository,
-            ISceneRepository sceneRepository,
-            IDialogueItemRepository dialogueItemRepository)
+            IEnumerable<DialogueTrigger> triggers)
         {
             ArgumentNullException.ThrowIfNull(dialogueId, nameof(dialogueId));
             ArgumentNullException.ThrowIfNull(sayingCharacter, nameof(sayingCharacter));
             ArgumentNullException.ThrowIfNull(triggers, nameof(triggers));
-            ArgumentNullException.ThrowIfNull(itemRepository, nameof(itemRepository));
-            ArgumentNullException.ThrowIfNull(characterRepository, nameof(characterRepository));
-            ArgumentNullException.ThrowIfNull(sceneRepository, nameof(sceneRepository));
-            ArgumentNullException.ThrowIfNull(dialogueItemRepository, nameof(dialogueItemRepository));
 
             id = dialogueId;
             character = sayingCharacter;
             _triggers = triggers;
-            _itemRepository = itemRepository;
-            _characterRepository = characterRepository;
-            _sceneRepository = sceneRepository;
-            _dialogueItemRepository = dialogueItemRepository;
 
             // Set event handlers based on dialogue triggers
             foreach (DialogueTrigger trigger in triggers)
             {
-                Dispatch(trigger);
+				trigger.PlayRequested += Trigger_PlayRequested;
+                trigger.Dispatch();
             }
         }
 
-        private void Dispatch(DialogueTrigger trigger)
-        {
-			Scene scene;
-			Character character;
-			DialogueItem dialogueItem;
-			Item item;
 
-			switch (trigger.type)
-            {
-                case DialogueItemTriggerType.SceneActivated:
-                    scene = _sceneRepository.Get(trigger.objectId);
-                    if (scene == null)
-                    {
-                        throw new ArgumentException($"Scene {trigger.objectId} not declared in scenes repository.");
-                    }
-                    else
-                    {
-						scene.Activated += Scene_Activated;
-                    }
-                    break;
-				case DialogueItemTriggerType.CharacterEnters:
-                    character = _characterRepository.Get(trigger.objectId);
-                    if (character == null)
-                    {
-                        throw new ArgumentException($"Character {trigger.objectId} not declared in characters repository.");
-                    }
-                    else
-                    {
-						character.EnteredScene += Character_EnteredScene;
-                    }
-					break;
-				case DialogueItemTriggerType.DialogueFinished:
-                    dialogueItem = _dialogueItemRepository.Get(trigger.objectId);
-                    if (dialogueItem == null)
-                    {
-						throw new ArgumentException($"Dialogue item {trigger.objectId} not declared in dialogue items repository.");
-					}
-                    else
-                    {
-						dialogueItem.PlayFinished += DialogueItem_PlayFinished;
-                    }
-					break;
-				case DialogueItemTriggerType.ItemMoved:
-                    item = _itemRepository.Get(trigger.objectId);
-                    if (item == null)
-                    {
-						throw new ArgumentException($"Item {trigger.objectId} not declared in items repository.");
-					}
-                    else
-                    {
-						item.Moved += Item_Moved;
-                    }
-					break;
-				case DialogueItemTriggerType.ItemUsed:
-					item = _itemRepository.Get(trigger.objectId);
-					if (item == null)
-					{
-						throw new ArgumentException($"Item {trigger.objectId} not declared in items repository.");
-					}
-					else
-					{
-						item.Used += Item_Used;
-					}
-					break;
-				case DialogueItemTriggerType.ChosenDialogue:
-					dialogueItem = _dialogueItemRepository.Get(trigger.objectId);
-					if (dialogueItem == null)
-					{
-						throw new ArgumentException($"Dialogue item {trigger.objectId} not declared in dialogue items repository.");
-					}
-					else
-					{
-						dialogueItem.Chosen += DialogueItem_Chosen;
-					}
-					break;
-                default:
-                    // Should not happen (means the code is incomplete)
-                    throw new ArgumentException("Unhandled dialogue trigger", nameof(trigger));
-			}
-		}
-
-        #region Events handling
-        private void Scene_Activated(object sender, SceneEventArgs e)
-        {
-            // Find triggers involving a scene activation
-            DialogueTrigger sceneActivationTrigger = _triggers.FirstOrDefault(t => t.objectId == e.Scene.id && t.type == DialogueItemTriggerType.SceneActivated);
-            if (sceneActivationTrigger != null)
-                OnPlayStarted();
-        }
-
-		private void Character_EnteredScene(object sender, CharacterEventArgs e)
-		{
-            // Find triggers involving the character and the event of entering a scene
-			IEnumerable<DialogueTrigger> filteredTriggers = _triggers.Where(t => t.objectId == e.Character.id && t.type == DialogueItemTriggerType.CharacterEnters);
-            
-            // Play the dialogue if the character actually entered the scene given in argument of the trigger
-            foreach (DialogueTrigger trigger in filteredTriggers)
-            {
-                if (e.Character.IsInScene(trigger.argument1Id))
-                {
-                    OnPlayStarted();
-                    return;
-                }
-            }
-		}
-
-		private void DialogueItem_PlayFinished(object sender, DialogueItemEventArgs e)
-		{
-			OnPlayStarted();
-		}
-
-		private void Item_Moved(object sender, ItemMoveEventArgs e)
-		{
-            // Play dialogue only if the item has been moved from a given stuff holder to another given stuff holder.
-            DialogueTrigger dialogueTrigger = _triggers
-                .FirstOrDefault(t => t.objectId == e.Item.id && t.argument1Id == e.Source.id && t.argument2Id == e.Destination.id);
-			if (dialogueTrigger != null )
-                OnPlayStarted();
-		}
-
-		private void Item_Used(object sender, ItemEventArgs e)
-		{
-			OnPlayStarted();
-		}
-
-		private void DialogueItem_Chosen(object sender, EventArgs e)
+		#region Events handling
+		private void Trigger_PlayRequested(object sender, EventArgs e)
 		{
 			OnPlayStarted();
 		}

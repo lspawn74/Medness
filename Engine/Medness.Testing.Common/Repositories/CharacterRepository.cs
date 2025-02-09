@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Medness.Testing.Common.Repositories
 {
-	public class CharacterRepository : ICharacterRepository
+	public class CharacterRepository : IRepository<Character>
 	{
 		private Dictionary<string, Character> _characters = new Dictionary<string, Character>();
 
@@ -13,12 +13,6 @@ namespace Medness.Testing.Common.Repositories
 		{
 			ArgumentNullException.ThrowIfNull(character, nameof(character));
 			_characters[character.id] = character;
-		}
-
-		public void Remove(Character character)
-		{
-			ArgumentNullException.ThrowIfNull(character, nameof(character));
-			_characters.Remove(character.id);
 		}
 
 		public Character Get(string id)

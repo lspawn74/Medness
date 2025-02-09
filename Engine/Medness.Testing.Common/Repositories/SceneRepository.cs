@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Medness.Testing.Common.Repositories
 {
-	public class SceneRepository : ISceneRepository
+	public class SceneRepository : IRepository<Scene>
 	{
 		private Dictionary<string, Scene> _scenes = new Dictionary<string, Scene>();
 

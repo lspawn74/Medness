@@ -8,7 +8,7 @@ namespace Medness.Testing.Common.Repositories
 	/// <summary>
 	///		Items repository used to contain objects of a scene or objects in a character's stuff.
 	/// </summary>
-	public class DialogueItemRepository : IDialogueItemRepository
+	public class DialogueItemRepository : IRepository<DialogueItem>
 	{
 		#region Private fields
 		private Dictionary<string, DialogueItem> _items = new Dictionary<string, DialogueItem>();

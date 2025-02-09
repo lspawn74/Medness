@@ -9,13 +9,11 @@ namespace Medness.UnitTesting
 	[TestClass]
 	public class TestDialogueItem
 	{
-		GameData gameData;
 		CharacterData characterData;
 
 		[TestInitialize]
 		public void Initialize()
 		{
-			gameData = new GameData();
 			characterData = new CharacterData();
 		}
 
@@ -25,66 +23,15 @@ namespace Medness.UnitTesting
 			Assert.ThrowsException<ArgumentNullException>(() => new DialogueItem(
 				null,
 				characterData.testCharacters.Get(CharacterData.AnsgardeId),
-				new List<DialogueTrigger>(),
-				gameData.testGame.itemRepository,
-				gameData.testGame.characterRepository,
-				gameData.testGame.sceneRepository,
-				gameData.testGame.dialogueItemRepository
-				));
+				new List<DialogueTrigger>()));
 			Assert.ThrowsException<ArgumentNullException>(() => new DialogueItem(
 				"Test",
 				null,
-				new List<DialogueTrigger>(),
-				gameData.testGame.itemRepository,
-				gameData.testGame.characterRepository,
-				gameData.testGame.sceneRepository,
-				gameData.testGame.dialogueItemRepository
-				));
+				new List<DialogueTrigger>()));
 			Assert.ThrowsException<ArgumentNullException>(() => new DialogueItem(
 				"Test",
 				characterData.testCharacters.Get(CharacterData.AnsgardeId),
-				null,
-				gameData.testGame.itemRepository,
-				gameData.testGame.characterRepository,
-				gameData.testGame.sceneRepository,
-				gameData.testGame.dialogueItemRepository
-				));
-			Assert.ThrowsException<ArgumentNullException>(() => new DialogueItem(
-				"Test",
-				characterData.testCharacters.Get(CharacterData.AnsgardeId),
-				new List<DialogueTrigger>(),
-				null,
-				gameData.testGame.characterRepository,
-				gameData.testGame.sceneRepository,
-				gameData.testGame.dialogueItemRepository
-				));
-			Assert.ThrowsException<ArgumentNullException>(() => new DialogueItem(
-				"Test",
-				characterData.testCharacters.Get(CharacterData.AnsgardeId),
-				new List<DialogueTrigger>(),
-				gameData.testGame.itemRepository,
-				null,
-				gameData.testGame.sceneRepository,
-				gameData.testGame.dialogueItemRepository
-				));
-			Assert.ThrowsException<ArgumentNullException>(() => new DialogueItem(
-				"Test",
-				characterData.testCharacters.Get(CharacterData.AnsgardeId),
-				new List<DialogueTrigger>(),
-				gameData.testGame.itemRepository,
-				gameData.testGame.characterRepository,
-				null,
-				gameData.testGame.dialogueItemRepository
-				));
-			Assert.ThrowsException<ArgumentNullException>(() => new DialogueItem(
-				"Test",
-				characterData.testCharacters.Get(CharacterData.AnsgardeId),
-				new List<DialogueTrigger>(),
-				gameData.testGame.itemRepository,
-				gameData.testGame.characterRepository,
-				gameData.testGame.sceneRepository,
-				null
-				));
+				null));
 		}
 	}
 }

@@ -13,10 +13,10 @@ namespace Medness.UnitTesting
 		[DynamicData(nameof(GameData.GetGameArgs), typeof(GameData), DynamicDataSourceType.Method)]
 		public void TestGameNull(
 			Player player,
-			ICharacterRepository characterRepository,
-			ISceneRepository sceneRepository,
+			IRepository<Character> characterRepository,
+			IRepository<Scene> sceneRepository,
 			IItemRepository itemRepository,
-			IDialogueItemRepository dialogueItemRepository)
+			IRepository<DialogueItem> dialogueItemRepository)
 		{
 			Assert.ThrowsException<ArgumentNullException>(() => new Game(player, characterRepository, sceneRepository, itemRepository, dialogueItemRepository));
 		}

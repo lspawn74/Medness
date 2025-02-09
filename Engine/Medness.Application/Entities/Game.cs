@@ -6,20 +6,20 @@ namespace Medness.Application.Entities
 	public class Game
     {
         private Player player;
-        public readonly ICharacterRepository characterRepository;
-        public readonly ISceneRepository sceneRepository;
+        public readonly IRepository<Character> characterRepository;
+        public readonly IRepository<Scene> sceneRepository;
 		public readonly IItemRepository itemRepository;
-		public readonly IDialogueItemRepository dialogueItemRepository;
+		public readonly IRepository<DialogueItem> dialogueItemRepository;
         private string _activeCharacter;
         private string _activeScene;
 
         #region Constructors
         public Game(
 			Player gamePlayer,
-			ICharacterRepository characterRepository,
-			ISceneRepository sceneRepository,
+			IRepository<Character> characterRepository,
+			IRepository<Scene> sceneRepository,
 			IItemRepository itemRepository,
-			IDialogueItemRepository dialogueItemRepository)
+			IRepository<DialogueItem> dialogueItemRepository)
         {
             ArgumentNullException.ThrowIfNull(gamePlayer);
             ArgumentNullException.ThrowIfNull(characterRepository);

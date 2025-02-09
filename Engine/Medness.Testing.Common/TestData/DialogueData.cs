@@ -34,13 +34,8 @@ namespace Medness.Testing.Common.TestData
 					CharacterData.testCharacters.Get(CharacterData.AldemareId),
 					new List<DialogueTrigger>
 					{
-						new DialogueTrigger(SceneData.SceneForestId, DialogueItemTriggerType.SceneActivated)
-					},
-					ItemData.testItems,
-					CharacterData.testCharacters,
-					SceneData.testScenes,
-					testItems
-					));
+						new DialogueTrigger(SceneData.SceneForestId, SceneData.testScenes, DialogueItemTriggerType.SceneActivated)
+					}));
 
 			// Add test dialogue item triggered for a specific character entering a specific scene
 			testItems.Add(new DialogueItem(
@@ -48,13 +43,8 @@ namespace Medness.Testing.Common.TestData
 					CharacterData.testCharacters.Get(CharacterData.BarTenderId),
 					new List<DialogueTrigger>
 					{
-						new DialogueTrigger(CharacterData.MorgauseId, SceneData.SceneBarId, DialogueItemTriggerType.CharacterEnters)
-					},
-					ItemData.testItems,
-					CharacterData.testCharacters,
-					SceneData.testScenes,
-					testItems
-					));
+						new DialogueTrigger(CharacterData.MorgauseId, CharacterData.testCharacters, SceneData.SceneBarId, DialogueItemTriggerType.CharacterEnters)
+					}));
 		}
 		#endregion
 	}
