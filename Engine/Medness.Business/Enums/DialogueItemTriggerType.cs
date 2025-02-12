@@ -31,6 +31,9 @@
 		/// <summary>
 		/// Triggs a dialogue when an item is used.
 		/// The trigger's id contains the expected item's id.
+		/// The first argument is the id of the character using the item.
+		/// The second argument is the id of the scene where the item is used or
+		/// the id of the destination item on which the item is used.
 		/// </summary>
 		ItemUsed,
 

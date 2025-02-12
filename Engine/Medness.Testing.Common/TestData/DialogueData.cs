@@ -13,7 +13,8 @@ namespace Medness.Testing.Common.TestData
 		public const string MorgauseEntersBarDlgItemId = "DLGITEM_MORGAUSE_ENTERS_BAR";
 		public const string DialogueFinishedDlgItemId = "DLGITEM_DIALOGFINISHED";
 		public const string ItemMovedDlgItemId = "DLGITEM_MORGAUSE_PICKS_ROPE_IN_FOREST";
-		public const string ItemUsedDlgItemId = "DLGITEM_KEY_USED";
+		public const string KeyUsedInForestDlgItemId = "DLGITEM_KEY_USED_IN_FOREST_BY_MORGAUSE";
+		public const string KeyUsedOnRopeDlgItemId = "DLGITEM_KEY_USED_ON_ROPE_BY_MORGAUSE";
 		public const string DialogueItemChosenDlgItemId = "DLGITEM_ANSWER_CHOSEN";
 		#endregion
 
@@ -87,20 +88,37 @@ namespace Medness.Testing.Common.TestData
 					});
 			dialogueItems.Add(itemMovedDlgItem);
 
-			// Add test dialogue item triggered after a specific item is used
-			DialogueItem itemUsedDlgItem = new DialogueItem(
-					ItemUsedDlgItemId,
+			// Add test dialogue item triggered after the key item is used by Morgause in the forest
+			DialogueItem keyUsedInForestDlgItem = new DialogueItem(
+					KeyUsedInForestDlgItemId,
 					CharacterData.testCharacters.Get(CharacterData.MorgauseId),
 					new List<DialogueTrigger>
 					{
 						new DialogueTrigger(
 							ItemData.KeyId,				// Id of the used item
 							ItemData.testItems,			// Items repository
+							CharacterData.MorgauseId,	// Holder of the item
+							SceneData.SceneForestId,	// Scene where the item is expected to be used in order to trigger the dialogue
 							DialogueItemTriggerType.ItemUsed)
 					});
-			dialogueItems.Add(itemUsedDlgItem);
+			dialogueItems.Add(keyUsedInForestDlgItem);
 
-			// Add test dialogue item triggered after a specific item is used
+			// Add test dialogue item triggered after the key item is used on the rope item by Morgause (merging attempt))
+			DialogueItem itemUsedOnOtherItemDlgItem = new DialogueItem(
+					KeyUsedOnRopeDlgItemId,
+					CharacterData.testCharacters.Get(CharacterData.MorgauseId),
+					new List<DialogueTrigger>
+					{
+						new DialogueTrigger(
+							ItemData.KeyId,				// Id of the used item
+							ItemData.testItems,			// Items repository
+							CharacterData.MorgauseId,	// Holder of the item
+							ItemData.RopeId,			// Destination item
+							DialogueItemTriggerType.ItemUsed)
+					});
+			dialogueItems.Add(itemUsedOnOtherItemDlgItem);
+
+			// Add test dialogue item triggered after a specific dialogue is chosen
 			DialogueItem dialogueItemChosenDlgItem = new DialogueItem(
 					DialogueItemChosenDlgItemId,
 					CharacterData.testCharacters.Get(CharacterData.MorgauseId),

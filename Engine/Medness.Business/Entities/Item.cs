@@ -25,9 +25,14 @@ namespace Medness.Business.Entities
 			OnMoved(previousHolder, newHolder);
 		}
 
-		public void Use()
+		public void Use(Scene scene)
 		{
-			OnUsed();
+			OnUsed(scene);
+		}
+
+		public void Use(Item destinationItem)
+		{
+			OnUsed(destinationItem);
 		}
 
 		public IStuffHolder GetHolder()
@@ -43,10 +48,14 @@ namespace Medness.Business.Entities
 			Moved?.Invoke(this, new ItemMoveEventArgs(this, previousHolder, newHolder));
 		}
 
-		public event EventHandler<ItemEventArgs> Used;
-		private void OnUsed()
+		public event EventHandler<ItemUsedEventArgs> Used;
+		private void OnUsed(Scene scene)
 		{
-			Used?.Invoke(this, new ItemEventArgs(this));
+			Used?.Invoke(this, new ItemUsedEventArgs(this, holder, scene));
+		}
+		private void OnUsed(Item destinationItem)
+		{
+			Used?.Invoke(this, new ItemUsedEventArgs(this, holder, destinationItem));
 		}
 		#endregion
 

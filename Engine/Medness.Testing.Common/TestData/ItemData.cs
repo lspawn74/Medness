@@ -9,7 +9,7 @@ namespace Medness.Testing.Common.TestData
 		#region Constants
 		public const string RopeId = "ITEM_ROPE";
 		public const string KeyId = "ITEM_KEY";
-		public const string AlcoholId = "ITEM_ALCOHOL";
+		public const string AlcoholGlassId = "ITEM_ALCOHOL";
 		public const string RopeName = "Corde";
 		public const string KeyName = "Clé";
 		public const string AlcoholGlassName = "Verre d'alcool";
@@ -23,7 +23,7 @@ namespace Medness.Testing.Common.TestData
 			testItems = new ItemRepository();
 			testItems.Add(new Item(RopeId, RopeName));
 			testItems.Add(new Item(KeyId, KeyName));
-			testItems.Add(new Item(AlcoholId, AlcoholGlassName));
+			testItems.Add(new Item(AlcoholGlassId, AlcoholGlassName));
 		}
 		#endregion
 
@@ -32,7 +32,7 @@ namespace Medness.Testing.Common.TestData
 		{
 			yield return new object[] { RopeId, RopeName };
 			yield return new object[] { KeyId, KeyName };
-			yield return new object[] { AlcoholId, AlcoholGlassName };
+			yield return new object[] { AlcoholGlassId, AlcoholGlassName };
 		}
 		#endregion
 	}

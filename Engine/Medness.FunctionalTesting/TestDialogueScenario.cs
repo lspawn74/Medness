@@ -154,26 +154,108 @@ namespace Medness.FunctionalTesting
 		}
 
 		[TestMethod]
-		public void TestTriggerDialogueWhenItemUsed()
+		public void TestTriggerDialogueWhenItemUsedInScene()
 		{
-			// Get dialogue item for key being used
-			DialogueItem itemUsedDlgItem = dialogueData.dialogueItems.Get(DialogueData.ItemUsedDlgItemId);
+			// Get dialogue item for key being used in forest by Morgause
+			DialogueItem itemUsedDlgItem = dialogueData.dialogueItems.Get(DialogueData.KeyUsedInForestDlgItemId);
+
+			// Get characters used in test
+			Character morgauseCharacter = dialogueData.CharacterData.testCharacters.Get(CharacterData.MorgauseId);
+			Character ansgardeCharacter = dialogueData.CharacterData.testCharacters.Get(CharacterData.AnsgardeId);
+
+			// Get items used in test
+			Item ropeItem = dialogueData.ItemData.testItems.Get(ItemData.RopeId);
+			Item keyItem = dialogueData.ItemData.testItems.Get(ItemData.KeyId);
+
+			// Get scenes used in test
+			Scene forestScene = dialogueData.SceneData.testScenes.Get(SceneData.SceneForestId);
+			Scene barScene = dialogueData.SceneData.testScenes.Get(SceneData.SceneBarId);
 
 			// Set event handlers on dialogue events
 			itemUsedDlgItem.PlayStarted += PlayStarted;
 			itemUsedDlgItem.PlayFinished += PlayFinished;
 
-			// Use rope
-			Item ropeItem = dialogueData.ItemData.testItems.Get(ItemData.RopeId);
-			ropeItem.Use();
+			// START TESTS :
+			// Morgause use rope (and not key) in forest
+			morgauseCharacter.AcquireStuff(ropeItem);
+			ropeItem.Use(forestScene);
 
 			// Check that dialogue is not played
 			Assert.IsTrue(playStartedEventHandled == 0);
 			Assert.IsTrue(playFinishedEventHandled == 0);
 
-			// Use key
+			// Morgause use key in bar (and not forest)
+			morgauseCharacter.AcquireStuff(keyItem);
+			keyItem.Use(barScene);
+
+			// Check that dialogue is not played
+			Assert.IsTrue(playStartedEventHandled == 0);
+			Assert.IsTrue(playFinishedEventHandled == 0);
+
+			// Ansgarde (and not Morgause) use key in forest
+			ansgardeCharacter.AcquireStuff(keyItem);
+			keyItem.Use(forestScene);
+
+			// Check that dialogue is not played
+			Assert.IsTrue(playStartedEventHandled == 0);
+			Assert.IsTrue(playFinishedEventHandled == 0);
+
+			// Morgause use key in forest
+			morgauseCharacter.AcquireStuff(keyItem);
+			keyItem.Use(forestScene);
+
+			// Check that dialogue is played
+			Assert.IsTrue(playStartedEventHandled == 1);
+			Assert.IsTrue(playFinishedEventHandled == 1);
+		}
+
+		[TestMethod]
+		public void TestTriggerDialogueWhenItemUsedOnOtherItem()
+		{
+			// Get dialogue item for key being used on rope by Morgause (merging attempt)
+			DialogueItem itemUsedDlgItem = dialogueData.dialogueItems.Get(DialogueData.KeyUsedOnRopeDlgItemId);
+
+			// Get characters used in test
+			Character morgauseCharacter = dialogueData.CharacterData.testCharacters.Get(CharacterData.MorgauseId);
+			Character ansgardeCharacter = dialogueData.CharacterData.testCharacters.Get(CharacterData.AnsgardeId);
+
+			// Get items used in test
+			Item ropeItem = dialogueData.ItemData.testItems.Get(ItemData.RopeId);
 			Item keyItem = dialogueData.ItemData.testItems.Get(ItemData.KeyId);
-			keyItem.Use();
+			Item alcoholGlassItem = dialogueData.ItemData.testItems.Get(ItemData.AlcoholGlassId);
+
+			// Set event handlers on dialogue events
+			itemUsedDlgItem.PlayStarted += PlayStarted;
+			itemUsedDlgItem.PlayFinished += PlayFinished;
+
+			// START TESTS :
+			// Morgause use key on alcohol glass (and not rope)
+			morgauseCharacter.AcquireStuff(keyItem);
+			keyItem.Use(alcoholGlassItem);
+
+			// Check that dialogue is not played
+			Assert.IsTrue(playStartedEventHandled == 0);
+			Assert.IsTrue(playFinishedEventHandled == 0);
+
+			// Morgause use alcohol glass (and not key) on rope
+			morgauseCharacter.AcquireStuff(alcoholGlassItem);
+			alcoholGlassItem.Use(keyItem);
+
+			// Check that dialogue is not played
+			Assert.IsTrue(playStartedEventHandled == 0);
+			Assert.IsTrue(playFinishedEventHandled == 0);
+
+			// Ansgarde (and not Morgause) use key on rope
+			ansgardeCharacter.AcquireStuff(keyItem);
+			keyItem.Use(ropeItem);
+
+			// Check that dialogue is not played
+			Assert.IsTrue(playStartedEventHandled == 0);
+			Assert.IsTrue(playFinishedEventHandled == 0);
+
+			// Morgause use key on rope
+			morgauseCharacter.AcquireStuff(keyItem);
+			keyItem.Use(ropeItem);
 
 			// Check that dialogue is played
 			Assert.IsTrue(playStartedEventHandled == 1);
@@ -187,7 +269,7 @@ namespace Medness.FunctionalTesting
 			DialogueItem dialogueItemChosenDlgItem = dialogueData.dialogueItems.Get(DialogueData.DialogueItemChosenDlgItemId);
 
 			// Get dialogue item for key being used
-			DialogueItem itemUsedDlgItem = dialogueData.dialogueItems.Get(DialogueData.ItemUsedDlgItemId);
+			DialogueItem itemUsedDlgItem = dialogueData.dialogueItems.Get(DialogueData.KeyUsedInForestDlgItemId);
 
 			// Set event handlers on dialogue events
 			dialogueItemChosenDlgItem.PlayStarted += PlayStarted;

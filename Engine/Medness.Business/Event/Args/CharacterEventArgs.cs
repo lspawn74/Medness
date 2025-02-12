@@ -5,7 +5,6 @@ namespace Medness.Business.Event.Args
 	public class CharacterEventArgs : EventArgs
     {
         public readonly Character Character;
-        public readonly char SceneId;
 
         public CharacterEventArgs(Character character)
         {

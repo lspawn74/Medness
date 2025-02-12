@@ -165,9 +165,32 @@ namespace Medness.Business.ValueObjects
 				OnPlayRequested();
 		}
 
-		private void Item_Used(object sender, ItemEventArgs e)
+		private void Item_Used(object sender, ItemUsedEventArgs e)
 		{
-			OnPlayRequested();
+			// Return if the item holder is not the one for this dialogue
+			if (e.User == null)
+				return;
+			if (e.User.id != argument1Id)
+				return;
+
+			if (e.Scene == null)
+			{
+				// The item is used on another item (items merging)
+				if (e.DestinationItem == null)
+					return;
+
+				if (e.DestinationItem.id == argument2Id)
+					OnPlayRequested();
+			}
+			else
+			{
+				// The item is used in a given scene
+				if ( e.Scene == null)
+					return;
+
+				if (e.Scene.id == argument2Id)
+					OnPlayRequested();
+			}
 		}
 
 		private void DialogueItem_Chosen(object sender, EventArgs e)
