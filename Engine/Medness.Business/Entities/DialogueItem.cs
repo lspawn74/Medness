@@ -11,9 +11,16 @@ namespace Medness.Business.Entities
         /// <summary>Character saying the dialogue item.</summary>
         public readonly Character character;
 
+        /// <summary>The text of the dialogue (if required to be displayed on screen)</summary>
+        public readonly string dialogueText;
+
+        /// <summary>Path to the file containing the data to play (audio file)</summary>
+        public readonly string dialogueDataFile;
+
         private IEnumerable<DialogueTrigger> _triggers;
 
-        public DialogueItem(
+		#region Constructors
+		public DialogueItem(
             string dialogueId,
             Character sayingCharacter,
             IEnumerable<DialogueTrigger> triggers)
@@ -26,6 +33,21 @@ namespace Medness.Business.Entities
             character = sayingCharacter;
             _triggers = triggers;
         }
+
+		public DialogueItem(
+			string dialogueId,
+			Character sayingCharacter,
+            string text,
+            string dataFile,
+			IEnumerable<DialogueTrigger> triggers) : this(dialogueId, sayingCharacter, triggers)
+		{
+			ArgumentNullException.ThrowIfNull(text, nameof(text));
+			ArgumentNullException.ThrowIfNull(text, nameof(text));
+
+            dialogueText = text;
+            dialogueDataFile = dataFile;
+		}
+        #endregion
 
         public void Initialize()
         {

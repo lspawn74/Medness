@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Dialogues>
+	
+	<!-- Starting dialogue when Ansgarde enters the scene of the orphanage -->
+	<DialogueItem
+		Id="SC_ORPHELINAT_MORGAUSE_01"
+		Character="CH_MORGAUSE"
+		Text="*Snif! Snif!*"
+		DataFile="SC_ORPH_MORG_01.wav">
+		<DialogueTrigger Type="CharacterEnters" Object="CH_ANSGARDE"/>
+	</DialogueItem>
+	
+	<!-- Make ansgarde respond automatically with a question -->
+	<DialogueItem 
+		Id="SC_ORPHELINAT_ANSGARDE_01"
+		Character="CH_ANSGARDE"
+		Text="Qu'est-ce qui t'arrive ma petite ?"
+		DataFile="SC_ORPH_ANSG_01.wav">
+		<DialogueTrigger Type="DialogueFinished" Object="SC_ORPHELINAT_MORGAUSE_01"/>
+	</DialogueItem>
+
+	<!-- Make Morgause respond to Ansgarde question -->
+	<DialogueItem
+		Id="SC_ORPHELINAT_MORGAUSE_02"
+		Character="CH_MORGAUSE"
+		Text="J'ai perdu mon ours en peluche. *Snif*"
+		DataFile="SC_ORPH_MORG_02.wav">
+		<DialogueTrigger Type="DialogueFinished" Object="SC_ORPHELINAT_ANSGARDE_01"/>
+	</DialogueItem>
+
+	<!-- Make Ansgarde respond with first choice of the player -->
+	<DialogueItem
+		Id="SC_ORPHELINAT_ANSGARDE_02"
+		Character="CH_ANSGARDE"
+		Text="Où te souviens tu l'avoir vu pour la dernière fois ?"
+		DataFile="SC_ORPH_ANSG_02.wav">
+		<DialogueTrigger Type="ChosenDialogue" Object="SC_ORPHELINAT_ANSGARDE_02"/>
+	</DialogueItem>
+
+	<!-- Make Ansgarde respond with second choice of the player -->
+	<DialogueItem
+		Id="SC_ORPHELINAT_ANSGARDE_03"
+		Character="CH_ANSGARDE"
+		Text="Tu ne pouvais pas faire attention à tes affaires ?"
+		DataFile="SC_ORPH_ANSG_03.wav">
+		<DialogueTrigger Type="ChosenDialogue" Object="SC_ORPHELINAT_ANSGARDE_03"/>
+	</DialogueItem>
+
+	<!-- Make Morgause respond automatically to first choice of the player -->
+	<DialogueItem
+		Id="SC_ORPHELINAT_MORG_03"
+		Character="CH_MORGAUSE"
+		Text="Je ne sais plus. Je me souviens juste l’avoir perdu lorsque j’ai été amené ici."
+		DataFile="SC_ORPH_MORG_03.wav">
+		<DialogueTrigger Type="DialogueFinished" Object="SC_ORPHELINAT_ANSGARDE_02"/>
+	</DialogueItem>
+
+	<!-- Make Morgause respond automatically to second choice of the player -->
+	<DialogueItem
+		Id="SC_ORPHELINAT_MORG_04"
+		Character="CH_MORGAUSE"
+		Text="Bouhouhou! Vous êtes méchante vous aussi !"
+		DataFile="SC_ORPH_MORG_04.wav">
+		<DialogueTrigger Type="DialogueFinished" Object="SC_ORPHELINAT_ANSGARDE_03"/>
+	</DialogueItem>
+
+</Dialogues>

@@ -113,6 +113,7 @@ namespace Medness.Application.Entities
 		}
 
 		#endregion
+
 		#region Items methods
 		public void AddItem(Item item)
 		{
