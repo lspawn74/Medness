@@ -24,7 +24,7 @@ namespace Medness.Business.ValueObjects
 
 			objectId = object_id;
 			type = trigger_type;
-			_repository = repository;
+			_repository = repository;//tu ne check pas le repo ?
 		}
 
 		public DialogueTrigger(string object_id, IRepository repository, string argument_id, DialogueItemTriggerType trigger_type)
@@ -57,7 +57,11 @@ namespace Medness.Business.ValueObjects
 			switch (type)
 			{
 				case DialogueItemTriggerType.SceneActivated:
-					scene = ((IRepository<Scene>)_repository).Get(objectId);
+                    //scene = (_repository as IRepository<Scene>)?.Get(objectId);
+                    //scene = _repository is IRepository<Scene> repo ? repo.Get(objectId) : null;
+					//pas besoin du if else avec l'exemple du dessous
+                    //scene = _repository is IRepository<Scene> repo ? repo.Get(objectId) : throw new ArgumentException($"Scene {objectId} not declared in scenes repository.");
+                    scene = ((IRepository<Scene>)_repository).Get(objectId);//crash si le cast ne passe pas,
 					if (scene == null)
 					{
 						throw new ArgumentException($"Scene {objectId} not declared in scenes repository.");
@@ -142,7 +146,8 @@ namespace Medness.Business.ValueObjects
 			OnPlayRequested();
 		}
 
-		private void Character_EnteredScene(object sender, CharacterEventArgs e)
+		private void Character_EnteredScene(object sender, CharacterEventArgs e)//l'event arg est nullable, besoin de rajouter des checks ?
+			//après vu que c'est ton code, tu sais ce que tu invoke, mais dans le temps t'es jamais à l'abris, c'est un choix de design je pense
 		{
 			// Play dialogue only if the character entered the scene specified in trigger's arguments.
 			if (e.Character.IsInScene(argument1Id))

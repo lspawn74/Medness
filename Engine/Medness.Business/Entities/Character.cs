@@ -1,6 +1,8 @@
 ﻿using Medness.Business.Event.Args;
 using Medness.Business.Interfaces;
 using Medness.Business.ValueObjects;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace Medness.Business.Entities
 {
@@ -48,10 +50,34 @@ namespace Medness.Business.Entities
 		#endregion
 
 		#region Events
-		public event EventHandler<CharacterEventArgs> EnteredScene;
+
+		private CharacterEventArgs _storedSceneEntrance;
+        private event EventHandler<CharacterEventArgs> _enteredScene;
+        public event EventHandler<CharacterEventArgs> EnteredScene
+		{
+			add
+			{
+				_enteredScene += value;
+				if (_storedSceneEntrance is not null)
+					_enteredScene?.Invoke(this, _storedSceneEntrance);
+			}
+			remove
+			{
+				_enteredScene -= value;
+			}
+		}
 		private void OnEnteredScene()
 		{
-			EnteredScene?.Invoke(this, new CharacterEventArgs(this));
+			//si il n'y a pas d'abonnement il se passe quoi ?
+			//on a déjà eu des pb à cause du cycle de vie de nos programmes au taf car le consommateur arrive après l'event, il est donc jeté dans le vide
+			//peut etre robustifier ça avec un système similaire aux events, en gardant la notif dans un coin tant que le consommateur n'est pas la
+			//puis perso je suis vraiment pas fan des events :p ça apporte trop souvent des problèmes, même si des fois il n'y a pas vraiment d'autres façon de faire et je les utilise quand meme
+			
+			//ici à la place de ce code tu pourrais implémenter un Delegate custom pour gérérer ça en dehors de ta classe
+			if (_enteredScene is null)
+				_storedSceneEntrance = new(this);
+			else
+				_enteredScene?.Invoke(this, new(this));
 		}
 		#endregion
 

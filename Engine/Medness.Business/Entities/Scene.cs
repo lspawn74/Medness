@@ -10,6 +10,11 @@ namespace Medness.Business.Entities
 
 		public Scene(string identity, string sceneName)
 		{
+			//pas de vérif sur identity ?
+
+			//pour sceneName, je ne sais pas si tu allow le string.Empty, si oui tu peux être moins violent en faisant
+			//name = sceneName ?? "";
+			//sauf si tu veux vraiment remonter l'erreur à celui qui appelle le constructeur avec une valeur null
 			ArgumentNullException.ThrowIfNull(sceneName, nameof(sceneName));
 
 			id = identity;
