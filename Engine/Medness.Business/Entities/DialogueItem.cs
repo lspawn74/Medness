@@ -1,4 +1,6 @@
 ﻿using Medness.Business.Event.Args;
+using Medness.Business.Interfaces;
+using Medness.Business.Resources;
 using Medness.Business.ValueObjects;
 
 namespace Medness.Business.Entities
@@ -27,14 +29,27 @@ namespace Medness.Business.Entities
             _triggers = triggers;
         }
 
-        public void Initialize()
+		/// <summary>
+		/// Initalizes the dialogue item.
+		/// </summary>
+		/// <returns>
+		/// A <see cref="IResult"/> object containing an error message if any.
+		/// In case of success, the returned object flag <see cref="IResult.IsSuccess"> is set to true.
+		/// </returns>
+		public IResult Initialize()
         {
 			// Initialize dialogue triggers
 			foreach (DialogueTrigger trigger in _triggers)
 			{
 				trigger.PlayRequested += Trigger_PlayRequested;
-				trigger.Dispatch();
+                IResult dispatchResult = trigger.Dispatch();
+				if (!dispatchResult.IsSuccess)
+                {
+                    return dispatchResult;
+                }
 			}
+
+            return Results.Success;
 		}
 
 		#region Events handling

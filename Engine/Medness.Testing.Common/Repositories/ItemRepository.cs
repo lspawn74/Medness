@@ -1,18 +1,17 @@
 ﻿using Medness.Business.Entities;
 using Medness.Business.Interfaces;
+using Medness.Business.Resources;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Medness.Testing.Common.Repositories
 {
-	/// <summary>
-	///		Items repository used to contain objects of a scene or objects in a character's stuff.
-	/// </summary>
+	/// <summary>Represents the repository containing items of the game.</summary>
 	public class ItemRepository : IRepository<Item>
 	{
 		#region Private fields
+		/// <summary>The items are stored in an internal dictionary.</summary>
 		private Dictionary<string, Item> _items = new Dictionary<string, Item>();
 		#endregion
 
@@ -37,7 +36,25 @@ namespace Medness.Testing.Common.Repositories
 				return item;
 			return null;
 		}
+		/// <summary>
+		///		Checks for the existence of a item in the repository.
+		/// </summary>
+		/// <param name="id">The id of the item to check.</param>
+		/// <returns>A <see cref="IResult"/> object with a flag <see cref="IResult.ISuccess"/>
+		/// set to <see langword="true"/> if the item exists in the repository. And set to
+		/// <see langword="false"/> otherwise.</returns>
+		public IResult Contains(string id)
+		{
+			if (_items.ContainsKey(id))
+				return Results.Success;
+			return Results.ErrorUnknownId;
+		}
+		#endregion
 
+		#region IEnumerable implementation
+		/// <summary>
+		/// Exposes the enumerator, which supports a simple iteration over a collection of <see cref="Item"> type.
+		/// </summary>
 		public IEnumerator<Item> GetEnumerator()
 		{
 			return _items.Values.GetEnumerator();

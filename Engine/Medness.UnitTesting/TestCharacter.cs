@@ -18,8 +18,8 @@ namespace Medness.UnitTesting
 		[TestMethod]
 		public void TestCharacterNull()
 		{
-			Assert.ThrowsException<ArgumentNullException>(
-				() => new Character("TEST_ID", null, true));
+			Assert.ThrowsException<ArgumentNullException>(() => new Character(null, "Zaphod Beeblebrox", true));
+			Assert.ThrowsException<ArgumentNullException>(() => new Character("TEST_ID", null, true));
 		}
 
 		[TestMethod]

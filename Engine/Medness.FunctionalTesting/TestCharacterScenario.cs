@@ -1,6 +1,5 @@
 ﻿using Medness.Business.Entities;
 using Medness.Testing.Common.TestData;
-using System;
 
 namespace Medness.FunctionalTesting
 {
@@ -40,11 +39,11 @@ namespace Medness.FunctionalTesting
 			Character character1 = characterData.testCharacters.Get(CharacterData.AnsgardeId);
 			Character character2 = characterData.testCharacters.Get(CharacterData.AldemareId);
 			gameData.testGame.AddCharacter(character1);
-			gameData.testGame.Switch(character1);
+			Assert.IsTrue(gameData.testGame.Switch(character1).IsSuccess);
 			gameData.testGame.AddCharacter(character2);
 
 			// WHEN I switch to the inactive Character
-			gameData.testGame.Switch(character2);
+			Assert.IsTrue(gameData.testGame.Switch(character2).IsSuccess);
 
 			// THEN the game's active character becomes this character..
 			Assert.IsTrue(gameData.testGame.IsActive(character2));
@@ -56,13 +55,13 @@ namespace Medness.FunctionalTesting
 			// GIVEN a character and a destination game's scene
 			Character character = characterData.testCharacters.Get(CharacterData.AnsgardeId);
 			Scene destinationScene = sceneData.testScenes.Get(SceneData.SceneForestId);
-			Assert.ThrowsException<ArgumentException>(() => gameData.testGame.EntersScene(character, destinationScene));
+			Assert.IsFalse(gameData.testGame.EntersScene(character, destinationScene).IsSuccess);
 			gameData.testGame.AddCharacter(character);
-			Assert.ThrowsException<ArgumentException>(() => gameData.testGame.EntersScene(character, destinationScene));
+			Assert.IsFalse(gameData.testGame.EntersScene(character, destinationScene).IsSuccess);
 			gameData.testGame.AddScene(destinationScene);
 
 			// WHEN the character enters the destination
-			gameData.testGame.EntersScene(character, destinationScene);
+			Assert.IsTrue(gameData.testGame.EntersScene(character, destinationScene).IsSuccess);
 
 			// THEN the character's current scene becomes the destination scene.
 			Assert.IsTrue(character.IsInScene(destinationScene.id));

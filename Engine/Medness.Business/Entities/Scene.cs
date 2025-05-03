@@ -1,42 +1,69 @@
 ﻿using Medness.Business.Event.Args;
 using Medness.Business.Interfaces;
+using Medness.Business.Resources;
 
 namespace Medness.Business.Entities
 {
-    public class Scene : IStuffHolder
+	/// <summary>Represents a scene of the game.</summary>
+	public class Scene : IStuffHolder
 	{
+		#region Fields
+		/// <summary>Scene's Id (to easily identify it in a file or a repository).</summary>
+		/// <remarks>This field is part of the <see cref="IStuffHolder"/> interface.</remarks>
 		public string id { get; }
-		public readonly string name;
 
+		/// <summary>The scene's name.</summary>
+		public readonly string name;
+		#endregion
+
+		#region Constructor
+		/// <summary>Creates a new instance of class <see cref="Scene"/>.</summary>
+		/// <param name="identity">A string identifying the scene for easy recovery in a file or a repository.</param>
+		/// <param name="sceneName">The name of the character.</param>
 		public Scene(string identity, string sceneName)
 		{
-			//pas de vérif sur identity ?
-
-			//pour sceneName, je ne sais pas si tu allow le string.Empty, si oui tu peux être moins violent en faisant
-			//name = sceneName ?? "";
-			//sauf si tu veux vraiment remonter l'erreur à celui qui appelle le constructeur avec une valeur null
+			ArgumentNullException.ThrowIfNull(identity, nameof(identity));
 			ArgumentNullException.ThrowIfNull(sceneName, nameof(sceneName));
 
 			id = identity;
 			name = sceneName;
 		}
-
+		#endregion
 
 		#region IStuffHolder
-		public void AcquireStuff(Item item)
+		/// <summary>This method is to be called when the <see cref="IStuffHolder"/> acquires a given item.</summary>
+		/// <param name="item">The item acquired by the <see cref="IStuffHolder"/>.</param>
+		/// <returns>
+		/// A <see cref="IResult"/> object containing an error message if any.
+		/// In case of success, the returned object flag <see cref="IResult.IsSuccess"> is set to true.
+		/// Possible errors :
+		/// - <see cref="Results.ErrorNullItem"/>
+		/// </returns>
+		public IResult AcquireStuff(Item item)
 		{
-			ArgumentNullException.ThrowIfNull(item, nameof(item));
+			if (item is null)
+			{
+				return Results.ErrorNullItem;
+			}
+
 			item.MoveTo(this);
+			return Results.Success;
 		}
 
+		/// <summary>Checks if the <see cref="IStuffHolder"/> holds a given item.</summary>
+		/// <param name="item">The item to check against the <see cref="IStuffHolder"/> stuff.</param>
+		/// <returns>
+		/// <see langword="true"/> if the <see cref="IStuffHolder"> holds the item.
+		/// <see langword="false"/> otherwise.
+		/// </returns>
 		public bool Holds(Item item)
 		{
-			ArgumentNullException.ThrowIfNull(item, nameof(item));
-			return item.GetHolder() == this;
+			return (item is null) ? false : item.GetHolder() == this;
 		}
 		#endregion
 
 		#region Actions
+		/// <summary>Activates this scene.</summary>
 		public void Activates()
 		{
 			OnActivated();
@@ -44,6 +71,7 @@ namespace Medness.Business.Entities
 		#endregion
 
 		#region Events
+		/// <summary>Event raised when the scene is activated.</summary>
 		public event EventHandler<SceneEventArgs> Activated;
 		private void OnActivated()
 		{
@@ -51,6 +79,7 @@ namespace Medness.Business.Entities
 		}
 		#endregion
 
+		#region Equality
 		public override bool Equals(object obj)
 		{
 			if (obj == null)
@@ -66,5 +95,6 @@ namespace Medness.Business.Entities
 		{
 			return id.GetHashCode();
 		}
+		#endregion
 	}
 }

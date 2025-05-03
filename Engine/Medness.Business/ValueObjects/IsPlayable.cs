@@ -1,6 +1,4 @@
-﻿using Medness.Business.Entities;
-
-namespace Medness.Business.ValueObjects
+﻿namespace Medness.Business.ValueObjects
 {
 	public class IsPlayable
 	{

@@ -177,7 +177,7 @@ namespace Medness.FunctionalTesting
 
 			// START TESTS :
 			// Morgause use rope (and not key) in forest
-			morgauseCharacter.AcquireStuff(ropeItem);
+			Assert.IsTrue(morgauseCharacter.AcquireStuff(ropeItem).IsSuccess);
 			ropeItem.Use(forestScene);
 
 			// Check that dialogue is not played
@@ -185,7 +185,7 @@ namespace Medness.FunctionalTesting
 			Assert.IsTrue(playFinishedEventHandled == 0);
 
 			// Morgause use key in bar (and not forest)
-			morgauseCharacter.AcquireStuff(keyItem);
+			Assert.IsTrue(morgauseCharacter.AcquireStuff(keyItem).IsSuccess);
 			keyItem.Use(barScene);
 
 			// Check that dialogue is not played
@@ -193,7 +193,7 @@ namespace Medness.FunctionalTesting
 			Assert.IsTrue(playFinishedEventHandled == 0);
 
 			// Ansgarde (and not Morgause) use key in forest
-			ansgardeCharacter.AcquireStuff(keyItem);
+			Assert.IsTrue(ansgardeCharacter.AcquireStuff(keyItem).IsSuccess);
 			keyItem.Use(forestScene);
 
 			// Check that dialogue is not played
@@ -201,7 +201,7 @@ namespace Medness.FunctionalTesting
 			Assert.IsTrue(playFinishedEventHandled == 0);
 
 			// Morgause use key in forest
-			morgauseCharacter.AcquireStuff(keyItem);
+			Assert.IsTrue(morgauseCharacter.AcquireStuff(keyItem).IsSuccess);
 			keyItem.Use(forestScene);
 
 			// Check that dialogue is played
@@ -230,7 +230,7 @@ namespace Medness.FunctionalTesting
 
 			// START TESTS :
 			// Morgause use key on alcohol glass (and not rope)
-			morgauseCharacter.AcquireStuff(keyItem);
+			Assert.IsTrue(morgauseCharacter.AcquireStuff(keyItem).IsSuccess);
 			keyItem.Use(alcoholGlassItem);
 
 			// Check that dialogue is not played
@@ -238,7 +238,7 @@ namespace Medness.FunctionalTesting
 			Assert.IsTrue(playFinishedEventHandled == 0);
 
 			// Morgause use alcohol glass (and not key) on rope
-			morgauseCharacter.AcquireStuff(alcoholGlassItem);
+			Assert.IsTrue(morgauseCharacter.AcquireStuff(alcoholGlassItem).IsSuccess);
 			alcoholGlassItem.Use(keyItem);
 
 			// Check that dialogue is not played
@@ -246,7 +246,7 @@ namespace Medness.FunctionalTesting
 			Assert.IsTrue(playFinishedEventHandled == 0);
 
 			// Ansgarde (and not Morgause) use key on rope
-			ansgardeCharacter.AcquireStuff(keyItem);
+			Assert.IsTrue(ansgardeCharacter.AcquireStuff(keyItem).IsSuccess);
 			keyItem.Use(ropeItem);
 
 			// Check that dialogue is not played
@@ -254,7 +254,7 @@ namespace Medness.FunctionalTesting
 			Assert.IsTrue(playFinishedEventHandled == 0);
 
 			// Morgause use key on rope
-			morgauseCharacter.AcquireStuff(keyItem);
+			Assert.IsTrue(morgauseCharacter.AcquireStuff(keyItem).IsSuccess);
 			keyItem.Use(ropeItem);
 
 			// Check that dialogue is played

@@ -8,6 +8,6 @@ namespace Medness.Business.Interfaces
 
 		bool Holds(Item item);
 
-		void AcquireStuff(Item item);
+		IResult AcquireStuff(Item item);
 	}
 }

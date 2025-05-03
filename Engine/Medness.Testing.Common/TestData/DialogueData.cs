@@ -2,6 +2,7 @@
 using Medness.Business.Enums;
 using Medness.Business.ValueObjects;
 using Medness.Testing.Common.Repositories;
+using System;
 using System.Collections.Generic;
 
 namespace Medness.Testing.Common.TestData
@@ -133,7 +134,10 @@ namespace Medness.Testing.Common.TestData
 
 			// Initialize dialogue items
 			foreach (DialogueItem item in dialogueItems)
-				item.Initialize();
+			{
+				if (!item.Initialize().IsSuccess)
+					throw new ApplicationException($"Cannot initialize dialogue item {item.id}");
+			}
 		}
 		#endregion
 	}

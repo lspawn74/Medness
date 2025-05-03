@@ -63,7 +63,7 @@ namespace Medness.FunctionalTesting
 			Character ansgarde = characterData.testCharacters.Get(CharacterData.AnsgardeId);
 
 			// WHEN the player assings the item to the character
-			ansgarde.AcquireStuff(item);
+			Assert.IsTrue(ansgarde.AcquireStuff(item).IsSuccess);
 
 			// THEN this character has this item in its inventory
 			Assert.IsTrue(ansgarde.Holds(item));
