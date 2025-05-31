@@ -1,0 +1,199 @@
+﻿<Window x:Class="DialogueStudio.DialogueItemWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DialogueStudio"
+        mc:Ignorable="d"
+        Title="Dialogue Item" Height="280" Width="800"
+        Background="Black">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition Height="32" />
+            <RowDefinition Height="32" />
+            <RowDefinition Height="32" />
+            <RowDefinition Height="32" />
+            <RowDefinition Height="32" />
+            <RowDefinition />
+            <RowDefinition Height="32" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <!-- Id -->
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Content="Id"
+            Foreground="White"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Right"
+            Margin="0,0,10,0"
+            />
+        <TextBox
+            Grid.Row="0"
+            Grid.Column="1"
+            Text="{Binding Id}"
+            Background="Black"
+            Foreground="White"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Left"
+            />
+        
+        <!-- Character -->
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            Content="Character"
+            Foreground="White"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Right"
+            Margin="0,0,10,0"
+            />
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="1"
+            Text="{Binding Character}"
+            Background="Black"
+            Foreground="White"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Left"
+            />
+
+        <!-- Text -->
+        <Label
+            Grid.Row="2"
+            Grid.Column="0"
+            Content="Text"
+            Foreground="White"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Right"
+            Margin="0,0,10,0"
+            />
+        <TextBox
+            Grid.Row="2"
+            Grid.Column="1"
+            Text="{Binding Text}"
+            Background="Black"
+            Foreground="White"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Left"
+            />
+
+        <!-- DataFile -->
+        <Label
+            Grid.Row="3"
+            Grid.Column="0"
+            Content="DataFile"
+            Foreground="White"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Right"
+            Margin="0,0,10,0"
+            />
+        <TextBox
+            Grid.Row="3"
+            Grid.Column="1"
+            Text="{Binding DataFile}"
+            Background="Black"
+            Foreground="White"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Left"
+            />
+
+        <!-- Trigger type -->
+        <Label
+            Grid.Row="4"
+            Grid.Column="0"
+            Content="Trigger Type"
+            Foreground="White"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Right"
+            Margin="0,0,10,0"
+            />
+        <TextBox
+            Grid.Row="4"
+            Grid.Column="1"
+            Text="{Binding DialogueTrigger.Type}"
+            Background="Black"
+            Foreground="White"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Left"
+            />
+
+        <!-- Trigger object -->
+        <Label
+            Grid.Row="5"
+            Grid.Column="0"
+            Content="Trigger Object"
+            Foreground="White"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Right"
+            Margin="0,0,10,0"
+            />
+        <TextBox
+            Grid.Row="5"
+            Grid.Column="1"
+            Text="{Binding DialogueTrigger.Object}"
+            Background="Black"
+            Foreground="White"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Left"
+            />
+        
+        <!-- Ok / Cancel -->
+        <Grid
+            Grid.Row="7"
+            Grid.Column="1"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Right"
+            Width="200">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+        <Button
+            Grid.Column="0"
+            Name="CancelButton"
+            Content="Cancel"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Click="CancelButton_Click"
+            />
+        <Button
+            Grid.Column="1"
+            Name="OkButton"
+            Content="OK"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Click="OkButton_Click"
+            />
+        </Grid>
+    </Grid>
+</Window>
