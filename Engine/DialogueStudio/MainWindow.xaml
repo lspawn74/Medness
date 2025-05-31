@@ -43,8 +43,10 @@
             Grid.Row="1"
             Margin="0,10,0,0">
             <ListView
+                Foreground="Black"
                 ItemsSource="{Binding DialogueItems}"
-                SelectedItem="{Binding SelectedDialogue}">
+                SelectedItem="{Binding SelectedDialogue}"
+                SelectedIndex="{Binding SelectedIndex}">
                 <ListView.View>
                     <GridView AllowsColumnReorder="false">
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="Id" Width="100"/>

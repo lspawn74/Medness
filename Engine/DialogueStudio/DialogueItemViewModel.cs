@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace DialogueStudio
 {
@@ -10,6 +11,15 @@ namespace DialogueStudio
 		private string text;
 		private string dataFile;
 		private DialogueTriggerViewModel dialogueTrigger;
+		internal readonly List<string> types = new List<string>()
+		{
+			"SceneActivated",
+			"CharacterEnters",
+			"DialogueFinished",
+			"ItemMoved",
+			"ItemUsed",
+			"ChosenDialogue"
+		};
 		#endregion
 
 		#region Properties

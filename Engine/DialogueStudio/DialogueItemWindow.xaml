@@ -107,17 +107,31 @@
             HorizontalContentAlignment="Right"
             Margin="0,0,10,0"
             />
-        <TextBox
+        <Grid
             Grid.Row="3"
             Grid.Column="1"
-            Text="{Binding DataFile}"
-            Background="Black"
-            Foreground="White"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch"
-            VerticalContentAlignment="Center"
-            HorizontalContentAlignment="Left"
-            />
+            Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="64" />
+            </Grid.ColumnDefinitions>
+            <TextBox
+                Grid.Column="0"
+                Text="{Binding DataFile}"
+                Background="Black"
+                Foreground="White"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                VerticalContentAlignment="Center"
+                HorizontalContentAlignment="Left"
+                />
+            <Button
+                Grid.Column="1"
+                Name="BrowseDataFileButton"
+                Content="..."
+                Margin="0"
+                Click="BrowseDataFileButton_Click" />
+        </Grid>
 
         <!-- Trigger type -->
         <Label
@@ -131,12 +145,13 @@
             HorizontalContentAlignment="Right"
             Margin="0,0,10,0"
             />
-        <TextBox
+        <ComboBox
             Grid.Row="4"
             Grid.Column="1"
-            Text="{Binding DialogueTrigger.Type}"
-            Background="Black"
-            Foreground="White"
+            x:Name="TriggerTypesComboBox"
+            ItemsSource="{Binding Path=DialogueTrigger.Types}"
+            SelectedItem="{Binding Path=DialogueTrigger.Type}"
+            Foreground="Black"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             VerticalContentAlignment="Center"

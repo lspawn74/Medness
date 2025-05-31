@@ -29,17 +29,25 @@ namespace DialogueStudio
 			InitializeComponent();
 			viewModel = new DialogueItemViewModel();
 			DataContext = viewModel;
+			TriggerTypesComboBox.ItemsSource = viewModel.types;
 		}
 		#endregion
 
 		private void CancelButton_Click(object sender, RoutedEventArgs e)
 		{
-
+			DialogResult = false;
+			Close();
 		}
 
 		private void OkButton_Click(object sender, RoutedEventArgs e)
 		{
-
+			DialogResult = true;
+			Close();
 		}
-	}
+
+		private void BrowseDataFileButton_Click(object sender, RoutedEventArgs e)
+		{
+
+        }
+    }
 }

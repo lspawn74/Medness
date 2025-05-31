@@ -67,6 +67,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DialogueItemTriggerType.cs" />
     <Compile Include="DialogueItemViewModel.cs" />
     <Compile Include="DialogueItemWindow.xaml.cs">
       <DependentUpon>DialogueItemWindow.xaml</DependentUpon>
