@@ -11,7 +11,7 @@ namespace Medness.Business.Entities
 
 		public Item(string identity, string itemName)
 		{
-			ArgumentNullException.ThrowIfNull(itemName, nameof(itemName));
+			ArgumentNullException.ThrowIfNull(itemName);
 			id = identity;
 			name = itemName;
 		}
