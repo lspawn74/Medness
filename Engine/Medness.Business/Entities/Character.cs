@@ -32,8 +32,8 @@ namespace Medness.Business.Entities
 		/// <param name="playable">A flag indicating if the character is playable. (<see langword="false"/> means the character is a NPC)</param>
 		public Character(string identity, string characterName, bool playable)
         {
-			ArgumentNullException.ThrowIfNull(identity, nameof(identity));
-			ArgumentNullException.ThrowIfNull(characterName, nameof(characterName));
+			ArgumentNullException.ThrowIfNull(identity);
+			ArgumentNullException.ThrowIfNull(characterName);
 
 			id = identity;
 			name = characterName;
@@ -105,8 +105,6 @@ namespace Medness.Business.Entities
 				_enteredScene += value;
 				if (_storedSceneEntrance is not null)
 					_enteredScene?.Invoke(this, _storedSceneEntrance);
-					// LC : Le défaut ici, c'est que l'invocation peut avoir lieu à chaque abonnement. (donc multiple invocation pour
-					// les handlers précédemments abonnés seront invoqués à chaque fois.
 			}
 			remove
 			{
@@ -115,17 +113,6 @@ namespace Medness.Business.Entities
 		}
 		private void OnEnteredScene()
 		{
-			//si il n'y a pas d'abonnement il se passe quoi ?
-			//on a déjà eu des pb à cause du cycle de vie de nos programmes au taf car le consommateur arrive après l'event, il est donc jeté dans le vide
-			//peut etre robustifier ça avec un système similaire aux events, en gardant la notif dans un coin tant que le consommateur n'est pas la
-			//puis perso je suis vraiment pas fan des events :p ça apporte trop souvent des problèmes, même si des fois il n'y a pas vraiment d'autres façon de faire et je les utilise quand meme
-
-			// LC : l'évènement est perdu. Tant pis. Fallait être abonné avant (sinon, mauvais design)
-			//      Dans le cas d'un jeu point'n'click, une phase d'initialisation va charger les personnages
-			//      et faire les abonnements sur les évènements par des managers (genre manager de dialogue)
-			//      donc bien avant la survenue des évènements.
-
-			//ici à la place de ce code tu pourrais implémenter un Delegate custom pour gérérer ça en dehors de ta classe
 			if (_enteredScene is null)
 				_storedSceneEntrance = new(this);
 			else

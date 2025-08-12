@@ -20,9 +20,9 @@ namespace Medness.Business.Entities
             Character sayingCharacter,
             IEnumerable<DialogueTrigger> triggers)
         {
-            ArgumentNullException.ThrowIfNull(dialogueId, nameof(dialogueId));
-            ArgumentNullException.ThrowIfNull(sayingCharacter, nameof(sayingCharacter));
-            ArgumentNullException.ThrowIfNull(triggers, nameof(triggers));
+            ArgumentNullException.ThrowIfNull(dialogueId);
+            ArgumentNullException.ThrowIfNull(sayingCharacter);
+            ArgumentNullException.ThrowIfNull(triggers);
 
             id = dialogueId;
             character = sayingCharacter;

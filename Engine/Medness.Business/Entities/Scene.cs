@@ -22,8 +22,8 @@ namespace Medness.Business.Entities
 		/// <param name="sceneName">The name of the character.</param>
 		public Scene(string identity, string sceneName)
 		{
-			ArgumentNullException.ThrowIfNull(identity, nameof(identity));
-			ArgumentNullException.ThrowIfNull(sceneName, nameof(sceneName));
+			ArgumentNullException.ThrowIfNull(identity);
+			ArgumentNullException.ThrowIfNull(sceneName);
 
 			id = identity;
 			name = sceneName;
