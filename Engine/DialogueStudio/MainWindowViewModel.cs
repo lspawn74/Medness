@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace DialogueStudio
 {
@@ -53,12 +55,29 @@ namespace DialogueStudio
 		public void Save()
 		{
 			// Open "save file dialog"
-		}
+			SaveFileDialog saveDialog = new SaveFileDialog();
+			saveDialog.Filter = "*.xml";
+			saveDialog.AddExtension = true;
+			saveDialog.CheckPathExists = true;
+			bool? dr = saveDialog.ShowDialog();
+            if (dr == true)
+            {
+                
+            }
+        }
 
 		public void Insert()
 		{
 			// Open dialog to create new Dialogue item
 			var dialogWnd = new DialogueItemWindow();
+
+			// Set the list of characters already presents in the listview
+			if (DialogueItems.Count > 0)
+			{
+				dialogWnd.ViewModel.CharacterList = DialogueItems.Select(x => x.Character).ToList();
+			}
+
+			// Display the dialog
 			if (dialogWnd.DataContext is DialogueItemViewModel dialogueItemViewModel)
 			{
 				bool? res = dialogWnd.ShowDialog();

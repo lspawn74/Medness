@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DialogueStudio"
         mc:Ignorable="d"
-        Title="MainWindow" Height="900" Width="1600"
+        Title="Dialogue Studio" Height="900" Width="1600"
         Background="Black">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="64" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        
+
         <!-- Buttons bar -->
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -25,19 +25,40 @@
                 Grid.Column="0"
                 Name="LoadButton"
                 Content="Load"
-                Click="LoadButton_Click"/>
+                Click="LoadButton_Click" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="Black" Offset="1"/>
+                        <GradientStop Color="White" Offset="0"/>
+                    </RadialGradientBrush>
+                </Button.Background>
+            </Button>
             <Button
                 Grid.Column="1"
                 Name="SaveButton"
                 Content="Save"
-                Click="SaveButton_Click"/>
+                Click="SaveButton_Click" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="Black" Offset="1"/>
+                        <GradientStop Color="White" Offset="0"/>
+                    </RadialGradientBrush>
+                </Button.Background>
+            </Button>
             <Button
                 Grid.Column="2"
                 Name="InsertButton"
                 Content="Insert"
-                Click="InsertButton_Click"/>
+                Click="InsertButton_Click" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="Black" Offset="1"/>
+                        <GradientStop Color="White" Offset="0"/>
+                    </RadialGradientBrush>
+                </Button.Background>
+            </Button>
         </Grid>
-        
+
         <!-- Dialogues list -->
         <Grid
             Grid.Row="1"
@@ -46,7 +67,7 @@
                 Foreground="Black"
                 ItemsSource="{Binding DialogueItems}"
                 SelectedItem="{Binding SelectedDialogue}"
-                SelectedIndex="{Binding SelectedIndex}">
+                SelectedIndex="{Binding SelectedIndex}" Background="#FF75A3AF" BorderBrush="Black">
                 <ListView.View>
                     <GridView AllowsColumnReorder="false">
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="Id" Width="100"/>

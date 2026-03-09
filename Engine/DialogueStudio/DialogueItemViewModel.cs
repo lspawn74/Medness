@@ -8,6 +8,7 @@ namespace DialogueStudio
 		#region Fields
 		private string id;
 		private string character;
+		private List<string> characterList;
 		private string text;
 		private string dataFile;
 		private DialogueTriggerViewModel dialogueTrigger;
@@ -40,6 +41,16 @@ namespace DialogueStudio
 			{
 				character = value;
 				OnPropertyChanged(nameof(Character));
+			}
+		}
+
+		public List<string> CharacterList
+		{
+			get => characterList;
+			set
+			{
+				characterList = value;
+				OnPropertyChanged(nameof(CharacterList));
 			}
 		}
 

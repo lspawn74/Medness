@@ -23,6 +23,10 @@ namespace DialogueStudio
 		private DialogueItemViewModel viewModel;
 		#endregion
 
+		#region Properties
+		public DialogueItemViewModel ViewModel => viewModel;
+		#endregion
+
 		#region Constructor
 		public DialogueItemWindow()
 		{

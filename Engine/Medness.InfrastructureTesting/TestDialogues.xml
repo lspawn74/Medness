@@ -41,7 +41,7 @@
 	<DialogueItem
 		Id="SC_ORPHELINAT_ANSGARDE_03"
 		Character="CH_ANSGARDE"
-		Text="Tu ne pouvais pas faire attention à tes affaires ?"
+		Text="Tu ne pouvais pas faire attention à tes affaires ?!"
 		DataFile="SC_ORPH_ANSG_03.wav">
 		<DialogueTrigger Type="ChosenDialogue" Object="SC_ORPHELINAT_ANSGARDE_03"/>
 	</DialogueItem>

@@ -59,16 +59,18 @@
             HorizontalContentAlignment="Right"
             Margin="0,0,10,0"
             />
-        <TextBox
+        <ComboBox
             Grid.Row="1"
             Grid.Column="1"
             Text="{Binding Character}"
-            Background="Black"
-            Foreground="White"
+            ItemsSource="{Binding CharacterList}"
+            Background="White"
+            Foreground="Black"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             VerticalContentAlignment="Center"
             HorizontalContentAlignment="Left"
+            IsEditable="True"
             />
 
         <!-- Text -->
