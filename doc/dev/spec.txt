@@ -1,0 +1,113 @@
+Les actes
+---------
+
+Le jeu s'organise en actes.
+Un acte contient des scènes et des variables d'acte qui rendent compte de l'état de l'acte.
+Un changement de variable d'acte génère un évènement que l'animation du jeu pourra exploiter.
+
+Les actes ont un identifiant codé sur un entier.
+Ils ont aussi une brève description qui pourra (ou non) être exploité par l'interface du jeu
+(par exemple pour un écran titre ou pour nommer les sauvegardes).
+Par exemple :
+   ACTE 1 : Ansgarde recrute son équipe.
+   Ici L'acte à l'identifiant 1 et "Ansgarde recrute son équipe" décrit l'acte sommairement.
+
+
+Les scènes
+----------
+
+Les scènes sont contenues dans les actes.
+Chaque scène contient des variables de scène qui fonctionnent comme les variables d'acte mais
+dont la portée est limitée à la scène.
+De la même manière, un changement de valeur d'une variable de scène génère un évènement.
+
+Les scènes comportent des régions d'intérêts (porte, meuble, tapis, item, etc...) sur lesquelles des actions
+peuvent être entreprises par les personnages.
+Il y a donc aussi une liste des actions possibles dans la scène.
+Les personnages peuvent essayer des combinaisons d'action sur les régions d'intérêt.
+
+Chaque scène comporte aussi une machine d'état qui permet d'organiser les actions et les dialogues
+des personnages.
+
+Les scène ont un identifiant sous forme de chaîne de caractère. De la forme : AXYZZ
+Ou X est le numéro d'acte et Y est une lettre identifiant le lieu (par exemple T pour taverne ou C pour cimetierre)
+et ZZ est un numéro sur 2 digits permettant d'avoir jusqu'à 100 scènes dans le même lieu.
+Cet identifiant pourra être utilisé par l'interface du jeu pour planter le décor. (par exemple, l'extérieur de la
+taverne et l'intérieur de la taverne n'ont pas le même décor mais sont deux scènes de la taverne).
+
+
+Machine d'état
+--------------
+
+Une machine d'état possède :
+- Un point de départ.
+- Des états.
+- Des transitions.
+- Des sélecteurs.
+- Une ou plusieurs sorties vers une autre scène.
+
+Une machine d'état a accès aux variables d'acte et de scène. C'est par la machine d'état que ces variables
+sont modifiées.
+
+
+Point de départ
+---------------
+
+C'est le point d'entrée de la machine d'état. Ca peut être un état, ou un sélecteur.
+
+
+Etat
+----
+
+Un état contient un dialogue ou rien.
+L'entrée dans un état génère un évènement que l'interface du jeu pourra exploiter.
+(par exemple, un personnage entre dans une pièce. Et il peut réagir par une animation à ce qu'il voit ou ce
+qu'il sent)
+
+Un état possèdes des transitions d'entrée et des transitions de sortie.
+On arrive dans un état par une transition d'arrivée.
+On ne sort de l'état que lorsqu'une transition de sortie est valide.
+Si aucune transition de sortie n'est valide, on reste dans cet état.
+Si un dialogue se trouve dans un état, on l'exécute à l'entrée dans celui-ci.
+
+
+Transition
+----------
+
+Une transition possède un point de départ et un point d'arrivée.
+Ces points peuvent être des états ou des sélecteurs.
+Une transition peut aussi posséder une ou plusieurs conditions ainsi qu'une ou plusieurs actions.
+
+Transition - condition
+----------------------
+Une condition de transition renvoie un booléen testant une condition sur une ou plusieurs variables
+d'acte ou de scène.
+
+Transition - action
+-------------------
+Une action de transition est en fait une action d'un personnage. (ouvrir une porte, s'approcher d'un objet, etc...)
+
+Dans une transition, les conditions et les actions peuvent se combiner par des opérateurs logiques (ET, OU, etc...)
+Une condition est dite valide si la combinaison des actions et conditions est vraie.
+Par souci de simplicité, on appelle une telle combinaison : combinaison transitoire.
+Une transition sans combinaison transitoire est toujours valide.
+
+
+Sélecteur
+---------
+
+Un sélecteur est un noeud d'aiguillage dans une machine d'état. Il possède des transitions d'entrée et des transitions
+de sortie. Contrairement à un état, il n'autorise pas de n'avoir aucune transition de sortie non valide.
+Les transitions d'entrée sans combinaison transitoire ayant un sélecteur pour point d'arrivée heritent automatiquement
+de toutes les combinaisons transitoires des transitions de sortie en les combinant par un OU logique.
+
+Par exemple :
+   Une transition sans combinaison transitoire aboutit sur un selecteur qui possède deux transitions de sortie :
+    - La transition de sortie #1 possède la combinaison transitoire suivante  : VAR1=0 ET Le personnage ouvre la porte.
+    - La transition de sortie #2 possède la combinaison transitoire suivante : Le personnage quitte la scène.
+   Dans ce cas, la transition d'entrée hérite de la combinaison transitoire suivante :
+    - (VAR1=0 ET Le personnage ouvre la porte) OU (Le personnage quitte la scène)
+
+Ce mécanisme permet de ne pas se diriger sur un sélecteur qui risque de n'avoir aucune transition de sortie
+valide.
+
