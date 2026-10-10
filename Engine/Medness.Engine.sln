@@ -29,6 +29,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "40 - Tools", "40 - Tools", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DialogueStudio", "DialogueStudio\DialogueStudio.csproj", "{95B27677-57FF-4DEC-AA4E-07089FDD5F66}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00-StateMachine", "00-StateMachine", "{E1AE2F32-54F5-4D59-A84D-9905BB2325AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medness.StateMachine", "Medness.StateMachine\Medness.StateMachine.csproj", "{C7075A91-D9F5-4E54-8577-6471AFC52555}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +71,10 @@ Global
 		{95B27677-57FF-4DEC-AA4E-07089FDD5F66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95B27677-57FF-4DEC-AA4E-07089FDD5F66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95B27677-57FF-4DEC-AA4E-07089FDD5F66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7075A91-D9F5-4E54-8577-6471AFC52555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7075A91-D9F5-4E54-8577-6471AFC52555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7075A91-D9F5-4E54-8577-6471AFC52555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7075A91-D9F5-4E54-8577-6471AFC52555}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +88,7 @@ Global
 		{9CD70FAB-2467-4F1C-92CC-3C12A9B98785} = {975B4246-B2C1-4067-AC9A-06CCDB157F30}
 		{ACBC1831-5028-497F-B5DB-F05870C96519} = {FD782222-3926-44BA-892A-01DA6853CE60}
 		{95B27677-57FF-4DEC-AA4E-07089FDD5F66} = {F4217D1B-CAC4-4CA8-83CD-3A5CB3D1CA4C}
+		{C7075A91-D9F5-4E54-8577-6471AFC52555} = {E1AE2F32-54F5-4D59-A84D-9905BB2325AF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D3D03DB9-7442-4A70-A349-0E08BAEF07DA}
